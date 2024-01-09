@@ -1,0 +1,139 @@
+/* IndexCSS.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.ibb.co/xFc9bvX/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    height: 150vh;
+    overflow: hidden;
+    overflow-y: auto;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive; 
+}
+
+.twitter-container {
+    display: inline-block; /* Make it an inline-block to center it */
+    text-align: left; /* Reset text alignment for child elements */
+    padding-bottom: 100px;
+}
+
+.topnav {
+    background-color: rgba(51, 51, 51, 0.5); /* 0.5 represents 50% transparency */
+    overflow: hidden;
+    text-align: center;
+}
+
+
+.topnav img {
+    background-color: rgba(51, 51, 51, 0.5); /* 0.5 represents 50% transparency */
+    height: 35px;
+    margin-right: 10px;
+    float: left;
+    padding: 10px;
+}
+
+.topnav a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 18px 17px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #ff00f8;
+    color: white;
+}
+
+.topnav .align-right {
+    float: right;
+}
+
+/* Bottom */
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar {
+    background-color: rgba(51, 51, 51, 0.5); /* 0.5 represents 50% transparency */
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    color: #f2f2f2
+}
+
+/* Style the links inside the navigation bar */
+.navbar a {
+    float: right; /* Change from float: left to float: right */
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+/* Change the color of links on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: #ff00f8;
+}
+
+/* Add a color to the active/current link */
+.navbar a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+/* Slider */ 
+#slider-container {
+    width: 50%; /* Set the width to 50% */
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    margin: 0 auto; /* Center the slider container */
+    padding-top: 50px;
+    padding-bottom: 50px; /* Add 50px padding */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Optional: Add navigation buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    z-index: 2;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
