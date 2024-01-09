@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('background.png');
+    background-image: url('C:/Users/angel/Desktop/Wolnopage/background.png');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
@@ -11,7 +11,8 @@ body {
     overflow: hidden;
     overflow-y: auto;
     text-align: center;
-    font-family: 'Comic Sans MS', cursive; 
+    font-family: 'Comic Sans MS', cursive;
+    color: white 
 }
 
 .twitter-container {
