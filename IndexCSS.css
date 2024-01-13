@@ -22,7 +22,7 @@ a:link, a:visited, a:hover, a:active {
   /* Firefox */
   * {
     scrollbar-width: auto;
-    scrollbar-color: #ff00e8 rgba(255, 255, 255, 0);
+    scrollbar-color: #ff00e8 rgba(0, 0, 0, 0);
   }
 
   /* Chrome, Edge, and Safari */
@@ -31,13 +31,13 @@ a:link, a:visited, a:hover, a:active {
   }
 
   *::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0);
+    background: rgba(0, 0, 0, 0);
   }
 
   *::-webkit-scrollbar-thumb {
     background-color: #ff00e8;
     border-radius: 10px;
-    border: 3px solid rgba(255, 255, 255, 0);
+    border: 3px solid rgba(0, 0, 0, 0);
   }
 
 .twitter-container {
