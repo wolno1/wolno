@@ -19,26 +19,35 @@ a:link, a:visited, a:hover, a:active {
   color: #ff00e8;
 }
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #ff00e8 rgba(0, 0, 0, 0);
-  }
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #ff00e8 rgba(0, 0, 0, 0);
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
-  }
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #ff00e8;
-    border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0);
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #ff00e8;
+  border-radius: 10px;
+  border: 3px solid rgba(0, 0, 0, 0);
+}
+
+/* Additional styles to ensure transparency in some browsers */
+*::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+
+*::-webkit-scrollbar-button {
+  background-color: rgba(0, 0, 0, 0);
+}
 
 .twitter-container {
     display: inline-block; /* Make it an inline-block to center it */
