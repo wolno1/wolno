@@ -18,6 +18,31 @@ body a {
     color: #ff00e8;
 }
 
+a:link, a:visited, a:hover, a:active {
+  color: #ae88cb;
+}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #ae88cb #FFFFFF00;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #FFFFFF00;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #ae88cb;
+    border-radius: 10px;
+    border: 3px solid #FFFFFF00;
+  }
+
 .twitter-container {
     display: inline-block; /* Make it an inline-block to center it */
     text-align: left; /* Reset text alignment for child elements */
