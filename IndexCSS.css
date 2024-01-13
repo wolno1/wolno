@@ -14,6 +14,9 @@ body {
     font-family: 'Comic Sans MS', cursive;
     color: white 
 }
+body a {
+    color: #ff00e8;
+}
 
 .twitter-container {
     display: inline-block; /* Make it an inline-block to center it */
