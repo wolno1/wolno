@@ -15,6 +15,10 @@ body {
     color: white 
 }
 
+body a {
+    color: #ff00f8
+}
+
 .twitter-container {
     display: inline-block; /* Make it an inline-block to center it */
     text-align: left; /* Reset text alignment for child elements */
