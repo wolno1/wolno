@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('background.png');
+    background-image: url('C:/Users/angel/Desktop/Wolnopage/background.png');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
@@ -13,40 +13,6 @@ body {
     text-align: center;
     font-family: 'Comic Sans MS', cursive;
     color: white 
-} 
-
-a:link, a:visited, a:hover, a:active {
-  color: #ff00e8;
-}
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
-  scrollbar-width: auto;
-  scrollbar-color: #ff00e8 rgba(0, 0, 0, 0);
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 16px;
-}
-
-*::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #ff00e8;
-  border-radius: 10px;
-  border: 3px solid rgba(0, 0, 0, 0);
-}
-
-/* Additional styles to ensure transparency in some browsers */
-*::-webkit-scrollbar-corner {
-  background: rgba(0, 0, 0, 0);
-}
-
-*::-webkit-scrollbar-button {
-  background-color: rgba(0, 0, 0, 0);
 }
 
 .twitter-container {
@@ -172,3 +138,118 @@ a:link, a:visited, a:hover, a:active {
 
 .prev { left: 10px; }
 .next { right: 10px; }
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: #ff00e8;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease; /* Add a smooth transition effect */
+    background-color: #000000;
+}
+
+.active + .content {
+    max-height: 1000px; /* Adjust the maximum height as needed */
+}
+
+/* Gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gallery .image-container {
+    width: calc(25% - 10px); /* Adjust the width as needed with some margin between images */
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.gallery .image-container img {
+    width: 100%;
+    height: auto;
+}
+
+/*hover gallery*/
+/* Add these styles for the hover effect within the .content section */
+.content .gallery .image-container .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content .gallery .image-container:hover .overlay {
+    opacity: 1;
+}
+
+.content .gallery .image-container .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#imageModal a {
+    color: #ff00f8;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%; /* Adjust the max-width to 80% */
+    max-height: 80%; /* Adjust the max-height to 80% */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
