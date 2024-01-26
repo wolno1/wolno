@@ -15,10 +15,6 @@ body {
     color: white 
 }
 
-body a {
-    color: #ff00f8
-}
-
 .twitter-container {
     display: inline-block; /* Make it an inline-block to center it */
     text-align: left; /* Reset text alignment for child elements */
@@ -241,12 +237,12 @@ body a {
     color: #ff00f8;
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%; /* Adjust the max-width to 80% */
-    max-height: 80%; /* Adjust the max-height to 80% */
+.modal-content img {
+    width: 100%; /* Ensure the image takes up the full width of the modal */
+    max-height: 80vh; /* Adjust the max-height as needed */
+    object-fit: contain; /* Maintain the aspect ratio while fitting within the dimensions */
 }
+
 
 .close {
     position: absolute;
@@ -256,4 +252,29 @@ body a {
     font-weight: bold;
     color: #fff;
     cursor: pointer;
+}
+
+/*Button left n right*/
+/* Style the prev and next buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    z-index: 2;
+    display: none; /* Initially hide the buttons */
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Show the buttons when the modal is open */
+#imageModal .prev,
+#imageModal .next {
+    display: block;
 }
