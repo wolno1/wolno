@@ -38,11 +38,15 @@ body {
 
 .topnav a {
     display: inline-block;
-    color: #f2f2f2;
+    color: white;
     text-align: center;
     padding: 18px 17px;
     text-decoration: none;
     font-size: 17px;
+}
+
+a{
+    color:#ff00e8
 }
 
 .topnav a:hover {
