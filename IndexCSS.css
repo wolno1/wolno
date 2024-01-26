@@ -46,12 +46,12 @@ body {
 }
 
 a{
-    color:#ff00e8
+    color:#ff00e8;
 }
 
 .topnav a:hover {
     background-color: #ddd;
-    color: black;
+     color:#ff00e8;
 }
 
 .topnav a.active {
