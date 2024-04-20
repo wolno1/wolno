@@ -87,3 +87,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.next').addEventListener('click', nextSlide);
     document.querySelector('.prev').addEventListener('click', prevSlide);
 });
+
+function expand() {
+    var expandedTable = document.getElementById("expandedTable");
+    if (expandedTable.style.display === "none") {
+        expandedTable.style.display = "block";
+        expandedTable.style.animationName = "expandAnimation";
+    } else {
+        expandedTable.style.animationName = "collapseAnimation";
+        setTimeout(function() {
+            expandedTable.style.display = "none";
+        }, 500); // Espera a que termine la animación antes de ocultar la tabla
+    }
+}
