@@ -368,10 +368,26 @@ a{
     animation-fill-mode: both;
 }
 
+/* Aplica animación a la tabla durante la expansión y el colapso */
 #firstTable {
     width: 100%;
     border-collapse: collapse;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
 }
+
+/* Agrega animación CSS */
+@keyframes expandAnimation {
+    from { max-height: 0; opacity: 0; }
+    to { max-height: 500px; opacity: 1; }
+}
+
+@keyframes collapseAnimation {
+    from { max-height: 500px; opacity: 1; }
+    to { max-height: 0; opacity: 0; }
+}
+
 
 /* Estilo para las celdas de la primera columna */
 #firstTable td:nth-child(1) {

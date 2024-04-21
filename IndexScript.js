@@ -49,9 +49,6 @@ function createNavLinks() {
 
 
 createNavLinks();
-
-
-
     //slider
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.slider');
