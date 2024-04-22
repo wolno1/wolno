@@ -7,45 +7,31 @@
 
     <!-- CSS files -->
     <link rel="stylesheet" href="IndexCSS.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="OthIMG\icon.jpg">
 
     <!-- JS libraries -->
     <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="OthIMG\icon.jpg">
 </head>
 <body>
+    <!-- Header Section -->
     <div class="topnav">
         <img src="OthIMG\LOGO.png" alt="Logo" class="topnav">
         <div id="nav-links"></div>
     </div>
-    <script src="IndexScript.js"></script>
-    <style>
-.container h3 {
-    margin-top: 0;
-    background-color: #CF4EBF; /* Agrega el color de fondo */
-    width: 100%; /* Abarca todo el ancho del contenedor */
-    padding: 10px; /* Añade un poco de relleno para separar el texto del borde */
-    box-sizing: border-box; /* Incluye el relleno y el borde en el tamaño total */
-}
-    </style>
 
+    <!-- Main Content -->
     <div class="w3-container w3-blue" style="border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); margin: 50px; border: 2px solid white;">
-        <div style="padding-left: 50px;padding-right: 50px;">
-            <!-- Código aquí--->
+        <div style="padding-left: 50px; padding-right: 50px;">
             <div class="character-info">
                 <h1 style="padding-top: 25px">Wolno</h1>
                 <hr>
                 <div class="row">
-                    <div class="column-3-5">
+                    <div class="column-3-5" style="flex-grow: 1; text-align: left;">
                         <p><b>Wolno</b> is a male red fox and the central character in the comic <i>Inu-sual Feelings</i>. He shares a close friendship with Roxanne, alongside Skye and has a big crush on her classmate; Inu. Wolno is sa student in Tailspin Highschool and has a band with Roxanne and Skye (They are terrible).</p>
                         <p>index here</p>
-                        <h2 style="text-align: left;">Physical appearance</h2>
-                        <hr>
-                        <p>Wolno has soft, short fur and a remarkably long tail. His fur has a cream-colored pattern that extends from his inner thighs to his nose, as well as a brown pattern on his hands and paws from just below his elbows and knees. His pawpads are pink, and his eyes always have a relaxed, somewhat tired appearance. His eyes are purple, and they have a small triangular feature reminiscent of an old cartoon.</p>
-                        <p>His common outfit consists on a red checkered shirt with straight dark blue jeans</p>
-                        <p>Wolno's "performance" includes mustard-colored pants and an open, vintage-style jacket over a plain white shirt, which he pairs with his keytar; a Yamaha SHS-10.</p>
                     </div>
                     <div class="column-2-5">
                         <div class="container">
@@ -70,7 +56,7 @@
                                     <td>November 27</td>
                                 </tr>
                             </table>
-                            <button onclick="expand()">Expandir</button>
+                            <button onclick="expand()" style="margin-bottom: 20px;">More info</button>
                             <div id="expandedTable" style="display: none;">
                                 <table id="firstTable">
                                     <!-- Contenido de la tabla expandida -->
@@ -99,9 +85,33 @@
                         </div>
                     </div>
                 </div>
+                <div style="text-align: left; padding-bottom: 25px;">
+                    <h2>Physical appearance</h2>
+                    <hr>
+                    <p>Wolno has soft, short fur and a remarkably long tail. His fur has a cream-colored pattern that extends from his inner thighs to his nose, as well as a brown pattern on his hands and paws from just below his elbows and knees. His pawpads are pink, and his eyes always have a relaxed, somewhat tired appearance. His eyes are purple, and they have a small triangular feature reminiscent of an old cartoon.</p>
+                    <p>His common outfit consists of a red checkered shirt with straight dark blue jeans</p>
+                    <p>Wolno's "performance" includes mustard-colored pants and an open, vintage-style jacket over a plain white shirt, which he pairs with his keytar; a Yamaha SHS-10.</p>
+                    <h2 >Personality</h2>
+                    <hr>
+                    <p>Wolno appears to be the epitome of normalcy, blending seamlessly into the backdrop of any scene. He's unremarkable, average, and lacks any standout qualities. Some might even describe him as forgettable and flat, as he tends to keep to himself and doesn't actively engage in conversation.</p>
+                    <p>Despite his unassuming nature, Wolno possesses a decent level of perceptiveness and intelligence. In typical social settings, he manages adequately, navigating interactions with ease. However, he harbors little enthusiasm for life's endeavors, often opting for minimal effort in his pursuits.</p>
+                    <p>Everything changes when Wolno encounters Inu. In her presence, he transforms into a bundle of nerves, exhibiting anxiety and an inability to focus. This typically manifests as excessive rambling, stuttering, and difficulty maintaining his composure. Inu's mere presence disrupts Wolno's normally subdued demeanor, sending him into a spiral of self-consciousness and unease.</p>
+                </div>
             </div>
         </div>
     </div>
+    
+    <!-- Scripts and Styles -->
+    <script src="IndexScript.js"></script>
+    <style>
+        .container h3 {
+            margin-top: 0;
+            background-color: #CF4EBF;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
     <div id="myDiv" style=" height: 1px; rgba(0, 0, 0, 0.0)"></div>
 </body>
 </html>
