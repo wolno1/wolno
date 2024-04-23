@@ -97,3 +97,19 @@ function expand() {
         }, 500); // Espera a que termine la animación antes de ocultar la tabla
     }
 }
+
+
+//img de wiki
+function openModal(img) {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    captionText.innerHTML = img.nextElementSibling.innerHTML; // Tomar el contenido del siguiente elemento hermano (el pie de la imagen)
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  }
+  

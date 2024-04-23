@@ -5,13 +5,15 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
+    background-attachment: fixed; /* Agregado para fijar el fondo */
     height: 150vh;
     overflow: hidden;
     overflow-y: auto;
     text-align: center;
     font-family: 'Comic Sans MS', cursive;
-    color: white 
+    color: white;
 }
+
 
 .twitter-container {
     display: inline-block; /* Make it an inline-block to center it */
@@ -347,6 +349,7 @@ a{
     margin-top: 10px;
     cursor: pointer;
     border-radius: 5px;
+    
 }
 
 
@@ -416,3 +419,49 @@ a{
 #firstTable tr:nth-child(odd) td {
     background-color: rgba(255, 255, 255, 0.1);
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+  }
+  
+  #caption {
+    margin: auto;
+    display: block;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
