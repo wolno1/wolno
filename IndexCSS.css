@@ -14,6 +14,26 @@ body {
     color: white;
 }
 
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: black;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #ff00e8;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #ff00e8;
+  }
+
 
 .twitter-container {
     display: inline-block; /* Make it an inline-block to center it */
@@ -463,5 +483,92 @@ a{
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+  }
+  
+  /*Galería de wiki */
+  .custom-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: 400px; /* Establece el límite máximo de altura */
+    overflow-y: auto; /* Permite que el contenido sea scrollable verticalmente si excede la altura máxima */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+  }
+  
+  .custom-gallery .custom-image-container {
+    width: calc(20% - 10px); /* 5 contenedores por fila */
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .custom-gallery .custom-image-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .custom-gallery .custom-image-container .custom-text {
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Modal */
+  .custom-modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+  }
+  
+  .custom-caption {
+    margin: auto;
+    display: block;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+  }
+  
+  .custom-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .custom-close:hover,
+  .custom-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .custom-prev, .custom-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    z-index: 2;
+  }
+  
+  .custom-prev {
+    left: 10px;
+  }
+  
+  .custom-next {
+    right: 10px;
   }
   

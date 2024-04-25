@@ -113,3 +113,44 @@ function openModal(img) {
     }
   }
   
+  //Galería de wiki
+  function openCustomModal(img) {
+    var modal = document.getElementById("custom-imageModal");
+    var modalImg = document.getElementById("custom-img01");
+    var captionText = document.getElementById("custom-caption");
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    captionText.innerHTML = img.nextElementSibling.innerHTML; // Tomar el contenido del siguiente elemento hermano (el pie de la imagen)
+    var span = document.getElementsByClassName("custom-close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  
+    // Agregar evento de escucha de teclado cuando se abre el modal
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "ArrowLeft") {
+        showPrevImage();
+      } else if (event.key === "ArrowRight") {
+        showNextImage();
+      }
+    });
+  }
+  
+  function showPrevImage() {
+    // Obtener el índice de la imagen actual
+    var currentIndex = Array.from(document.querySelectorAll('.custom-image-container img')).findIndex(img => img.src === document.getElementById("custom-img01").src);
+    // Calcular el índice de la imagen anterior
+    var prevIndex = (currentIndex - 1 + document.querySelectorAll('.custom-image-container img').length) % document.querySelectorAll('.custom-image-container img').length;
+    // Mostrar la imagen anterior
+    document.getElementById("custom-img01").src = document.querySelectorAll('.custom-image-container img')[prevIndex].src;
+  }
+  
+  function showNextImage() {
+    // Obtener el índice de la imagen actual
+    var currentIndex = Array.from(document.querySelectorAll('.custom-image-container img')).findIndex(img => img.src === document.getElementById("custom-img01").src);
+    // Calcular el índice de la siguiente imagen
+    var nextIndex = (currentIndex + 1) % document.querySelectorAll('.custom-image-container img').length;
+    // Mostrar la siguiente imagen
+    document.getElementById("custom-img01").src = document.querySelectorAll('.custom-image-container img')[nextIndex].src;
+  }
+  
