@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inu wiki</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="IndexCSS.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="OthIMG\icon.jpg">
+
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="topnav">
+        <img src="OthIMG\LOGO.png" alt="Logo" class="topnav">
+        <div id="nav-links"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="w3-container w3-blue" style="border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); margin: 50px; border: 2px solid white;">
+        <div style="padding-left: 50px; padding-right: 50px;">
+            <div class="character-info">
+                <!-- Character Information -->
+                <h1 style="padding-top: 25px">Abigail</h1>
+                <hr>
+                <div class="row">
+                    <!-- Description -->
+                    <div class="column-3-5" style="flex-grow: 1; text-align: left;">
+                        <p><b>Abigail</b> is a female albino bunny and the focal point of <i>McThingies</i>.</p>
+                        <div class="index-box" style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.3); border: 2px solid white; margin-left: 15px; padding: 10px;">
+                    
+                            <h3 style="padding-left: 15px;">Index</h3>
+                            <ol>
+                                <li><a href="#physical-appearance">Physical appearance</a></li>
+                                <li><a href="#personality">Personality</a></li>
+                                <li><a href="#relationships">Relationships</a>
+                                    <ul type="1">
+                                        <li><a href="#wolno">Wolno</a></li>
+                                    </ul>
+                                </li>
+                                <!--<li><a href="#trivia">Trivia</a></li>-->
+                                <li><a href="#gallery">Gallery</a>
+                                    <ul>
+                                        <li><a href="#original-art">Original art</a></li>
+                                        <li><a href="#commissions-and-fanart">Commissions and Fanart</a></li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Character Details -->
+                    <div class="column-2-5">
+                        <div class="container">
+                            <h3>Abigail</h3>
+                            <img src="OthIMG\wiki\abigail\pfp.png" alt="Wolno">
+                            <table id="firstTable">
+                                <!-- Contenido de la tabla -->
+                                <tr>
+                                    <td>Species</td>
+                                    <td>Japanese White rabbit </td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>Female</td>
+                                </tr>
+                                <tr>
+                                    <td>Height</td>
+                                    <td>1.57m(5ft 1in)</td>
+                                </tr>
+                                <tr>
+                                    <td>Birth</td>
+                                    <td>May 27</td>
+                                </tr>
+                            </table>
+                            <button onclick="expand()" style="margin-bottom: 20px;">More info</button>
+                            <div id="expandedTable" style="display: none;">
+                                <table id="firstTable">
+                                    <!-- Contenido de la tabla expandida -->
+                                    <tr>
+                                        <td>Hair</td>
+                                        <td><span style="background-color:black;">ㅤ</span> Black</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fur</td>
+                                        <td><span style="background-color:White;">ㅤ</span> White</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eyes</td>
+                                        <td><span style="background-color:#B60000;">ㅤ</span> Red (Guardsman red)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: left; padding-bottom: 25px;">
+                    <!-- Physical Appearance -->
+                    <div style="text-align: left; padding-bottom: 25px;">
+                        <h2 id="physical-appearance">Physical appearance</h2>
+                        <hr>
+                        <!-- Description of Physical Appearance -->
+                        <div style="display: flex; align-items: center;">
+                            <!-- Description -->
+                            <div style="flex: 4;">
+                                <p>Abigail is a slim white bunny with very dark hair and red eyes.</p>
+                                <p>She rocks a great collection of piercings on her ears and a piercing on her bellybutton, alongside black makeup (mascara, lipstick and rimmel)</p>
+                            </div>
+                            <!-- Image Modal -->
+                            <div id="imageModal" class="modal">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="img01">
+                                <div id="caption"></div>
+                            </div>
+                            <!-- Image for reference -->
+                            <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                                <div style="padding: 10px 10px 5px 10px;">
+                                    <img src="OthIMG\wiki\abigail\ref.png" alt="Outdated reference sheet" style="width: 100%; height: auto;" onclick="openModal(this);">
+                                    <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Reference sheet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Personality -->
+                    <h2 id="personality">Personality</h2>
+                    <hr>
+                    <!-- Description of Personality -->
+                    <div style="display: flex; align-items: center;">
+                        <!-- Image Modal -->
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <!-- Image for personality -->
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-right: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+                                <img src="OthIMG\wiki\abigail\1.png" alt="Inu in the Inu branded outfit" style="width: 100%; height: auto;" onclick="openModal(this);">
+                                <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Inu at her first day in work</p>
+                            </div>
+                        </div>
+                        <!-- Description -->
+                        <div style="flex: 4;">
+                            <p>Abigail is very passionate about art, which makes her sad because being an artist is a perpetual struggle, which lead her to work at the <i>McThingies</i> restaurant support her art career.</p>
+                            <p>She is kind with the clients, a good worker and a good student, but all the pressure of this, her family and her relationships end up making her feel numb and depersonified</p>
+                        </div>  
+                    </div>
+                    <!-- Relationships -->
+                    <h2 id="relationships">Relationships</h2>
+                    <hr>
+                    <div style="display: flex; align-items: center;">
+                        <div style="flex: 4;">
+                            <h3 id="wolno"><a href="wolno.html">Wolno</a></h3>
+                            <hr>
+                            <p>Coworkers! They both get along well because they hate their job and also dream of being artists.</p>
+                        </div>
+                        <!--<div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+                                <img src="OthIMG\wiki\shared\Wolno Inu.png" alt="Wolno and Inu" style="width: 100%; height: auto;" onclick="openModal(this);">
+                                <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Art made by <a href="https://www.deviantart.com/fimvie" target="_blank">Fimvie</a></p>
+                            </div>
+                        </div>     -->              
+                    </div>
+                    <!-- Trivia -->
+                    <h2 id="trivia">Trivia</h2>
+                    <hr>
+                    <div style="display: flex; align-items: center;">
+                        <div style="flex: 4;">
+                            <li>Abigail dyes her hair</li>
+                   <li>Besides Wolno sharing name with me, I feel Abigail is a closer representation of myself</li>
+                   <li>I did not expect to create more characters before finishing <i>Inu-sual Feelings</i></li>
+                   <li>She comes from a scrapped design I made in 2023</li>
+                        </div>
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                          <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+                              <img src="OthIMG\wiki\abigail\triv.png" alt="Skye spinning" style="width: 100%; height: auto;" onclick="openModal(this);">
+                              <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Design where Abigail comes from</a></p>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                    <div id="custom-imageModal" class="modal">
+                        <span class="custom-close">&times;</span>
+                        <img class="custom-modal-content" id="custom-img01">
+                        <div id="custom-caption" class="custom-caption"></div>
+                        <!-- Agregar botones de navegación -->
+                        <a class="custom-prev" onclick="showPrevImage()">&#10094;</a>
+                        <a class="custom-next" onclick="showNextImage()">&#10095;</a>
+                      </div>
+                      <h2 id="gallery">Gallery</h2>
+                            <hr>
+                            <h3 id="original-art">Original art</h3>
+                      <div class="custom-gallery">
+                          <div class="custom-image-container">
+                            <img src="OthIMG\wiki\abigail\ref.png" alt="Inu sleepover" onclick="openCustomModal(this);">
+                            <div class="custom-text">Abigail ref sheet</div>
+                          </div>
+                      </div>
+                      <h3 id="commissions-and-fanart">Commissions and Fanart</h3>
+                      <div class="custom-gallery">
+                        <div class="custom-image-container">
+                            <img src="OthIMG\wiki\abigail\cf\hex.png" alt="Abigail by Hex" onclick="openCustomModal(this);">
+                            <div class="custom-text">First Abigail fanart, by <a href="https://twitter.com/TheBlackHex" target="_blank">Hex</a></div>
+                          </div>
+                          <div class="custom-image-container">
+                            <img src="OthIMG\wiki\abigail\cf\ryuuu.jpg" alt="Abigail by ryuuu" onclick="openCustomModal(this);">
+                          <div class="custom-text">Abigail by <a href="https://x.com/ryuuu_k1" target="_blank">ryuuu ki</a></div>
+                          </div>   
+                </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts and Styles -->
+    <script src="IndexScript.js"></script>
+    <script src="wikimg.js"></script>
+    <style>
+        .container h3 {
+            margin-top: 0;
+            background-color: #6441A5;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+    <div id="myDiv" style=" height: 1px; rgba(0, 0, 0, 0.0)"></div>
+</body>
+</html>
