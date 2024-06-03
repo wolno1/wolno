@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comics</title>
-
+    
+    <!-- CSS files -->
     <link rel="stylesheet" href="IndexCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
 
     <!-- JS libraries -->
     <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
@@ -22,7 +24,7 @@
             background-color: rgba(0, 0, 0, 0.8);
             margin: 50px;
             border: 2px solid white;
-            padding: 50px;
+            padding: 20px;
         }
 
         .comic-row {
@@ -35,11 +37,13 @@
             flex: 1;
             padding: 10px;
             min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .comic-column img {
-            display: block;
-            margin: 0 auto;
             max-width: 100%;
             border-radius: 10px;
         }
@@ -69,37 +73,43 @@
         .read-button:hover {
             background-color: #0056b3;
         }
+
+        /* Apply pixel-style font to text and make it thinner */
+.pixel-font {
+    font-family: 'Press Start 2P', sans-serif;
+}
     </style>
 </head>
 <body>
     <div class="topnav">
-        <img src="OthIMG/LOGO.png" alt="Logo">
+        <img src="IMG\LOGO.png" alt="Logo" class="topnav">
         <div id="nav-links"></div>
     </div>
     <script src="IndexScript.js"></script>
 
-    <div class="comic-container">
+    <div class="comic-container pixel-font" style="background-color: rgba(0, 0, 0); border-radius: 0%; margin: 50px; border: 5px solid white;">
         <div class="comic-row">
             <div class="comic-column">
-                <img src="OthIMG/Inu-sual feelings.png" alt="Inu-sual Feelings">
+                <img src="IMG/McThingies.png" alt="McThingies">
             </div>
             <div class="comic-column">
-                <h2>Synopsis</h2>
-                <p>It's clear that life as an struggling artist will be a pain, making art it's really fulfilling, but even more fulfilling is having an income, a roof, food... follow Abigail (and sometimes Wolno) in this fun this short McStories!</p>
-                <a href="OthIMG\comics\mcthingies.html" class="read-button">Read More</a>
+                <h2 class="pixel-font">Synopsis</h2>
+                <p class="pixel-font">It's clear that life as an struggling artist will be a pain, making art it's really fulfilling, but even more fulfilling is having an income, a roof, food... follow Abigail (and sometimes Wolno) in this fun this short McStories!</p>
+                <a href="Comics\mcthingies.html" class="read-button pixel-font" style="border-radius: 0%;background-color: white;color: black">Read me!</a>
             </div>
         </div>
     </div>
+    
 
-    <div class="comic-container">
+    <div class="comic-container"style="border-radius: 15px; background-color: #EBE19C; margin: 50px; border: 10px solid #B246E9;">
         <div class="comic-row">
             <div class="comic-column">
-                <img src="OthIMG/Inu-sual feelings.png" alt="Inu-sual Feelings">
+                <img src="IMG/Inu-sual feelings.png" alt="Inu-sual Feelings">
             </div>
             <div class="comic-column">
-                <h2>Synopsis</h2>
-                <p>Wolno, a typical high school student approaching graduation, has his world flipped upside down when he crosses paths with Inu, a seemingly ordinary girl with an enigmatic aura. As Wolno delves deeper into her world, he discovers there's more to her than meets the eye. With graduation looming, Wolno realizes he has limited time to win her affection. Can he overcome the mysterious barriers before it's too late? Join Wolno and his friends as they navigate the complexities of teenage life, from friendships and romance to unexpected encounters and unforeseen challenges.</p>
-                <a href="read_page.html" class="read-button">Read More</a>
+                <h2 style="color: #8836BA;">Synopsis</h2>
+                <p style="color: #8836BA;">Wolno, a typical high school student approaching graduation, has his world flipped upside down when he crosses paths with Inu, a seemingly ordinary girl with an enigmatic aura. As Wolno delves deeper into her world, he discovers there's more to her than meets the eye. With graduation looming, Wolno realizes he has limited time to win her affection. Can he overcome the mysterious barriers before it's too late? Join Wolno and his friends as they navigate the complexities of teenage life, from friendships and romance to unexpected encounters and unforeseen challenges.</p>
+                <a class="read-button" style="background-color: #B246E9;">Not posted yet!</a>
             </div>
         </div>
     </div>

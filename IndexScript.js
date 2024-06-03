@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function createNavLinks() {
     const links = ["Home", "About me", "Portfolio", "Characters", "Commissions", "Adopts", "Comic", "FAQs"];
-    const hrefs = ["index.html", "about.html", "portafolio.html", "chars.html", "https://toyhou.se/Wolno", "https://toyhou.se/Wolno/characters/folder:4872509", "https://toyhou.se/Wolno/characters/folder:4787601", "faqs.html"];
+    const hrefs = ["index.html", "about.html", "portafolio.html", "chars.html", "https://toyhou.se/Wolno", "https://toyhou.se/Wolno/characters/folder:4872509", "comic.html", "faqs.html"];
     const navLinksElement = document.getElementById('nav-links');
 
     links.forEach((link, i) => {
