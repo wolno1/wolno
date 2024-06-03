@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comics</title>
+
+    <link rel="stylesheet" href="IndexCSS.css">
+
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="OthIMG\icon.jpg">
+
+    <!-- CSS inside the HTML -->
+    <style>
+
+        .comic-container {
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.8);
+            margin: 50px;
+            border: 2px solid white;
+            padding: 50px;
+        }
+
+        .comic-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .comic-column {
+            flex: 1;
+            padding: 10px;
+            min-width: 300px;
+        }
+
+        .comic-column img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .comic-column h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .comic-column p {
+            text-align: justify;
+        }
+
+        .read-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .read-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <img src="OthIMG/LOGO.png" alt="Logo">
+        <div id="nav-links"></div>
+    </div>
+    <script src="IndexScript.js"></script>
+
+    <div class="comic-container">
+        <div class="comic-row">
+            <div class="comic-column">
+                <img src="OthIMG/Inu-sual feelings.png" alt="Inu-sual Feelings">
+            </div>
+            <div class="comic-column">
+                <h2>Synopsis</h2>
+                <p>It's clear that life as an struggling artist will be a pain, making art it's really fulfilling, but even more fulfilling is having an income, a roof, food... follow Abigail (and sometimes Wolno) in this fun this short McStories!</p>
+                <a href="OthIMG\comics\mcthingies.html" class="read-button">Read More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="comic-container">
+        <div class="comic-row">
+            <div class="comic-column">
+                <img src="OthIMG/Inu-sual feelings.png" alt="Inu-sual Feelings">
+            </div>
+            <div class="comic-column">
+                <h2>Synopsis</h2>
+                <p>Wolno, a typical high school student approaching graduation, has his world flipped upside down when he crosses paths with Inu, a seemingly ordinary girl with an enigmatic aura. As Wolno delves deeper into her world, he discovers there's more to her than meets the eye. With graduation looming, Wolno realizes he has limited time to win her affection. Can he overcome the mysterious barriers before it's too late? Join Wolno and his friends as they navigate the complexities of teenage life, from friendships and romance to unexpected encounters and unforeseen challenges.</p>
+                <a href="read_page.html" class="read-button">Read More</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="myDiv" style="height: 1px; background-color: rgba(0, 0, 0, 0.0)"></div>
+</body>
+</html>
