@@ -11,8 +11,12 @@ body {
     overflow: hidden;
     overflow-y: auto;
     text-align: center;
-    font-family: 'Comic Sans MS', cursive;
+    font-family: 'Comic Sans MS', cursive; /* Utiliza la fuente Comic Sans MS */
     color: white;
+}
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url('COMIC.TTF'); /* Reemplaza 'ruta/a/tu/font/ComicSansMS.ttf' con la ruta real a tu archivo de fuente */
 }
 
 /* Estilos para la barra lateral */
