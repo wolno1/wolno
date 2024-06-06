@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     margin: 0;
     padding: 0;
@@ -5,7 +6,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
-    background-attachment: fixed; /* Agregado para fijar el fondo */
+    background-attachment: fixed;
     height: 150vh;
     overflow: hidden;
     overflow-y: auto;
@@ -14,64 +15,49 @@ body {
     color: white;
 }
 
-.custom-style {
-    border-radius: 15px;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    border: 2px solid white;
+/* Estilos para la barra lateral */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-/* McThingiesBox.css */
-.McThingiesBox {
-    background-color: rgba(0, 0, 0);
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    border: 5px solid white;
-    font-family: 'Press Start 2P', sans-serif;
+.sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
-.McThingiesBox .pixel-font {
-    font-family: 'Press Start 2P', sans-serif;
+.sidenav a:hover {
+    color: #f1f1f1;
 }
 
-.inusual {
-    border-radius: 15px;
-    background-color: #EBE19C;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    border: 10px solid #B246E9;
-    font-family: "Comic Sans MS", cursive;
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
-/* custom scrollbar */
-::-webkit-scrollbar {
-    width: 20px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: black;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: #ff00e8;
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #ff00e8;
-  }
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 
+/* Estilos para la barra de navegación superior */
 .topnav {
-    background-color: rgba(51, 51, 51, 0.5); /* 0.5 represents 50% transparency */
+    background-color: rgba(51, 51, 51, 0.5);
     overflow: hidden;
     text-align: center;
 }
@@ -92,13 +78,9 @@ body {
     font-size: 17px;
 }
 
-a{
-    color:#ff00e8;
-}
-
 .topnav a:hover {
     background-color: #ddd;
-     color:#ff00e8;
+    color: #ff00e8;
 }
 
 .topnav a.active {
@@ -106,22 +88,132 @@ a{
     color: white;
 }
 
-.topnav .align-right {
-    float: right;
+/* Estilos para la barra lateral (mostrar en dispositivos móviles) */
+@media screen and (max-width: 767px) {
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .sidenav {
+        display: block;
+    }
 }
 
+/* Estilos para la barra lateral (mostrar en PC) */
+@media screen and (min-width: 768px) {
+    .sidebar-toggle {
+        display: none;
+    }
+
+    .sidenav {
+        display: none;
+    }
+}
+
+/* Estilos para la barra de navegación superior (mostrar en PC) */
+.topnav {
+    display: none; /* Ocultar la barra superior por defecto */
+}
+
+@media screen and (min-width: 768px) {
+    .topnav {
+        display: block; /* Mostrar la barra superior en pantallas grandes */
+    }
+}
+
+/* Slider */
+#slider-container {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos para el contenedor de Twitter */
+.twitter-container {
+    display: inline-block;
+    text-align: left;
+    padding-bottom: 100px;
+}
+
+/* Estilos de la barra de desplazamiento personalizada */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff00e8;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff00e8;
+}
+
+/* Estilos comunes para contenedores personalizados */
+.custom-style, .McThingiesBox, .inusual {
+    border-radius: 15px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-family: "Comic Sans MS", cursive;
+}
+
+.custom-style {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid white;
+}
+
+.McThingiesBox {
+    background-color: rgba(0, 0, 0);
+    border: 5px solid white;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+.inusual {
+    background-color: #EBE19C;
+    border: 10px solid #B246E9;
+}
+
+/* Estilos para la barra de navegación inferior */
 .navbar {
-    background-color: rgba(51, 51, 51, 0.5); /* 0.5 represents 50% transparency */
+    background-color: rgba(51, 51, 51, 0.5);
     overflow: hidden;
     position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 9999;
-    color: #f2f2f2
+    color: #f2f2f2;
 }
 
 .navbar a {
-    float: right; /* Change from float: left to float: right */
+    float: right;
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -130,13 +222,11 @@ a{
     font-size: 10px;
 }
 
-/* Change the color of links on hover */
 .navbar a:hover {
     background-color: #ddd;
     color: #ff00f8;
 }
 
-/* Add a color to the active/current link */
 .navbar a.active {
     background-color: #04AA6D;
     color: white;
@@ -161,9 +251,9 @@ a{
 }
 
 .modal-content img {
-    width: 100%; /* Ensure the image takes up the full width of the modal */
-    max-height: 80vh; /* Adjust the max-height as needed */
-    object-fit: contain; /* Maintain the aspect ratio while fitting within the dimensions */
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
 }
 
 .prev, .next {
@@ -177,31 +267,65 @@ a{
     border: none;
     padding: 10px;
     z-index: 2;
-    display: none; /* Initially hide the buttons */
+    display: none;
 }
 
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* Show the buttons when the modal is open */
 #imageModal .prev,
 #imageModal .next {
     display: block;
 }
-  
-  .close {
+
+.close {
     position: absolute;
     top: 15px;
     right: 35px;
-    color: #f1f1f1;
+    color:     #f1f1f1;
     font-size: 30px;
     font-weight: bold;
     transition: 0.3s;
-  }
+}
 
-  .close:hover,
-  .close:focus {
+.close:hover,
+.close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
-  }
+}
+
+/* Estilos de la barra de desplazamiento personalizada */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff00e8;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff00e8;
+}
+
+/* Estilos comunes para enlaces */
+a {
+    color: #ff00e8;
+}
+
+a:hover {
+    color: #ff00e8;
+}
+
+/* Estilos para enlaces activos */
+a.active {
+    background-color: #ff00f8;
+    color: white;
+}

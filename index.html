@@ -8,12 +8,12 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="IndexCSS.css">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
+
     <!-- JS libraries -->
     <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Wolno Page!">
@@ -28,52 +28,25 @@
     <meta name="twitter:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
     <meta name="twitter:image" content="http://awsartzzz.com/IMG/icon.jpg">
 
-    <style>
-        .twitter-container {
-            display: inline-block; /* Make it an inline-block to center it */
-            text-align: left; /* Reset text alignment for child elements */
-            padding-bottom: 100px;
-        }
-
-        /* Slider */
-        #slider-container {
-            width: 50%; /* Set the width to 50% */
-            height: 100vh;
-            display: flex;
-            overflow: hidden;
-            margin: 0 auto; /* Center the slider container */
-            padding-top: 50px;
-            padding-bottom: 50px; /* Add 50px padding */
-        }
-
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
-
 </head>
 <body>
+
+<div id="mySidenav" class="sidenav"></div>
+
+<div class="sidebar-toggle">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
+
 <div class="topnav">
     <img src="IMG\LOGO.png" alt="Logo" class="topnav">
     <div id="nav-links"></div>
 </div>
-<script src="IndexScript.js"></script>
 
 <h1 style="color: white; padding-top: 25px;">Welcome to my webpage!</h1>
+
 <!-- contenido -->
-<!--Basic structure of slider-->
+
+<!-- Basic structure of slider -->
 <div id="slider-container">
     <div class="slider">
         <div class="slide">
@@ -101,6 +74,18 @@
     <a class="twitter-timeline" data-lang="en" data-width="600" data-height="600" data-dnt="true" data-theme="dark" href="https://twitter.com/AwsArtzzz?ref_src=twsrc%5Etfw">Tweets by AwsArtzzz</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+<script src="IndexScript.js"></script>
 
 </body>
 </html>

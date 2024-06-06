@@ -1,5 +1,12 @@
-// IndexScript.js
-//botbar
+// JavaScript para controlar la barra lateral (mostrar en dispositivos móviles)
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     // Create the bottom bar container
     var bottomBar = document.createElement("div");
@@ -80,3 +87,67 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(nextSlide, 3000); // Auto slide every 3 seconds
 
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        if (index < 0) {
+            index = slides.length - 1;
+        } else if (index >= slides.length) {
+            index = 0;
+        }
+
+        const translateValue = -index * 100 + '%';
+        slider.style.transform = 'translateX(' + translateValue + ')';
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    setInterval(nextSlide, 3000); // Auto slide every 3 seconds
+});
+
+function generateMenuItems() {
+    var menuItems = [
+        { href: "index.html", text: "Home" },
+        { href: "about.html", text: "About me" },
+        { href: "portafolio.html", text: "Portfolio" },
+        { href: "chars.html", text: "Characters" },
+        { href: "comic.html", text: "Comic" },
+        { href: "faqs.html", text: "FAQs" }
+    ];
+
+    var menu = document.getElementById("mySidenav");
+
+    // Botón para cerrar el menú
+    var closeButton = document.createElement("button");
+    closeButton.innerHTML = "&times;"; // Símbolo de cruz
+    closeButton.className = "closebtn";
+    closeButton.onclick = function() {
+        closeNav();
+    };
+    menu.appendChild(closeButton);
+
+    // Generar los elementos del menú
+    menuItems.forEach(function(item) {
+        var link = document.createElement("a");
+        link.href = item.href;
+        link.textContent = item.text;
+        menu.appendChild(link);
+    });
+}
+
+
+window.onload = function() {
+    generateMenuItems();
+};

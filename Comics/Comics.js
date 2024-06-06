@@ -1,5 +1,12 @@
-// IndexScript.js
-//botbar
+// JavaScript para controlar la barra lateral (mostrar en dispositivos móviles)
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     // Create the bottom bar container
     var bottomBar = document.createElement("div");
@@ -116,3 +123,38 @@ function toggleAccordion(button) {
     const content = button.nextElementSibling;
     content.classList.toggle('active');
 }
+
+function generateMenuItems() {
+    var menuItems = [
+        { href: "../index.html", text: "Home" },
+        { href: "../about.html", text: "About me" },
+        { href: "../portafolio.html", text: "Portfolio" },
+        { href: "../chars.html", text: "Characters" },
+        { href: "../comic.html", text: "Comic" },
+        { href: "../faqs.html", text: "FAQs" }
+    ];
+
+    var menu = document.getElementById("mySidenav");
+
+    // Botón para cerrar el menú
+    var closeButton = document.createElement("button");
+    closeButton.innerHTML = "&times;"; // Símbolo de cruz
+    closeButton.className = "closebtn";
+    closeButton.onclick = function() {
+        closeNav();
+    };
+    menu.appendChild(closeButton);
+
+    // Generar los elementos del menú
+    menuItems.forEach(function(item) {
+        var link = document.createElement("a");
+        link.href = item.href;
+        link.textContent = item.text;
+        menu.appendChild(link);
+    });
+}
+
+
+window.onload = function() {
+    generateMenuItems();
+};

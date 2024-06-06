@@ -59,6 +59,15 @@ select {
   display: block;
 }
 
+/* Hace que las imágenes dentro de #comicViewer sean responsivas */
+#comicViewer img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ajusta el tamaño del contenedor de la imagen para evitar desbordamiento horizontal */
 #comicViewer {
   padding-bottom: 50px;
+  max-width: 100%;
+  overflow-x: hidden; /* Evita que el contenido desborde horizontalmente */
 }
