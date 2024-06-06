@@ -80,18 +80,3 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(nextSlide, 3000); // Auto slide every 3 seconds
 
 });
-
-function expand() {
-    var expandedTable = document.getElementById("expandedTable");
-    if (expandedTable.style.display === "none") {
-        expandedTable.style.display = "block";
-        expandedTable.style.animationName = "expandAnimation";
-    } else {
-        expandedTable.style.animationName = "collapseAnimation";
-        setTimeout(function() {
-            expandedTable.style.display = "none";
-        }, 500); // Espera a que termine la animación antes de ocultar la tabla
-    }
-}
-
-

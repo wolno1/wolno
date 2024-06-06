@@ -1,0 +1,64 @@
+@import url(../IndexCSS.css);
+
+.select-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.select-group {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.select-label {
+  margin-right: 10px;
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  color: white; /* Letra blanca */
+  background-color: black; /* Fondo negro */
+  border: none; /* Quitamos el borde */
+}
+
+.accordion-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-item {
+  flex: 1;
+}
+
+.accordion-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.active {
+  display: block;
+}
+
+#comicViewer {
+  padding-bottom: 50px;
+}

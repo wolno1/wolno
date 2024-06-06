@@ -24,9 +24,6 @@
     object-fit: contain; /* Maintain the aspect ratio while fitting within the dimensions */
 }
 
-
-
-
 /*Button left n right*/
 /* Style the prev and next buttons */
 .prev, .next {

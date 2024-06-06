@@ -74,15 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const readingModeSelect = document.getElementById('readingModeSelect');
     const comicViewer = document.getElementById('comicViewer');
 
-    // Definir los capítulos y sus páginas
-    const comics = {
-        chapter1: [
-            'mcthingies/McEffacement.png',
-            // Añade más páginas en el orden deseado
-        ],
-        // Añade más capítulos aquí
-    };
-
     function displayComic() {
         const selectedChapter = chapterSelect.value;
         const readingMode = readingModeSelect.value;
@@ -114,11 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    
-
     chapterSelect.addEventListener('change', displayComic);
     readingModeSelect.addEventListener('change', displayComic);
 
     // Initialize the viewer
     displayComic();
 });
+
+function toggleAccordion(button) {
+    const content = button.nextElementSibling;
+    content.classList.toggle('active');
+}

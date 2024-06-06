@@ -8,71 +8,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../IMG/icon.jpg">
     <!-- CSS files -->
-    <link rel="stylesheet" href="../IndexCSS.css">
-    <style>
-        .select-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px;
-        }
-
-        .select-group {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        .select-label {
-            margin-right: 10px;
-        }
-
-        select {
-            padding: 8px;
-            font-size: 16px;
-            color: white; /* Letra blanca */
-            background-color: black; /* Fondo negro */
-            border: none; /* Quitamos el borde */
-        }
-
-        .accordion-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-item {
-            flex: 1;
-        }
-
-        .accordion-button {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: left;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-content {
-            display: none;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-
-        .active {
-            display: block;
-        }
-
-        #comicViewer {
-            padding-bottom: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="ComicCSS.css">
     <!-- JS libraries -->
     <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -102,11 +38,13 @@
     <div id="comicViewer"></div>
     <script src="Comics.js"></script>
     <script>
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            content.classList.toggle('active');
-        }
+        // Definir los capítulos y sus páginas
+        const comics = {
+        chapter1: [
+            'mcthingies/1 McEffacement.png',
+            // Añade más páginas en el orden deseado
+        ],
+    };
     </script>
 </body>
-
 </html>
