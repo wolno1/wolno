@@ -1,29 +1,112 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="IndexCSS.css">
+
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     
-        <!-- CSS files -->
-        <link rel="stylesheet" href="IndexCSS.css">
-    
-        <!-- JS libraries -->
-        <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
-        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-        
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
-    </head>
-    <body>
-        <div class="topnav">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
+    <style>
+        /* Paste your CSS here */
+        /* Style the button that is used to open and close the collapsible content */
+        .collapsible {
+            background-color: #ff00e8;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: background-color 0.3s ease; /* Add a smooth transition effect */
+        }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active, .collapsible:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style the collapsible content. Note: hidden by default */
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease; /* Add a smooth transition effect */
+            background-color: #000000;
+        }
+
+        .active + .content {
+            max-height: 1000px; /* Adjust the maximum height as needed */
+        }
+
+        /* Gallery */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .gallery .image-container {
+            width: calc(25% - 10px); /* Adjust the width as needed with some margin between images */
+            box-sizing: border-box;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .gallery .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        /*hover gallery*/
+        /* Add these styles for the hover effect within the .content section */
+        .content .gallery .image-container .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .content .gallery .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+        .content .gallery .image-container .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
         <img src="IMG\LOGO.png" alt="Logo" class="topnav">
         <div id="nav-links"></div>
     </div>
+
     <script src="IndexScript.js"></script>
 
-        <div style="padding-left: 100px; padding-right: 100px; padding-top:25px; padding-bottom: 25px;">
+    <div style="padding-left: 100px; padding-right: 100px; padding-top:25px; padding-bottom: 25px;">
         <button type="button" class="collapsible" style="border-radius: 15px; text-align: center; font-family: 'Comic Sans MS', cursive; font-weight: bold; font-size: 200%;">2024</button>
         <div class="content">
             <div class="gallery">

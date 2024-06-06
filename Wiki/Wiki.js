@@ -67,22 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         slider.style.transform = 'translateX(' + translateValue + ')';
         currentIndex = index;
     }
-
-    //carrousel
-
-    function nextSlide() {
-        showSlide(currentIndex + 1);
-    }
-
-    function prevSlide() {
-        showSlide(currentIndex - 1);
-    }
-
-    setInterval(nextSlide, 3000); // Auto slide every 3 seconds
-
-    // Optional: Add event listeners for navigation buttons
-    document.querySelector('.next').addEventListener('click', nextSlide);
-    document.querySelector('.prev').addEventListener('click', prevSlide);
 });
 
 function expand() {

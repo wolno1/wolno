@@ -67,90 +67,58 @@ document.addEventListener('DOMContentLoaded', function() {
         slider.style.transform = 'translateX(' + translateValue + ')';
         currentIndex = index;
     }
-
-    //carrousel
-
-    function nextSlide() {
-        showSlide(currentIndex + 1);
-    }
-
-    function prevSlide() {
-        showSlide(currentIndex - 1);
-    }
-
-    setInterval(nextSlide, 3000); // Auto slide every 3 seconds
-
-    // Optional: Add event listeners for navigation buttons
-    document.querySelector('.next').addEventListener('click', nextSlide);
-    document.querySelector('.prev').addEventListener('click', prevSlide);
 });
 
-function expand() {
-    var expandedTable = document.getElementById("expandedTable");
-    if (expandedTable.style.display === "none") {
-        expandedTable.style.display = "block";
-        expandedTable.style.animationName = "expandAnimation";
-    } else {
-        expandedTable.style.animationName = "collapseAnimation";
-        setTimeout(function() {
-            expandedTable.style.display = "none";
-        }, 500); // Espera a que termine la animación antes de ocultar la tabla
-    }
-}
+  document.addEventListener('DOMContentLoaded', function() {
+    const chapterSelect = document.getElementById('chapterSelect');
+    const readingModeSelect = document.getElementById('readingModeSelect');
+    const comicViewer = document.getElementById('comicViewer');
 
+    // Definir los capítulos y sus páginas
+    const comics = {
+        chapter1: [
+            'mcthingies/McEffacement.png',
+            // Añade más páginas en el orden deseado
+        ],
+        // Añade más capítulos aquí
+    };
 
-//img de wiki
-function openModal(img) {
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-    modal.style.display = "block";
-    modalImg.src = img.src;
-    captionText.innerHTML = img.nextElementSibling.innerHTML; // Tomar el contenido del siguiente elemento hermano (el pie de la imagen)
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-      modal.style.display = "none";
+    function displayComic() {
+        const selectedChapter = chapterSelect.value;
+        const readingMode = readingModeSelect.value;
+    
+        comicViewer.innerHTML = ''; // Clear the viewer
+    
+        if (readingMode === 'onePage') {
+            if (comics[selectedChapter].length > 1) {
+                comics[selectedChapter].forEach(page => {
+                    const img = document.createElement('img');
+                    img.src = page;
+                    comicViewer.appendChild(img);
+                });
+            } else {
+                const img = document.createElement('img');
+                img.src = comics[selectedChapter][0]; // Mostrar la primera página por defecto
+                comicViewer.appendChild(img);
+            }
+            chapterSelect.disabled = false;
+        } else if (readingMode === 'allPages') {
+            Object.values(comics).forEach(chapterPages => {
+                chapterPages.forEach(page => {
+                    const img = document.createElement('img');
+                    img.src = page;
+                    comicViewer.appendChild(img);
+                });
+            });
+            chapterSelect.disabled = true;
+        }
     }
-  }
-  
-  //Galería de wiki
-  function openCustomModal(img) {
-    var modal = document.getElementById("custom-imageModal");
-    var modalImg = document.getElementById("custom-img01");
-    var captionText = document.getElementById("custom-caption");
-    modal.style.display = "block";
-    modalImg.src = img.src;
-    captionText.innerHTML = img.nextElementSibling.innerHTML; // Tomar el contenido del siguiente elemento hermano (el pie de la imagen)
-    var span = document.getElementsByClassName("custom-close")[0];
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-  
-    // Agregar evento de escucha de teclado cuando se abre el modal
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "ArrowLeft") {
-        showPrevImage();
-      } else if (event.key === "ArrowRight") {
-        showNextImage();
-      }
-    });
-  }
-  
-  function showPrevImage() {
-    // Obtener el índice de la imagen actual
-    var currentIndex = Array.from(document.querySelectorAll('.custom-image-container img')).findIndex(img => img.src === document.getElementById("custom-img01").src);
-    // Calcular el índice de la imagen anterior
-    var prevIndex = (currentIndex - 1 + document.querySelectorAll('.custom-image-container img').length) % document.querySelectorAll('.custom-image-container img').length;
-    // Mostrar la imagen anterior
-    document.getElementById("custom-img01").src = document.querySelectorAll('.custom-image-container img')[prevIndex].src;
-  }
-  
-  function showNextImage() {
-    // Obtener el índice de la imagen actual
-    var currentIndex = Array.from(document.querySelectorAll('.custom-image-container img')).findIndex(img => img.src === document.getElementById("custom-img01").src);
-    // Calcular el índice de la siguiente imagen
-    var nextIndex = (currentIndex + 1) % document.querySelectorAll('.custom-image-container img').length;
-    // Mostrar la siguiente imagen
-    document.getElementById("custom-img01").src = document.querySelectorAll('.custom-image-container img')[nextIndex].src;
-  }
-  
+    
+    
+
+    chapterSelect.addEventListener('change', displayComic);
+    readingModeSelect.addEventListener('change', displayComic);
+
+    // Initialize the viewer
+    displayComic();
+});

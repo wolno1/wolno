@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Wolner</title>
-    
-        <!-- CSS files -->
-        <link rel="stylesheet" href="IndexCSS.css">
-    
-        <!-- JS libraries -->
-        <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
-        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-        
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Wolner</title>
 
-        <!-- Open Graph Meta Tags -->
-        <meta property="og:title" content="Wolno Page!">
-    <meta property="og:description" content="Welcome to my webpage! I'm a profreshonal furry artist and a programmer">
+    <!-- CSS files -->
+    <link rel="stylesheet" href="IndexCSS.css">
+
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Wolno Page!">
+    <meta property="og:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
     <meta property="og:image" content="http://awsartzzz.com/IMG/icon.jpg">
     <meta property="og:url" content="http://awsartzzz.com/">
     <meta property="og:type" content="website">
@@ -25,50 +25,82 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Wolno Page!">
-    <meta name="twitter:description" content="Welcome to my webpage! I'm a profreshonal furry artist and a programmer">
+    <meta name="twitter:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
     <meta name="twitter:image" content="http://awsartzzz.com/IMG/icon.jpg">
-        
-        
-    </head>
-    <body>
-        <div class="topnav">
-        <img src="IMG\LOGO.png" alt="Logo" class="topnav">
-        <div id="nav-links"></div>
-    </div>
-    <script src="IndexScript.js"></script>
 
-    <h1 style="color: white; padding-top: 25px;">Welcome to my webpage!</h1>
-    <!-- contenido -->
-    <!--Basic structure of slider-->
-    <div id="slider-container">
-        <div class="slider">
-            <div class="slide">
-                <img src="portafolio/24/27-05-24.png" alt="Slide 1">
-            </div>
-            <div class="slide">
-                <img src="portafolio/24/14-01-24.jpeg" alt="Slide 2">
-            </div>
-            <div class="slide">
-                <img src="portafolio/23/20-11-23.jpeg" alt="Slide 3">
-            </div>
-            <div class="slide">
-                <img src="portafolio/23/06-12-23.jpeg" alt="Slide 4">
-            </div>
-            <div class="slide">
-                <img src="portafolio/23/23-12-23.jpeg" alt="Slide 5">
-            </div>
-            <div class="slide">
-                <img src="portafolio/23/28-12-23.jpeg" alt="Slide 6">
-            </div>
+    <style>
+        .twitter-container {
+            display: inline-block; /* Make it an inline-block to center it */
+            text-align: left; /* Reset text alignment for child elements */
+            padding-bottom: 100px;
+        }
+
+        /* Slider */
+        #slider-container {
+            width: 50%; /* Set the width to 50% */
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            margin: 0 auto; /* Center the slider container */
+            padding-top: 50px;
+            padding-bottom: 50px; /* Add 50px padding */
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+</head>
+<body>
+<div class="topnav">
+    <img src="IMG\LOGO.png" alt="Logo" class="topnav">
+    <div id="nav-links"></div>
+</div>
+<script src="IndexScript.js"></script>
+
+<h1 style="color: white; padding-top: 25px;">Welcome to my webpage!</h1>
+<!-- contenido -->
+<!--Basic structure of slider-->
+<div id="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <img src="portafolio/24/27-05-24.png" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="portafolio/24/14-01-24.jpeg" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="portafolio/23/20-11-23.jpeg" alt="Slide 3">
+        </div>
+        <div class="slide">
+            <img src="portafolio/23/06-12-23.jpeg" alt="Slide 4">
+        </div>
+        <div class="slide">
+            <img src="portafolio/23/23-12-23.jpeg" alt="Slide 5">
+        </div>
+        <div class="slide">
+            <img src="portafolio/23/28-12-23.jpeg" alt="Slide 6">
         </div>
     </div>
+</div>
 
-
-
-     <div class="twitter-container">
-        <a class="twitter-timeline" data-lang="en" data-width="600" data-height="600" data-dnt="true" data-theme="dark" href="https://twitter.com/AwsArtzzz?ref_src=twsrc%5Etfw">Tweets by AwsArtzzz</a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
+<div class="twitter-container">
+    <a class="twitter-timeline" data-lang="en" data-width="600" data-height="600" data-dnt="true" data-theme="dark" href="https://twitter.com/AwsArtzzz?ref_src=twsrc%5Etfw">Tweets by AwsArtzzz</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 
 </body>
 </html>
