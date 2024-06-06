@@ -55,7 +55,6 @@ body {
     .sidenav a {font-size: 18px;}
 }
 
-/* Estilos para la barra de navegación superior */
 .topnav {
     background-color: rgba(51, 51, 51, 0.5);
     overflow: hidden;
@@ -76,6 +75,7 @@ body {
     padding: 18px 17px;
     text-decoration: none;
     font-size: 17px;
+    float: right; /* Añade esta línea */
 }
 
 .topnav a:hover {
@@ -87,6 +87,7 @@ body {
     background-color: #ff00f8;
     color: white;
 }
+
 
 /* Estilos para la barra lateral (mostrar en dispositivos móviles) */
 @media screen and (max-width: 767px) {
