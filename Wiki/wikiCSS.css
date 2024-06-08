@@ -234,13 +234,18 @@
     box-sizing: border-box;
     position: relative;
     margin-bottom: 10px;
+    padding-top: 20%; /* Hace que el contenedor tenga una proporción cuadrada */
+    overflow: hidden; /* Oculta el contenido desbordante */
   }
   
   .custom-gallery .custom-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* Ajusta el contenido para que cubra el contenedor */
   }
-  
   .custom-gallery .custom-image-container .custom-text {
     color: white;
     font-size: 14px;
@@ -253,56 +258,55 @@
   }
   
   /* Modal */
-  .custom-modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-  }
-  
-  .custom-caption {
-    margin: auto;
-    display: block;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-  }
-  
-  .custom-close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .custom-close:hover,
-  .custom-close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .custom-prev, .custom-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    cursor: pointer;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    padding: 10px;
-    z-index: 2;
-  }
-  
-  .custom-prev {
-    left: 10px;
-  }
-  
-  .custom-next {
-    right: 10px;
-  }
-  
+.custom-modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.custom-caption {
+  margin: auto;
+  display: block;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+}
+
+.custom-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 30px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.custom-close:hover,
+.custom-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-prev, .custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 10px;
+  z-index: 2;
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+}
