@@ -465,6 +465,13 @@
         }
     };
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var images = document.querySelectorAll('img');
+  images.forEach(function(img) {
+    img.loading = 'lazy';
+  });
+});
     </script>
     
     <div id="myDiv" style=" height: 1px; rgba(0, 0, 0, 0.0)"></div>
