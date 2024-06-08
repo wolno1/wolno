@@ -16,7 +16,7 @@ body {
 }
 @font-face {
     font-family: 'Comic Sans MS';
-    src: url('COMIC.TTF'); /* Reemplaza 'ruta/a/tu/font/ComicSansMS.ttf' con la ruta real a tu archivo de fuente */
+    src: url('Fonts/COMIC.TTF'); /* Reemplaza 'ruta/a/tu/font/ComicSansMS.ttf' con la ruta real a tu archivo de fuente */
 }
 
 /* Estilos para la barra lateral */
@@ -198,7 +198,18 @@ body {
 .McThingiesBox {
     background-color: rgba(0, 0, 0);
     border: 5px solid white;
-    font-family: 'Press Start 2P', sans-serif;
+    font-family: 'Pixel mana', sans-serif;
+    font-size: 20px; /* Adjust the size as needed */
+}
+
+.pixel-font {
+    font-family: 'Pixel mana', sans-serif;
+    font-size: 15px;
+}
+
+@font-face {
+    font-family: 'Pixel mana';
+    src: url('Fonts/manaspc.ttf'); /* Reemplaza 'ruta/a/tu/font/ComicSansMS.ttf' con la ruta real a tu archivo de fuente */
 }
 
 .inusual {
