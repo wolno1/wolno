@@ -302,103 +302,104 @@
                         <img class="custom-modal-content" id="custom-img01">
                         <div id="custom-caption" class="custom-caption"></div>
                         <!-- Agregar botones de navegación -->
-                        <a class="custom-prev" onclick="showPrevImage()">&#10094;</a>
-                        <a class="custom-next" onclick="showNextImage()">&#10095;</a>
-                      </div>
-                      <h2 id="gallery">Gallery</h2>
-                            <hr>
-                            <h3 id="original-art">Original art</h3>
-                      <div class="custom-gallery">
-                        <div class="custom-image-container">
-                          <img src="../IMG\wiki\shared\wolno laika.jpeg" alt="Wolno stargazin with Laika" onclick="openCustomModal(this);">
-                          <div class="custom-text">Wolno stargazin with Laika</div>
+                        <a class="custom-prev" id="custom-prevButton" onclick="showPrevImage()">&#10094;</a>
+                        <a class="custom-next" id="custom-nextButton" onclick="showNextImage()">&#10095;</a>
+                    </div>
+                    <h2 id="gallery">Gallery</h2>
+                    <hr>
+                    <h3 id="original-art">Original art</h3>
+                    <div class="custom-gallery">
+                        <div class="custom-image-container" data-text="Wolno stargazing with Laika">
+                            <img src="../IMG/wiki/shared/wolno laika.jpeg" alt="Wolno stargazing with Laika" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno stargazing with Laika</div>
                         </div>
-                        <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\ref.png" alt="The old reference sheet" onclick="openCustomModal(this);">
+                        <div class="custom-image-container" data-text="The old reference sheet">
+                            <img src="../IMG/wiki/wolno/ref.png" alt="The old reference sheet" onclick="openCustomModal(this);">
                             <div class="custom-text">The old reference sheet</div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\pers.png" alt="Wolno tarot card" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno tarot card</div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\FNF.gif" alt="Friday Night Funkin sprite" onclick="openCustomModal(this);">
-                            <div class="custom-text">Friday Night Funkin sprite</div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\dood.jpg" alt="Doodles about Wolno" onclick="openCustomModal(this);">
-                            <div class="custom-text">Doodles about Wolno</div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\bd.png" alt="Wolno in a cute girly outfit" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno in a cute girly outfit</div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\nitw.png" alt="NITW inspired art" onclick="openCustomModal(this);">
-                            <div class="custom-text">NITW inspired art</div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\hw.png" alt="Halloween art" onclick="openCustomModal(this);">
-                            <div class="custom-text">Halloween art</div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\remake_1_nla.png" alt="Descripción de la imagen 1" onclick="openCustomModal(this);">
-                            <div class="custom-text"></div>
-                          </div>
-                        <!-- Repite este bloque para cada imagen en la galería -->
-                      </div>
-                      <h3 id="commissions-and-fanart">Commissions and Fanart</h3>
-                      <div class="custom-gallery">
-                        <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\nan.jpg" alt="Wolno by Gonenannurs" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno by <a href="https://twitter.com/Gonenannurs" target="_blank">Gonenannurs</a></div>
-                          </div>
-                        <div class="custom-image-container">
-                          <img src="../IMG\wiki\wolno\cf\candie.png" alt="Wolno by CandieWrapper" onclick="openCustomModal(this);">
-                          <div class="custom-text">Wolno by <a href="https://twitter.com/candiewrapper_" target="_blank">Candie Wrapper</a></div>
                         </div>
-                        <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\Acinaces.png" alt="Wolno by Acinaces" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno by <a href="https://twitter.com/tartifondue" target="_blank">Acinaces</a></div>
-                          </div>
-                        <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\leth.png" alt="Wolno by Lethano" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno by <a href="https://twitter.com/CallMeLethano" target="_blank">Lethano</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\gali.png" alt="Wolno by Gali Peanut" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno by <a href="https://twitter.com/gali_peanut" target="_blank">Gali Peanut</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\lower.png" alt="Wolno by Lowercase" onclick="openCustomModal(this);" style="object-position: top;">
-                            <div class="custom-text">Wolno by <a href="https://twitter.com/relicrom" target="_blank">Lowercase</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\shared\Wolno Inu.png" alt="Wolno by Fimvie" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno and Inu by <a href="https://www.deviantart.com/fimvie" target="_blank">Fimvie</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\shared\dump.png" alt="Wolno by Dump" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno and Laika by <a href="https://twitter.com/DumpGallery" target="_blank">Dump (NSFW)</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\kislix.png" alt="Wolno by Kislix" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno by <a href="https://vk.com/kislixclown" target="_blank">Kislix</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\shared\rae.png" alt="Wolno by Rae" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno and Inu by <a href="https://twitter.com/raendrs" target="_blank">Rae</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\nilla.png" alt="Wolno by Nilla" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno by <a href="https://toyhou.se/NillaNillaCat" target="_blank">Nilla</a></div>
-                          </div>
-                          <div class="custom-image-container">
-                            <img src="../IMG\wiki\wolno\cf\liet.png" alt="Wolno by Liet" onclick="openCustomModal(this);">
-                            <div class="custom-text">Wolno by <a href="https://twitter.com/Liet4649" target="_blank">Liet</a></div>
-                          </div>
-                          
-                </div>
+                        <div class="custom-image-container" data-text="Wolno tarot card">
+                            <img src="../IMG/wiki/wolno/pers.png" alt="Wolno tarot card" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno tarot card</div>
+                        </div>
+                        <div class="custom-image-container" data-text="Friday Night Funkin sprite">
+                            <img src="../IMG/wiki/wolno/FNF.gif" alt="Friday Night Funkin sprite" onclick="openCustomModal(this);">
+                            <div class="custom-text">Friday Night Funkin sprite</div>
+                        </div>
+                        <div class="custom-image-container" data-text="Doodles about Wolno">
+                            <img src="../IMG/wiki/wolno/dood.jpg" alt="Doodles about Wolno" onclick="openCustomModal(this);">
+                            <div class="custom-text">Doodles about Wolno</div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno in a cute girly outfit">
+                            <img src="../IMG/wiki/wolno/bd.png" alt="Wolno in a cute girly outfit" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno in a cute girly outfit</div>
+                        </div>
+                        <div class="custom-image-container" data-text="NITW inspired art">
+                            <img src="../IMG/wiki/wolno/nitw.png" alt="NITW inspired art" onclick="openCustomModal(this);">
+                            <div class="custom-text">NITW inspired art</div>
+                        </div>
+                        <div class="custom-image-container" data-text="Halloween art">
+                            <img src="../IMG/wiki/wolno/hw.png" alt="Halloween art" onclick="openCustomModal(this);">
+                            <div class="custom-text">Halloween art</div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno shy">
+                            <img src="../IMG/wiki/wolno/remake_1_nla.png" alt="Wolno shy" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno shy</div>
+                        </div>
+                        <!-- Repite este bloque para cada imagen en la galería -->
+                    </div>
+                    <h3 id="commissions-and-fanart">Commissions and Fanart</h3>
+                    <div class="custom-gallery">
+                        <div class="custom-image-container" data-text="Wolno by <a href='https://twitter.com/Gonenannurs' target='_blank'>Gonenannurs</a>">
+                            <img src="../IMG/wiki/wolno/cf/nan.jpg" alt="Wolno by Gonenannurs" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno by <a href='https://twitter.com/Gonenannurs' target='_blank'>Gonenannurs</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno by <a href='https://twitter.com/candiewrapper_' target='_blank'>Candie Wrapper</a>">
+                            <img src="../IMG/wiki/wolno/cf/candie.png" alt="Wolno by Candie Wrapper" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno by <a href='https://twitter.com/candiewrapper_' target='_blank'>Candie Wrapper</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno by <a href='https://twitter.com/tartifondue' target='_blank'>Acinaces</a>">
+                            <img src="../IMG/wiki/wolno/cf/Acinaces.png" alt="Wolno by Acinaces" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno by <a href='https://twitter.com/tartifondue' target='_blank'>Acinaces</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno by <a href='https://twitter.com/CallMeLethano' target='_blank'>Lethano</a>">
+                            <img src="../IMG/wiki/wolno/cf/leth.png" alt="Wolno by Lethano" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno by <a href='https://twitter.com/CallMeLethano' target='_blank'>Lethano</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno by <a href='https://twitter.com/gali_peanut' target='_blank'>Gali Peanut</a>">
+                            <img src="../IMG/wiki/wolno/cf/gali.png" alt="Wolno by Gali Peanut" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno by <a href='https://twitter.com/gali_peanut' target='_blank'>Gali Peanut</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno by <a href='https://twitter.com/relicrom' target='_blank'>Lowercase</a>">
+                            <img src="../IMG/wiki/wolno/cf/lower.png" alt="Wolno by Lowercase" onclick="openCustomModal(this);" style="object-position: top;">
+                            <div class="custom-text">Wolno by <a href='https://twitter.com/relicrom' target='_blank'>Lowercase</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno and Inu by <a href='https://www.deviantart.com/fimvie' target='_blank'>Fimvie</a>">
+                            <img src="../IMG/wiki/shared/Wolno Inu.png" alt="Wolno and Inu by Fimvie" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno and Inu by <a href='https://www.deviantart.com/fimvie' target='_blank'>Fimvie</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno and Laika by <a href='https://twitter.com/DumpGallery' target='_blank'>Dump (NSFW)</a>">
+                            <img src="../IMG/wiki/shared/dump.png" alt="Wolno and Laika by Dump" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno and Laika by <a href='https://twitter.com/DumpGallery' target='_blank'>Dump (NSFW)</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno by <a href='https://vk.com/kislixclown' target='_blank'>Kislix</a>">
+                            <img src="../IMG/wiki/wolno/cf/kislix.png" alt="Wolno by Kislix" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno by <a href='https://vk.com/kislixclown' target='_blank'>Kislix</a></div>
+                        </div>
+                        <div class="custom-image-container" data-text="Wolno and Inu by <a href='https://twitter.com/raendrs' target='_blank'>Rae</a>">
+                            <img src="../IMG/wiki/shared/rae.png" alt="Wolno and Inu by Rae" onclick="openCustomModal(this);">
+                            <div class="custom-text">Wolno and Inu by <a href='https://twitter.com/raendrs' target='_blank'>Rae</a></div>
+                        </div>
+                            <div class="custom-image-container" data-text="Wolno by <a href='https://toyhou.se/NillaNillaCat' target='_blank'>Nilla</a>">
+                                <img src="../IMG/wiki/wolno/cf/nilla.png" alt="Wolno by Nilla" onclick="openCustomModal(this);">
+                                <div class="custom-text">Wolno by <a href='https://toyhou.se/NillaNillaCat' target='_blank'>Nilla</a></div>
+                            </div>
+                            <div class="custom-image-container" data-text="Wolno by <a href='https://twitter.com/Liet4649' target='_blank'>Liet</a>">
+                                <img src="../IMG/wiki/wolno/cf/liet.png" alt="Wolno by Liet" onclick="openCustomModal(this);">
+                                <div class="custom-text">Wolno by <a href='https://twitter.com/Liet4649' target='_blank'>Liet</a></div>
+                            </div>
+                            <!-- Repite este bloque para cada imagen en la galería -->
+                            </div>
+                                                
             </div>
         </div>
     </div>

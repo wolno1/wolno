@@ -101,46 +101,82 @@ function openModal(img) {
     }
   }
   
-  //Galería de wiki
-  function openCustomModal(img) {
-    var modal = document.getElementById("custom-imageModal");
-    var modalImg = document.getElementById("custom-img01");
-    var captionText = document.getElementById("custom-caption");
-    modal.style.display = "block";
-    modalImg.src = img.src;
-    captionText.innerHTML = img.nextElementSibling.innerHTML; // Tomar el contenido del siguiente elemento hermano (el pie de la imagen)
-    var span = document.getElementsByClassName("custom-close")[0];
-    span.onclick = function() {
-      modal.style.display = "none";
+var imageContainers = document.querySelectorAll('.custom-image-container');
+var modal = document.getElementById('custom-imageModal');
+var modalImage = document.getElementById('custom-img01');
+var captionText = document.getElementById('custom-caption');
+var closeButton = document.getElementsByClassName('custom-close')[0];
+var prevButton = document.getElementById('custom-prevButton');
+var nextButton = document.getElementById('custom-nextButton');
+
+closeButton.onclick = function () {
+    closeModal();
+};
+
+prevButton.onclick = function () {
+    navigate(-1);
+};
+
+nextButton.onclick = function () {
+    navigate(1);
+};
+
+// Add event listeners for keyboard arrow keys
+document.addEventListener('keydown', function (event) {
+    if (modal.style.display === 'block') {
+        if (event.key === 'ArrowLeft') {
+            navigate(-1);
+        } else if (event.key === 'ArrowRight') {
+            navigate(1);
+        }
     }
-  
-    // Agregar evento de escucha de teclado cuando se abre el modal
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "ArrowLeft") {
-        showPrevImage();
-      } else if (event.key === "ArrowRight") {
-        showNextImage();
-      }
+});
+
+imageContainers.forEach(function (container, index) {
+    container.addEventListener('click', function () {
+        openModal(index);
     });
-  }
-  
-  function showPrevImage() {
-    // Obtener el índice de la imagen actual
-    var currentIndex = Array.from(document.querySelectorAll('.custom-image-container img')).findIndex(img => img.src === document.getElementById("custom-img01").src);
-    // Calcular el índice de la imagen anterior
-    var prevIndex = (currentIndex - 1 + document.querySelectorAll('.custom-image-container img').length) % document.querySelectorAll('.custom-image-container img').length;
-    // Mostrar la imagen anterior
-    document.getElementById("custom-img01").src = document.querySelectorAll('.custom-image-container img')[prevIndex].src;
-  }
-  
-  function showNextImage() {
-    // Obtener el índice de la imagen actual
-    var currentIndex = Array.from(document.querySelectorAll('.custom-image-container img')).findIndex(img => img.src === document.getElementById("custom-img01").src);
-    // Calcular el índice de la siguiente imagen
-    var nextIndex = (currentIndex + 1) % document.querySelectorAll('.custom-image-container img').length;
-    // Mostrar la siguiente imagen
-    document.getElementById("custom-img01").src = document.querySelectorAll('.custom-image-container img')[nextIndex].src;
-  }
+});
+
+function openModal(index) {
+    modal.style.display = 'block';
+    modalImage.src = imageContainers[index].querySelector('img').src;
+    captionText.innerHTML = imageContainers[index].dataset.text || imageContainers[index].querySelector('.custom-text').innerHTML || 'Default Text';
+
+    // Show/hide navigation buttons based on the image index
+    toggleNavigationButtons(index, imageContainers.length);
+}
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+function toggleNavigationButtons(currentIndex, totalImages) {
+    prevButton.style.display = currentIndex > 0 ? 'block' : 'none';
+    nextButton.style.display = currentIndex < totalImages - 1 ? 'block' : 'none';
+}
+
+function navigate(direction) {
+    var currentIndex = Array.from(imageContainers).findIndex(function (container) {
+        return container.querySelector('img').src === modalImage.src;
+    });
+
+    var newIndex = currentIndex + direction;
+    if (newIndex >= 0 && newIndex < imageContainers.length) {
+        modalImage.src = imageContainers[newIndex].querySelector('img').src;
+        captionText.innerHTML = imageContainers[newIndex].dataset.text || imageContainers[newIndex].querySelector('.custom-text').innerHTML || 'Default Text';
+
+        // Update navigation buttons based on the new index
+        toggleNavigationButtons(newIndex, imageContainers.length);
+    }
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        closeModal();
+    }
+};
+
   
   function generateMenuItems() {
     var menuItems = [
