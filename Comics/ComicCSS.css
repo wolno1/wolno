@@ -59,10 +59,13 @@ select {
   display: block;
 }
 
-/* Hace que las imágenes dentro de #comicViewer sean responsivas */
+
+/* Estilo para las imágenes dentro del visor de cómics */
 #comicViewer img {
   max-width: 100%;
   height: auto;
+  display: block; /* Asegura que las imágenes se muestren una debajo de otra */
+  margin: 20px auto; /* Centra las imágenes horizontalmente y añade espacio vertical entre ellas */
 }
 
 /* Ajusta el tamaño del contenedor de la imagen para evitar desbordamiento horizontal */
@@ -70,4 +73,6 @@ select {
   padding-bottom: 50px;
   max-width: 100%;
   overflow-x: hidden; /* Evita que el contenido desborde horizontalmente */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  text-align: center; /* Centra las imágenes dentro del contenedor */
 }
