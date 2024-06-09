@@ -88,18 +88,28 @@ function expand() {
 
 
 //img de wiki
-function openModal(img) {
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
+function openIMG(element) {
+    // Obtener la ruta de la imagen y el pie de página
+    var imgSrc = element.getAttribute('src');
+    var caption = element.parentNode.getElementsByTagName('p')[0].textContent;
+
+    // Obtener referencias al modal y sus elementos internos
+    var modal = document.getElementById('imageModal');
+    var modalImg = document.getElementById('img01');
+    var modalCaption = document.getElementById('caption');
+
+    // Mostrar el modal y la imagen
     modal.style.display = "block";
-    modalImg.src = img.src;
-    captionText.innerHTML = img.nextElementSibling.innerHTML; // Tomar el contenido del siguiente elemento hermano (el pie de la imagen)
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-  }
+    modalImg.src = imgSrc;
+    modalCaption.innerHTML = caption;
+
+    // Cuando se hace clic en el botón de cerrar, se cierra el modal
+    var closeButton = document.getElementsByClassName("close")[0];
+    closeButton.onclick = function() {
+        modal.style.display = "none";
+    };
+}
+
   
 var imageContainers = document.querySelectorAll('.custom-image-container');
 var modal = document.getElementById('custom-imageModal');
