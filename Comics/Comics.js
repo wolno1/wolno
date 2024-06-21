@@ -53,7 +53,7 @@ function createNavLinks() {
 
 
 createNavLinks();
-    //slider
+//slider
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.slider');
     const slides = document.querySelectorAll('.slide');
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const chapterSelect = document.getElementById('chapterSelect');
     const readingModeSelect = document.getElementById('readingModeSelect');
     const comicViewer = document.getElementById('comicViewer');
@@ -81,9 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayComic() {
         const selectedChapter = chapterSelect.value;
         const readingMode = readingModeSelect.value;
-    
+        
+        // Update the URL hash
+        window.location.hash = `#${selectedChapter}`;
+
         comicViewer.innerHTML = ''; // Clear the viewer
-    
+
         if (readingMode === 'onePage') {
             if (comics[selectedChapter].length > 1) {
                 comics[selectedChapter].forEach(page => {
@@ -109,11 +112,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    function initializeChapterFromHash() {
+        const hash = window.location.hash.substring(1); // Remove the '#' from the hash
+        if (comics.hasOwnProperty(hash)) {
+            chapterSelect.value = hash;
+        }
+        displayComic();
+    }
+    
     chapterSelect.addEventListener('change', displayComic);
     readingModeSelect.addEventListener('change', displayComic);
 
     // Initialize the viewer
-    displayComic();
+    initializeChapterFromHash();
 });
 
 function toggleAccordion(button) {
@@ -150,7 +161,6 @@ function generateMenuItems() {
         menu.appendChild(link);
     });
 }
-
 
 window.onload = function() {
     generateMenuItems();
