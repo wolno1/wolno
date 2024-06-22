@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const readingMode = readingModeSelect.value;
         
         // Update the URL hash
-        window.location.hash = `#${selectedChapter}`;
-
-        comicViewer.innerHTML = ''; // Clear the viewer
-
+        window.location.hash = `/${selectedChapter}`; // Cambiamos "#" por "/"
+    
+        comicViewer.innerHTML = ''; // Limpiamos el visor de cómics
+    
         if (readingMode === 'onePage') {
             if (comics[selectedChapter].length > 1) {
                 comics[selectedChapter].forEach(page => {
@@ -113,18 +113,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function initializeChapterFromHash() {
-        const hash = window.location.hash.substring(1); // Remove the '#' from the hash
-        if (comics.hasOwnProperty(hash)) {
-            chapterSelect.value = hash;
+        const hash = window.location.hash.substring(1); // Eliminamos "#" del hash
+        const selectedChapter = hash.replace('/', ''); // Reemplazamos "/" por ""
+        
+        if (comics.hasOwnProperty(selectedChapter)) {
+            chapterSelect.value = selectedChapter;
         }
         displayComic();
     }
     
     chapterSelect.addEventListener('change', displayComic);
     readingModeSelect.addEventListener('change', displayComic);
-
-    // Initialize the viewer
-    initializeChapterFromHash();
+    
+    // Inicializamos el visor de cómics basado en la URL hash al cargar la página
+    initializeChapterFromHash();    
 });
 
 function toggleAccordion(button) {
