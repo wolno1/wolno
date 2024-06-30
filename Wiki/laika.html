@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inu wiki</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="wikiCSS.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../IMG\icon.jpg">
+
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav"></div>
+    <div class="sidebar-toggle">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+
+    <!-- Header Section -->
+    <div class="topnav">
+        <img src="../IMG\LOGO.png" alt="Logo" class="topnav">
+        <div id="nav-links"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="w3-container w3-blue custom-style">
+        <div style="padding-left: 50px; padding-right: 50px;">
+            <div class="character-info">
+                <!-- Character Information -->
+                <h1 style="padding-top: 25px">Laika</h1>
+                <hr>
+                <div class="row">
+                    <!-- Description -->
+                    <div class="column-3-5" style="flex-grow: 1; text-align: left;">
+                        <p><b>Laika</b> is a female dog and a character in <i>Inu-sual Feelings</i>. She's best friends with <a href="inu.html">Inu</a> and mainly <a href="chloe.html">Chloe</a> always following her around. She is obsessed with space and sci-fi, often too distracted by them.</p>
+                        <div class="index-box" style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.3); border: 2px solid white; margin-left: 15px; padding: 10px;">
+                    
+                            <h3 style="padding-left: 15px;">Index</h3>
+                            <ol>
+                                <li><a href="#physical-appearance">Physical appearance</a></li>
+                                <li><a href="#personality">Personality</a></li>
+                                <li><a href="#relationships">Relationships</a>
+                                    <ul type="1">
+                                        <li><a href="#chloe">Chloe</a></li>
+                                        <li><a href="#inu">Inu</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#trivia">Trivia</a></li>
+                                <li><a href="#gallery">Gallery</a>
+                                    <ul>
+                                        <li><a href="#original-art">Original art</a></li>
+                                        <li><a href="#commissions-and-fanart">Commissions and Fanart</a></li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Character Details -->
+                    <div class="column-2-5">
+                        <div class="container">
+                            <h3>Laika</h3>
+                            <img src="../IMG\wiki\laika\pfp.png" alt="Laika">
+                            <table id="firstTable">
+                                <!-- Contenido de la tabla -->
+                                <tr>
+                                    <td>Species</td>
+                                    <td>Dog</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>Female</td>
+                                </tr>
+                                <tr>
+                                    <td>Height</td>
+                                    <td>1.64m (5ft 3in)</td>
+                                </tr>
+                                <tr>
+                                    <td>Birth</td>
+                                    <td>August 31</td>
+                                </tr>
+                            </table>
+                            <button onclick="expand()" style="margin-bottom: 20px;">More info</button>
+                            <div id="expandedTable" style="display: none;">
+                                <table id="firstTable">
+                                    <!-- Contenido de la tabla expandida -->
+                                    <tr>
+                                        <td>Fur 1</td>
+                                        <td><span style="background-color:#372F3C;">ㅤ</span> Black (Tuna)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fur 2</td>
+                                        <td><span style="background-color:#FFFFFF;">ㅤ</span> White</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eyes</td>
+                                        <td><span style="background-color:#00BCE2;">ㅤ</span> Cyan (ArtyClick Sky Blue)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: left; padding-bottom: 25px;">
+                    <!-- Physical Appearance -->
+                    <div style="text-align: left; padding-bottom: 25px;">
+                        <h2 id="physical-appearance">Physical appearance</h2>
+                        <hr>
+                        <!-- Description of Physical Appearance -->
+                        <div style="display: flex; align-items: center;">
+                            <!-- Description -->
+                            <div style="flex: 4;">
+                                <p>Laika is a slender dog with a distinctly wild appearance, characterized by a long snout and ears. Her fur is predominantly white with dark markings that extend over her eyes, head, shoulders, back, top of tail, and thighs. Her paw pads are pink with black spots, adding to her unique features.</p>
+                            </div>
+                            <!-- Image Modal -->
+                            <div id="imageModal" class="modal">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="img01">
+                                <div id="caption"></div>
+                            </div>
+                            <!-- Image for reference -->
+                            <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                                <div style="padding: 10px 10px 5px 10px;">
+                                    <img src="../IMG\wiki\laika\bod.png" alt="Laika stargazing" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                                    <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Laika stargazing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Personality -->
+                    <h2 id="personality">Personality</h2>
+                    <hr>
+                    <!-- Description of Personality -->
+                    <div style="display: flex; align-items: center;">
+                        <!-- Image Modal -->
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <!-- Image for personality -->
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-right: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+                                <img src="../IMG\wiki\shared/dump.png" alt="Laika yapping" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                                <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Laika yapping</p>
+                            </div>
+                        </div>
+                        <!-- Description -->
+                        <div style="flex: 4;">
+                            <p>Laika is a happy girl who often goes unnoticed by others, but she doesn't mind because she finds contentment in Chloe's company. She's intelligent and has the potential to excel academically if she could divert her focus from her fascination with sci-fi and space.</p>
+                        </div>  
+                    </div>
+                    <!-- Relationships -->
+                    <h2 id="relationships">Relationships</h2>
+                    <hr>
+                    <div style="display: flex; align-items: center;">
+                        <div style="flex: 4;">
+                            <h3 id="chloe"><a href="chloe.html">Chloe</a></h3>
+                            <hr>
+                            <p>Laika is the last member of the best friends trio. Similar to Chloe and Inu, Laika is always close to Chloe but takes on a more supportive and less assertive role. Wherever Chloe goes, Laika follows, though she often goes unnoticed by others. Laika deeply admires and respects Chloe, who, in turn, sees Laika as someone to protect and fully trust.</p>
+                        </div>
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+
+                                <img src="../IMG\wiki\shared\inu laika chloe.png" alt="Laika, Chloe and Inu" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                                <p style="text-align: center;">From left to right; Laika, Inu and Chloe</p>
+                                <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Art by <a href=https://twitter.com/l_1ra target="_blank">L-1RA</a></p>
+                            </div>
+                        </div>                   
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-right: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+                                <img src="../IMG\wiki\shared\inu chloe laika.png" alt="Inu, Laika and Chloe" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                                <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Art by <a href='https://x.com/niineko0730' target='_blank'>新猫💮</a></p>
+                            </div>
+                        </div>         
+                        <div style="flex: 4;">
+                            <h3 id="inu"><a href="inu.html">Inu</h3></a>
+                            <hr>
+                            <p>Inu's and Laika's relationship is not as close as their relationship with Chloe.</p>
+                            <p>Since they both are best friends with Chloe they are always together</p>
+                        </div>  
+                    </div>
+                    <!-- Trivia -->
+                    <h2 id="trivia">Trivia</h2>
+                    <hr>
+                   <li>She originally wasn't made for "Inu-sual Feelings", she was just a random character I made combining astronaut suits and simbology both from Nasa and Cosmonauts</li>
+                   <li>Her whole personality is based on me rarely drawing her, and the few times I try often end up as discarted sketches</li>
+                   <div id="custom-imageModal" class="modal">
+                    <span class="custom-close">&times;</span>
+                    <img class="custom-modal-content" id="custom-img01">
+                    <div id="custom-caption" class="custom-caption"></div>
+                    <!-- Agregar botones de navegación -->
+                    <a class="custom-prev" id="custom-prevButton">&#10094;</a>
+                    <a class="custom-next" id="custom-nextButton">&#10095;</a>
+                </div>
+                <h2 id="gallery">Gallery</h2>
+                <hr>
+                <h3 id="original-art">Original art</h3> 
+                <div class="custom-gallery">
+
+                    <div class="custom-image-container" data-text="Laika sitting">
+                        <img src="../IMG/wiki/laika/twistw.png" alt="Laika sitting" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Laika sitting</div>
+                    </div>
+                    <div class="custom-image-container" data-text="Wolno and Laika stargazing">
+                        <img src="../IMG/wiki/shared/wolno laika.jpeg" alt="Wolno and Laika stargazing" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Wolno and Laika stargazing</div>
+                    </div>
+
+                </div>
+                <h3 id="commissions-and-fanart">Commissions and Fanart</h3>
+                <div class="custom-gallery">
+                    <div class="custom-image-container" data-text="Laika, Inu and Chloe by <a href='https://x.com/l_1ra' target='_blank'>L-1RA</a>">
+                        <img src="../IMG/wiki/shared/inu laika chloe.png" alt="Laika, Inu and Chloe by L-1RA" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Laika, Inu and Chloe by <a href='https://x.com/l_1ra' target='_blank'>L-1RA</a></div>
+                    </div>
+
+                    <div class="custom-image-container" data-text="Laika by <a href='https://x.com/soy_beam0' target='_blank'>デェいず</a>">
+                        <img src="../IMG/wiki/laika/cf/デェいず.png" alt="Laika by デェいず" onclick="openCustomModal(this);" loading="lazy" style="object-position: top;">
+                        <div class="custom-text">Laika by <a href='https://x.com/soy_beam0' target='_blank'>デェいず</a></div>
+                    </div>
+                    <div class="custom-image-container" data-text="Laika by <a href='https://x.com/b47u74' target='_blank'>Batu</a>">
+                        <img src="../IMG/wiki/laika/cf/batu.png" alt="Laika by Batu" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Laika by <a href='https://x.com/b47u74' target='_blank'>Batu</a></div>
+                    </div>
+                    <div class="custom-image-container" data-text="Laika by <a href='https://x.com/b47u74' target='_blank'>Batu</a>">
+                        <img src="../IMG/wiki/laika/cf/batu 2.png" alt="Laika by Batu" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Laika by <a href='https://x.com/b47u74' target='_blank'>Batu</a></div>
+                    </div>
+                    <div class="custom-image-container" data-text="Laika by <a href='https://x.com/l_1ra' target='_blank'>L-1RA</a>">
+                        <img src="../IMG/wiki/laika/cf/L-1RA.png" alt="Laika by L-1RA" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Laika by <a href='https://x.com/l_1ra' target='_blank'>L-1RA</a></div>
+                    </div>
+
+                    <div class="custom-image-container" data-text="Inu, Chloe and Laika by <a href='https://x.com/niineko0730' target='_blank'>新猫💮</a>">
+                        <img src="../IMG/wiki/shared/inu chloe laika.png" alt="Inu, Chloe and Laika by 新猫" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Inu, Chloe and Laika by <a href='https://x.com/niineko0730' target='_blank'>新猫💮</a></div>
+                    </div>
+                    <div class="custom-image-container" data-text="Laika and Inu by <a href='https://twitter.com/s_yuzu1227' target='_blank'>サムライワ　ユズ</a>">
+                        <img src="../IMG\wiki\shared\inu laika.png" alt="Laika and Inu by サムライワ　ユズ" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Laika and Inu by <a href='https://twitter.com/s_yuzu1227' target='_blank'>サムライワ　ユズ</a></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Scripts and Styles -->
+    <script src="Wiki.js"></script>
+    <style>
+        .container h3 {
+            margin-top: 0;
+            background-color: #6441A5;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+    <div id="myDiv" style=" height: 1px; rgba(0, 0, 0, 0.0);"></div>
+</body>
+</html>
