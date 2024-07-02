@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roxanne wiki</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="wikiCSS.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../IMG\icon.jpg">
+
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav"></div>
+    <div class="sidebar-toggle">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+
+    <!-- Header Section -->
+    <div class="topnav">
+        <img src="../IMG\LOGO.png" alt="Logo" class="topnav">
+        <div id="nav-links"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="w3-container w3-blue custom-style">
+        <div style="padding-left: 50px; padding-right: 50px;">
+            <div class="character-info">
+                <!-- Character Information -->
+                <h1 style="padding-top: 25px">Roxanne</h1>
+                <hr>
+                <div class="row">
+                    <!-- Description -->
+                    <div class="column-3-5" style="flex-grow: 1; text-align: left;">
+                        <p><b>Roxanne</b> is a female lizard creature and a character in <i>Inu-sual Feelings</i>. She's best friends with <a href="skye.html">Skye</a> and <a href="wolno.html">Wolno</a>, being his voice of reason and sometimes the opposite.</p>
+                        <div class="index-box" style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.3); border: 2px solid white; margin-left: 15px; padding: 10px;">
+                    
+                            <h3 style="padding-left: 15px;">Index</h3>
+                            <ol>
+                                <li><a href="#physical-appearance">Physical appearance</a></li>
+                                <li><a href="#personality">Personality</a></li>
+                                <li><a href="#relationships">Relationships</a>
+                                    <ul type="1">
+                                        <li><a href="#wolno">Wolno</a></li>
+                                        <li><a href="#skye">Skye</a></li>
+                                        <li><a href="#chloe">Chloe</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#trivia">Trivia</a></li>
+                                <li><a href="#gallery">Gallery</a>
+                                    <ul>
+                                        <li><a href="#original-art">Original art</a></li>
+                                        <li><a href="#commissions-and-fanart">Commissions and Fanart</a></li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Character Details -->
+                    <div class="column-2-5">
+                        <div class="container">
+                            <h3>Roxanne</h3>
+                            <img src="../IMG\wiki\roxanne\pfp.png" alt="Roxanne">
+                            <table id="firstTable">
+                                <!-- Contenido de la tabla -->
+                                <tr>
+                                    <td>Species</td>
+                                    <td>Lizard? Scalie thing</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>Female</td>
+                                </tr>
+                                <tr>
+                                    <td>Height</td>
+                                    <td>1.55m (5ft)</td>
+                                </tr>
+                                <tr>
+                                    <td>Birth</td>
+                                    <td>April 15</td>
+                                </tr>
+                            </table>
+                            <button onclick="expand()" style="margin-bottom: 20px;">More info</button>
+                            <div id="expandedTable" style="display: none;">
+                                <table id="firstTable">
+                                    <!-- Contenido de la tabla expandida -->
+                                    <tr>
+                                        <td>Skin</td>
+                                        <td><span style="background-color:#FFB8E3;">ㅤ</span> Pink (Cotton candy)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Countershade</td>
+                                        <td><span style="background-color:#A9F7FE;">ㅤ</span> Cyan (Pale Sky Blue)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Horns</td>
+                                        <td><span style="background-color:#FAFEC2;">ㅤ</span> Yellow (Australian Mint)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eyes</td>
+                                        <td><span style="background-color:#FD4FBF;">ㅤ</span> Magenta (Neon Fuchsia)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: left; padding-bottom: 25px;">
+                    <!-- Physical Appearance -->
+                    <div style="text-align: left; padding-bottom: 25px;">
+                        <h2 id="physical-appearance">Physical appearance</h2>
+                        <hr>
+                        <!-- Description of Physical Appearance -->
+                        <div style="display: flex; align-items: center;">
+                            <!-- Description -->
+                            <div style="flex: 4;">
+                                <p>Roxanne, a scalie, boasts a sleek appearance with smooth, hairless skin (except for her eyelashes, for some reason) Her skin is a soft, pink hue accented by a striking cyan color on her jaw, chest, soles, and palms, creating a vivid counter shade. Her eyes shine in bright magenta, contrasting against yellow sclera. Completing her distinctive look, she sports black claws on her hands and feet, two prominent horns adorning her forehead, and a set of sharp teeth.</p>
+                            </div>
+                            <!-- Image Modal -->
+                            <div id="imageModal" class="modal">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="img01">
+                                <div id="caption"></div>
+                            </div>
+                            <!-- Image for reference -->
+                            <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                                <div style="padding: 10px 10px 5px 10px;">
+                                    <img src="../IMG/wiki/shared/fimfim.png" alt="Roxanne and Skye" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                                    <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Roxanne and Skye by <a href='https://www.deviantart.com/fimvie' target='_blank'>Fimvie</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Personality -->
+                    <h2 id="personality">Personality</h2>
+                    <hr>
+                    <!-- Description of Personality -->
+                    <div style="display: flex; align-items: center;">
+                        <!-- Image Modal -->
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <!-- Image for personality -->
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-right: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+                                <img src="../IMG\wiki\roxanne/doods.png" alt="Laika yapping" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                                <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Roxane doodles</p>
+                            </div>
+                        </div>
+                        <!-- Description -->
+                        <div style="flex: 4;">
+                            <p>Roxanne is an active girl who likes to express her feelings and thoughts openly, often with a touch of sarcasm and pessimism. While she might sometimes come across as having anger issues, she is a nice person at heart. She generally keeps to herself, preferring not to talk to others unless it's necessary or if she's with Wolno and Skye.</p>
+                        </div>  
+                    </div>
+                    <!-- Relationships -->
+                    <h2 id="relationships">Relationships</h2>
+                    <hr>
+                    <div style="display: flex; align-items: center;">
+                        <div style="flex: 4;">
+                            <h3 id="wolno"><a href="wolno.html">Wolno</a></h3>
+                            <hr>
+                            <p>Wolno is one of Roxanne's best friends.</p>
+                            <p>Despite the teasing and banter between them, they have a strong and close relationship. Roxanne often offers advice and guidance to Wolno, demonstrating her care for him. In return, Wolno values Roxanne's insights and relies on her as a confidant.</p>
+                            <p>Wolno is like the funny one, compared to Roxanne. He relies on her for her wisdom and sensible advice when things get tough. Roxanne, on the other hand, is like the steady rock. She's always there to listen, give practical help, and offer comfort when Wolno needs it. Together, they make a great team, balancing each other out with Wolno's fun spirit and Roxanne's calm support.</p>
+                        </div>
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+
+                                <img src="../IMG\wiki\shared\comic cut.png" alt="Comic page" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                              <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Comic sketch from chapter 2</p>
+                            </div>
+                        </div>                   
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-right: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+                                <img src="../IMG\wiki\shared\rox sky.png" alt="Roxanne and Skye" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                                <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Art by <a href='https://x.com/_Get_It_Go' target='_blank'>ゲりごー</a></p>
+                            </div>
+                        </div>         
+                        <div style="flex: 4;">
+                            <h3 id="skye"><a href="skye.html">Skye</h3></a>
+                            <hr>
+                            <p>Skye and Roxanne compliment themselves so well you could count them as one person</p>
+                            <p>At first, they can be very different but that's what keeps them together, the input from one is always useful for the other</p>
+                            <p>Most of the time, you can find Skye traveling on Roxanne's back or her backpack, since it's harder for her to keep up with a normal walking speed.</p>
+                        </div>  
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="flex: 4;">
+                            <h3 id="chloe"><a href="chloeo.html">Chloe</a></h3>
+                            <hr>
+                            <p>Roxanne and Chloe seem to have a shared history, though the details are unclear. Roxanne clearly doesn't like Chloe, but she seems to know her very well.</p>
+                        </div>
+                        <div id="imageModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+                        <div style="flex: 1; border-radius: 15px; background-color: rgba(0, 0, 0, 0.8); border: 2px solid white; margin-left: 15px">
+                            <div style="padding: 10px 10px 5px 10px;">
+
+                                <img src="../IMG\wiki\shared\roxanne chloe.png" alt="Roxanne and Chloe" style="width: 100%; height: auto;" onclick="openIMG(this);">
+                              <p style="text-align: center; margin-top: 0px; margin-bottom: 5px;">Art by <a href="https://x.com/ryuuu_k1" target="_blank">ryuuu ki</a></p>
+                            </div>
+                        </div>                   
+                    </div>
+                    <!-- Trivia
+                    <h2 id="trivia">Trivia</h2>
+                    <hr>
+                   <li>She originally wasn't made for "Inu-sual Feelings", she was just a random character I made combining astronaut suits and simbology both from Nasa and Cosmonauts</li>
+                   <li>Her whole personality is based on me rarely drawing her, and the few times I try often end up as discarted sketches</li> -->
+                   <div id="custom-imageModal" class="modal">
+                    <span class="custom-close">&times;</span>
+                    <img class="custom-modal-content" id="custom-img01">
+                    <div id="custom-caption" class="custom-caption"></div>
+                    <!-- Agregar botones de navegación -->
+                    <a class="custom-prev" id="custom-prevButton">&#10094;</a>
+                    <a class="custom-next" id="custom-nextButton">&#10095;</a>
+                </div>
+                <h2 id="gallery">Gallery</h2>
+                <hr>
+                <h3 id="original-art">Original art</h3> 
+                <div class="custom-gallery">
+
+                    <div class="custom-image-container" data-text="Roxanne on her dress">
+                        <img src="../IMG/wiki/roxanne/float.png" alt="Roxanne on her dress" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Roxanne on her dress</div>
+                    </div>
+                    <div class="custom-image-container" data-text="Roxanne doodles">
+                        <img src="../IMG/wiki/roxanne/doods.png" alt="Roxanne doodles" onclick="openCustomModal(this);" loading="lazy">
+                        <div class="custom-text">Roxanne doodles</div>
+                    </div>
+
+                </div>
+                <h3 id="commissions-and-fanart">Commissions and Fanart</h3>
+                <div class="custom-gallery">
+                    <div class="custom-image-container" data-text="Roxanne and Skye by <a href='https://x.com/_Get_It_Go' target='_blank'>ゲりごー</a>">
+                        <img src="../IMG/wiki/shared/rox sky.png" alt="Roxanne and Skye by ゲりごー" onclick="openCustomModal(this);" loading="lazy" style="object-position: top;">
+                        <div class="custom-text">Roxanne and Skye by <a href='https://x.com/_Get_It_Go' target='_blank'>ゲりごー</a></div>
+                    </div>
+
+                    <div class="custom-image-container" data-text="Roxanne by <a href='https://x.com/enson_misty' target='_blank'>Kamisama!</a>">
+                        <img src="../IMG/wiki/roxanne/cf/kami.png" alt="Roxanne by Kamisama!" onclick="openCustomModal(this);" loading="lazy" >
+                        <div class="custom-text">Roxanne by <a href='https://x.com/enson_misty' target='_blank'>Kamisama!</a></div>
+                    </div>
+                    <div class="custom-image-container" data-text="Roxanne and Skye by <a href='https://deviantart.com/Fimvie' target='_blank'>Fimvie</a>">
+                        <img src="../IMG/wiki/shared/fimfim.png" alt="Roxanne and Skye by Fimvie" onclick="openCustomModal(this);" loading="lazy" >
+                        <div class="custom-text">Roxanne and Skye by <a href='https://deviantart.com/Fimvie' target='_blank'>Fimvie</a></div>
+                    </div>
+                    <div class="custom-image-container" data-text="Roxanne by <a href='https://www.furaffinity.net/user/mortkim/' target='_blank'>Kimera</a>">
+                        <img src="../IMG/wiki/roxanne/cf/kimera.png" alt="Roxanne by Kimera" onclick="openCustomModal(this);" loading="lazy" >
+                        <div class="custom-text">Roxanne by <a href='https://www.furaffinity.net/user/mortkim/' target='_blank'>Kimera</a></div>
+                    </div>
+                    <div class="custom-image-container" data-text="Roxanne and Skye by <a href='https://x.com/oms90059685' target='_blank'>おみそ</a>">
+                        <img src="../IMG/wiki/shared/おみそ.png" alt="Roxanne and Skye by おみそ" onclick="openCustomModal(this);" loading="lazy" >
+                        <div class="custom-text">Roxanne and Skye by <a href='https://x.com/oms90059685' target='_blank'>おみそ</a></div>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Scripts and Styles -->
+    <script src="Wiki.js"></script>
+    <style>
+        .container h3 {
+            margin-top: 0;
+            background-color: #FF008C;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+    <div id="myDiv" style=" height: 1px; rgba(0, 0, 0, 0.0);"></div>
+</body>
+</html>
