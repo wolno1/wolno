@@ -11,12 +11,26 @@ body {
     overflow: hidden;
     overflow-y: auto;
     text-align: center;
-    font-family: 'Comic Sans MS', cursive; /* Utiliza la fuente Comic Sans MS */
+    font-family: 'Comic Sans MS', cursive; /* Use Comic Sans MS for normal text */
     color: white;
 }
 @font-face {
     font-family: 'Comic Sans MS';
-    src: url('Fonts/COMIC.TTF'); /* Reemplaza 'ruta/a/tu/font/ComicSansMS.ttf' con la ruta real a tu archivo de fuente */
+    src: url('Fonts/COMIC.TTF'); /* Replace with the actual path to your Comic Sans MS font file */
+}
+
+@font-face {
+    font-family: 'HGRPP1';
+    src: url('Fonts/HGRPP1.TTF'); /* Replace with the actual path to your Japanese font file */
+    unicode-range: U+3000-303F, /* CJK symbols and punctuation */
+                   U+3040-309F, /* Hiragana */
+                   U+30A0-30FF, /* Katakana */
+                   U+4E00-9FFF; /* CJK Unified Ideographs */
+}
+
+/* Ensure Japanese text uses the HGRPP1 font */
+.japanese-text {
+    font-family: 'HGRPP1', sans-serif;
 }
 
 /* Estilos para la barra lateral */
