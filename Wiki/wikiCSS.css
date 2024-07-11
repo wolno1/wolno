@@ -1,28 +1,5 @@
 @import url(../IndexCSS.css);
 
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-#imageModal a {
-    color: #ff00f8;
-}
-
-.modal-content img {
-    width: 100%; /* Ensure the image takes up the full width of the modal */
-    max-height: 80vh; /* Adjust the max-height as needed */
-    object-fit: contain; /* Maintain the aspect ratio while fitting within the dimensions */
-}
 
 /*Button left n right*/
 /* Style the prev and next buttons */
@@ -187,12 +164,13 @@
 
 
   
-  .modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-  }
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+}
+
   
   #caption {
     margin: auto;
@@ -224,10 +202,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-height: 400px; /* Establece el límite máximo de altura */
-    overflow-y: auto; /* Permite que el contenido sea scrollable verticalmente si excede la altura máxima */
-    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
-  }
+    max-height: 400px; /* Set maximum height */
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds max height */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+
+
   
   .custom-gallery .custom-image-container {
     width: calc(20% - 10px); /* 5 contenedores por fila */
@@ -236,7 +217,12 @@
     margin-bottom: 10px;
     padding-top: 20%; /* Hace que el contenedor tenga una proporción cuadrada */
     overflow: hidden; /* Oculta el contenido desbordante */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for transform property */
   }
+  .custom-image-container:hover {
+    transform: scale(1.05); /* Grow the element slightly */
+}
   
   .custom-gallery .custom-image-container img {
     position: absolute;
@@ -263,6 +249,7 @@
   display: block;
   max-width: 80%;
   max-height: 80%;
+  
 }
 
 .custom-caption {
