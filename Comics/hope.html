@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McThingies</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../IMG/icon.jpg">
+    <!-- CSS files -->
+    <link rel="stylesheet" href="ComicCSS.css">
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div id="mySidenav" class="sidenav"></div>
+    <div class="sidebar-toggle">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+
+    <div class="topnav">
+        <img src="../IMG/LOGO.png" alt="Logo" class="topnav">
+        <div id="nav-links"></div>
+    </div>
+    <div class="select-container">
+        <div class="select-group">
+            <div class="select-label">Chapter:</div>
+            <select id="chapterSelect">
+                <option value="chapter1">1</option>
+                <!-- Agrega más capítulos aquí -->
+            </select>
+        </div>
+        <div class="select-group">
+            <div class="select-label">Display:</div>
+            <select id="readingModeSelect">
+                <option value="onePage">Per chapter</option>
+                <option value="allPages">All pages</option>
+            </select>
+        </div>
+    </div>
+    <div id="comicViewer"></div>
+
+    <div class="w3-container w3-blue custom-style">
+        <h3>If u wanna add a comment, DM me on <a href="https://discord.com/users/588900243031064595">Discord</a> pls, I don't have a DB yet so I can't make it automatic</h3>
+    </div>
+    
+    <script src="Comics.js"></script>
+    <script>
+        // Definir los capítulos y sus páginas
+        const comics = {
+        chapter1: [
+            'hope/1.png',
+            // Añade más páginas en el orden deseado
+        ],
+    };
+    </script>
+</body>
+</html>
