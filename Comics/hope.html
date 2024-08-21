@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="ComicCSS.css">
     <!-- JS libraries -->
     <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -47,22 +46,57 @@
     <div class="w3-container w3-blue custom-style">
         <h3>If u wanna add a comment, DM me on <a href="https://discord.com/users/588900243031064595">Discord</a> pls, I don't have a DB yet so I can't make it automatic</h3>
     </div>
-    
+
     <script src="Comics.js"></script>
     <script>
         // Definir los capítulos y sus páginas
         const comics = {
-        chapter1: [
-            'hope/1.png',
-            // Añade más páginas en el orden deseado
-        ],
-        chapter2: [
-            'hope/2-1.png',
-            'hope/2-2.png',
-            'hope/2-3.png',
-            // Añade más páginas en el orden deseado
-        ],
-    };
+            chapter1: [
+                'hope/1.png',
+                // Añade más páginas en el orden deseado
+            ],
+            chapter2: [
+                'hope/2-1.png',
+                'hope/2-2.png',
+                'hope/2-3.png',
+                // Añade más páginas en el orden deseado
+            ],
+        };
+
+        // Function to resize images to 1000px wide
+        function resizeImages(images) {
+            images.forEach((src) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.style.width = '1000px';
+                document.getElementById('comicViewer').appendChild(img);
+            });
+        }
+
+        // Load the selected chapter
+        function loadChapter(chapter) {
+            const comicViewer = document.getElementById('comicViewer');
+            comicViewer.innerHTML = ''; // Clear previous content
+
+            // Resize and display images only for chapter 2
+            if (chapter === 'chapter2') {
+                resizeImages(comics[chapter]);
+            } else {
+                comics[chapter].forEach((src) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    comicViewer.appendChild(img);
+                });
+            }
+        }
+
+        // Event listeners for chapter selection
+        document.getElementById('chapterSelect').addEventListener('change', function () {
+            loadChapter(this.value);
+        });
+
+        // Initial load of the first chapter
+        loadChapter('chapter1');
     </script>
 </body>
 </html>
