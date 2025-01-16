@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McThingies</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../IMG/icon.jpg">
+    <!-- CSS files -->
+    <link rel="stylesheet" href="ComicCSS.css">
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+
+        <!-- Open Graph Meta Tags -->
+         <meta property="og:title" content="McThingies">
+         <meta property="og:description" content="It's clear that life as an struggling artist will be a pain, making art it's really fulfilling, but even more fulfilling is having an income, a roof, food... follow Abigail in this fun this short McStories!">
+         <meta property="og:image" content="http://awsartzzz.com/Cards/McThingies.png">
+         <meta property="og:url" content="http://awsartzzz.com/Comics/mcthingies.html">
+         <meta property="og:type" content="website">
+         <!-- Twitter Card Meta Tags -->
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:title" content="McThingies">
+          <meta name="twitter:description" content="It's clear that life as an struggling artist will be a pain, making art it's really fulfilling, but even more fulfilling is having an income, a roof, food... follow Abigail in this fun this short McStories!">
+          <meta name="twitter:image" content="http://awsartzzz.com/Cards/McThingies.png">
+
+</head>
+
+<body>
+
+    <div id="mySidenav" class="sidenav"></div>
+    <div class="sidebar-toggle">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+
+    <div class="topnav">
+        <img src="../IMG/LOGO.png" alt="Logo" class="topnav">
+        <div id="nav-links"></div>
+    </div>
+    <div class="select-container">
+        <div class="select-group">
+            <div class="select-label">Chapter:</div>
+            <select id="chapterSelect">
+                <option value="chapter1">McEffacement</option>
+                <option value="chapter2">McParsimony</option>
+                <option value="chapter3">McVexation</option>
+                <option value="chapter4">McInfatuation</option>
+                <!-- Agrega más capítulos aquí -->
+            </select>
+        </div>
+        <div class="select-group">
+            <div class="select-label">Display:</div>
+            <select id="readingModeSelect">
+                <option value="onePage">Per chapter</option>
+                <option value="allPages">All pages</option>
+            </select>
+        </div>
+    </div>
+    <div id="comicViewer"></div>
+
+    <div class="w3-container w3-blue custom-style">
+        <h3>If u wanna add a comment, DM me on <a href="https://discord.com/users/588900243031064595">Discord</a> pls, I don't have a DB yet so I can't make it automatic</h3>
+    </div>
+    
+    <script src="Comics.js"></script>
+    <script>
+        // Definir los capítulos y sus páginas
+        const comics = {
+        chapter1: [
+            'mcthingies/1 McEffacement.png',
+            // Añade más páginas en el orden deseado
+        ],
+        chapter2: [
+            'mcthingies/2 McParsimony.png',
+            // Añade más páginas en el orden deseado
+        ],
+        chapter3: [
+            'mcthingies/3 McVexation.png',
+            // Añade más páginas en el orden deseado
+        ],
+        chapter4: [
+            'mcthingies/4 McInfatuation.png',
+            // Añade más páginas en el orden deseado
+        ],
+    };
+    </script>
+</body>
+</html>
