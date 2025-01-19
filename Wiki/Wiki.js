@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function createNavLinks() {
     const links = ["Home", "About me", "Portfolio", "Characters", "Comic", "FAQs"];
-    const hrefs = ["../Index.html", "../About.html", "../Portfolio.html", "../Characters.html", "../Comics.html", "../FAQs.html"];
+    const hrefs = ["../index.html", "../About.html", "../Portfolio.html", "../Characters.html", "../Comics.html", "../FAQs.html"];
     const navLinksElement = document.getElementById('nav-links');
 
     links.forEach((link, i) => {
