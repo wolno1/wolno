@@ -136,12 +136,12 @@ function toggleAccordion(button) {
 
 function generateMenuItems() {
     var menuItems = [
-        { href: "../index.html", text: "Home" },
-        { href: "../about.html", text: "About me" },
-        { href: "../portafolio.html", text: "Portfolio" },
-        { href: "../chars.html", text: "Characters" },
-        { href: "../comic.html", text: "Comic" },
-        { href: "../faqs.html", text: "FAQs" }
+        { href: "../Index.html", text: "Home" },
+        { href: "../About.html", text: "About me" },
+        { href: "../Portfolio.html", text: "Portfolio" },
+        { href: "../Characters.html", text: "Characters" },
+        { href: "../Comic.html", text: "Comic" },
+        { href: "../FAQs.html", text: "FAQs" }
     ];
 
     var menu = document.getElementById("mySidenav");
