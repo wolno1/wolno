@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function createNavLinks() {
-    const links = ["Home", "About me", "Portfolio", "Characters", "Comic", "FAQs"];
+    const links = ["Home", "About me", "Portfolio", "Characters", "Comics", "FAQs"];
     const hrefs = ["index.html", "About.html", "Portfolio.html", "Characters.html", "Comics.html", "FAQs.html"];
     const navLinksElement = document.getElementById('nav-links');
 
