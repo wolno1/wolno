@@ -13,10 +13,11 @@ body {
     text-align: center;
     font-family: 'Comic Sans MS', cursive; /* Use Comic Sans MS for normal text */
     color: white;
+    font-size: 20px; /* Adjust this value to make the font larger */
 }
 @font-face {
     font-family: 'Comic Sans MS';
-    src: url('Fonts/COMIC.TTF'); /* Replace with the actual path to your Comic Sans MS font file */
+    src: url('Fonts/CSP.TTF'); /* Replace with the actual path to your Comic Sans MS font file */
 }
 
 @font-face {
@@ -358,3 +359,136 @@ a.active {
     background-color: #ff00f8;
     color: white;
 }
+
+@media screen and (max-width: 767px) {
+    .comic-container {
+        margin: 20px;
+        padding: 10px;
+    }
+
+    .comic-row {
+        flex-direction: column;
+    }
+
+    .comic-column {
+        min-width: 100%;
+        padding: 5px;
+    }
+
+    .custom-style, .McThingiesBox, .inusual {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .topnav img {
+        height: 25px;
+        padding: 5px;
+    }
+
+    .topnav a {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .read-button {
+        width: 150px;
+        padding: 8px;
+        font-size: 14px;
+    }
+    .comic-column img {
+        max-width: 100%;
+        height: auto;
+    }
+    body {
+        font-size: 14px;
+    }
+
+    .comic-column h2 {
+        font-size: 18px;
+    }
+
+    .comic-column p {
+        font-size: 14px;
+    }
+
+    .pixel-font {
+        font-size: 16px;
+    }
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .topnav {
+        display: none;
+    }
+
+    .sidenav {
+        display: block;
+    }
+    .topnav {
+        display: none;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .sidenav {
+        display: block;
+    }
+    .read-button {
+        width: 150px;
+        padding: 8px;
+        font-size: 14px;
+    }
+    body {
+        background-size: contain;
+        height: auto;
+    }
+    .modal-content img {
+        max-height: 60vh;
+    }
+
+    .prev, .next {
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .close {
+        font-size: 20px;
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border: 3px solid transparent;
+    }
+    #slider-container {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .twitter-container {
+        width: 100%;
+        padding-bottom: 50px;
+    }
+    .navbar a {
+        font-size: 8px;
+        padding: 5px;
+    }
+    .comic-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .comic-row {
+        flex-direction: column;
+    }
+
+    .comic-column {
+        min-width: 100%;
+        padding: 5px;
+    }
+}
+

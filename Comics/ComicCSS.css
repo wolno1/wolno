@@ -62,10 +62,18 @@ select {
 
 /* Estilo para las imágenes dentro del visor de cómics */
 #comicViewer img {
-  max-width: 100%;
-  height: auto;
+  width: 750px; /* Ancho fijo de 750px */
+  height: auto; /* Mantener la proporción de la imagen */
   display: block; /* Asegura que las imágenes se muestren una debajo de otra */
   margin: 20px auto; /* Centra las imágenes horizontalmente y añade espacio vertical entre ellas */
+  cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+  transition: transform 0.25s ease; /* Suaviza la transición del zoom */
+}
+
+/* Estilo para cuando la imagen está en zoom */
+#comicViewer img.zoomed {
+  transform: scale(1.5); /* Aumenta el tamaño de la imagen */
+  cursor: zoom-out; /* Cambia el cursor para indicar que se puede hacer zoom out */
 }
 
 /* Ajusta el tamaño del contenedor de la imagen para evitar desbordamiento horizontal */
@@ -75,4 +83,20 @@ select {
   overflow-x: hidden; /* Evita que el contenido desborde horizontalmente */
   overflow-y: auto; /* Permite el desplazamiento vertical */
   text-align: center; /* Centra las imágenes dentro del contenedor */
+}
+
+/* Media query para pantallas grandes */
+@media (min-width: 768px) {
+  #comicViewer img {
+    width: 750px; /* Mantener el ancho fijo en pantallas grandes */
+  }
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 767px) {
+  #comicViewer img {
+    max-width: 90%; /* Ligeramente menos ancho que la pantalla */
+    width: auto; /* Permite que la imagen se ajuste al ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
 }

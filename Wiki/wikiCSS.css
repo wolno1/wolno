@@ -297,3 +297,120 @@
 .custom-next {
   right: 10px;
 }
+
+@media screen and (max-width: 767px) {
+  /* Ajustes generales */
+  .character-info {
+      padding: 10px;
+  }
+
+  .row {
+      flex-direction: column;
+  }
+
+  .column-3-5, .column-2-5 {
+      flex-basis: 100%;
+      margin: 0;
+  }
+
+  .container {
+      margin-bottom: 20px;
+  }
+
+  .container img {
+      width: 100%;
+      height: auto;
+  }
+
+  .container button {
+      width: 100%;
+      margin-top: 10px;
+  }
+
+  /* Ajustes para la tabla */
+  #firstTable td {
+      padding: 5px;
+      font-size: 14px;
+  }
+
+  /* Ajustes para la galería */
+  .custom-gallery {
+      max-height: none;
+      overflow-y: visible;
+  }
+
+  .custom-gallery .custom-image-container {
+      width: calc(50% - 10px); /* 2 contenedores por fila en móviles */
+      padding-top: 50%; /* Ajusta la proporción para móviles */
+  }
+
+  .custom-gallery .custom-image-container .custom-text {
+      font-size: 12px;
+  }
+
+  /* Ajustes para el modal */
+  .modal-content, .custom-modal-content {
+      max-width: 90%;
+      max-height: 90%;
+  }
+
+  .custom-prev, .custom-next {
+      font-size: 16px;
+      padding: 5px;
+  }
+
+  /* Ajustes para el índice */
+  .index-box {
+      margin-left: 0;
+      margin-bottom: 20px;
+  }
+
+  /* Ajustes para las imágenes en las secciones */
+  .character-info img {
+      width: 100%;
+      height: auto;
+  }
+
+  /* Ajustes para los botones de navegación */
+  .prev, .next {
+      font-size: 16px;
+      padding: 5px;
+  }
+
+  /* Ajustes para el texto en las secciones */
+  .character-info p, .character-info li {
+      font-size: 14px;
+  }
+
+  /* Ajustes para los títulos */
+  .character-info h1, .character-info h2, .character-info h3 {
+      font-size: 18px;
+  }
+
+  /* Ajustes para el contenedor principal */
+  .w3-container.w3-blue.custom-style {
+      margin: 10px;
+      padding: 10px;
+  }
+
+  /* Ajustes para el botón de más información */
+  .container button {
+      font-size: 14px;
+  }
+
+  /* Ajustes para la tabla expandida */
+  #expandedTable {
+      animation-duration: 0.3s;
+  }
+
+  /* Ajustes para el modal personalizado */
+  .custom-modal-content {
+      max-width: 90%;
+      max-height: 90%;
+  }
+
+  .custom-prev, .custom-next {
+      font-size: 16px;
+      padding: 5px;
+  }
+}
