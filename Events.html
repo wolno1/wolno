@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wolno Page!</title>
+    
+        <!-- CSS files -->
+        <link rel="stylesheet" href="IndexCSS.css">
+    
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
+    
+        <!-- JS libraries -->
+        <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+    
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Wolno Page!">
+        <meta property="og:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
+        <meta property="og:image" content="http://awsartzzz.com/IMG/icon.jpg">
+        <meta property="og:url" content="http://awsartzzz.com/">
+        <meta property="og:type" content="website">
+    
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Wolno Page!">
+        <meta name="twitter:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
+        <meta name="twitter:image" content="http://awsartzzz.com/IMG/icon.jpg">
+    <style>
+.events-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    border: 2px solid white;
+    text-align: center;
+}
+
+/* Título del año */
+.events-container h2 {
+    font-size: 24px;
+    color: #ff00e8;
+    margin-bottom: 20px;
+}
+
+/* Grid de eventos */
+.events-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Tarjeta de evento */
+.event-card {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Imagen del evento */
+.event-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Nombre del evento */
+.event-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: white;
+}
+
+/* Diseño responsivo */
+@media screen and (max-width: 600px) {
+    .events-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .events-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-card {
+        width: 90%;
+    }
+
+    .event-image img {
+        height: 120px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav"></div>
+
+<div class="sidebar-toggle">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
+
+<div class="topnav">
+    <img src="IMG\LOGO.png" alt="Logo" class="topnav">
+    <div id="nav-links"></div>
+</div>
+
+<h1 style="color: white; padding-top: 25px;">Events I've been to!</h1>
+    
+<div class="events-container">
+    <h2>2025</h2>
+    <div class="events-grid">
+        <a href="Events/Expofur2025/Expofur2025.html">
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="Events/Expofur2025/Expofur2025.png" alt="ExpoFur 2025">
+                </div>
+                <h3>ExpoFur 2025</h3>
+            </div>
+        </a>        
+        <!-- More events -->
+    </div>
+</div>
+    <script src="IndexScript.js"></script>
+</body>
+</html>

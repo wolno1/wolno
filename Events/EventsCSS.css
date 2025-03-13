@@ -1,0 +1,103 @@
+@import url(../IndexCSS.css);
+
+body::after {
+    content: "";
+    display: block;
+    height: 120px; /* Ajusta según lo que necesites */
+}
+
+
+.blog-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px; /* Ajustado para mantener el espacio interno */
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    border: 2px solid white;
+
+    /* Más espacio en la parte superior e inferior */
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+
+
+.blog-img {
+    width: 45%;  /* Reduce el espacio horizontal de la imagen */
+    max-width: 350px;  /* Ajustado para mejor presentación */
+    border-radius: 10px;
+}
+
+.blog-img-large {
+    width: 100%; /* Mantiene la última imagen en tamaño completo */
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.blog-images-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las imágenes */
+    margin-bottom: 30px;
+}
+
+.blog-img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48%;
+}
+
+.blog-img-container p {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #ddd; /* Opcional: estilo del texto */
+}
+
+/* Ya tienes esto pero lo pongo para que sepas que sigue funcionando */
+.blog-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.blog-text {
+    width: 55%; /* Aumenta el espacio del texto */
+    text-align: left;
+}
+
+.full-width {
+    justify-content: center; /* Centra el contenido */
+}
+
+.full-width .blog-text {
+    width: 100%;
+    text-align: left;
+}
+
+
+@media screen and (max-width: 768px) {
+    .blog-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .blog-images-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blog-img-container {
+        width: 80%;
+    }
+
+    .blog-text {
+        width: 100%;
+    }
+
+    .blog-img {
+        width: 80%;
+    }
+}
