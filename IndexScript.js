@@ -149,3 +149,20 @@ function generateMenuItems() {
 window.onload = function() {
     generateMenuItems();
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    var script = document.createElement('script');
+    script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+  
+    script.onload = function() {
+      kofiWidgetOverlay.draw('wolno', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support art!',
+        'floating-chat.donateButton.background-color': '#794bc4',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    };
+  });
+  
