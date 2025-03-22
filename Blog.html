@@ -28,14 +28,6 @@
     <meta name="twitter:image" content="http://awsartzzz.com/IMG/icon.jpg">
 
     <style>
-        body {
-            background-color: #1a1a1a;
-            color: #fff;
-
-            margin: 0;
-            padding: 0;
-        }
-
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -66,36 +58,50 @@
         }
 
         .blog-post {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid #ff00e8;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(255, 0, 232, 0.6);
-        }
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid #ff00e8;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(255, 0, 232, 0.6);
+    }
 
-        .blog-post h2 {
-            color: #ff00e8;
-            font-size: 28px;
-        }
+    .blog-content {
+        flex: 2;
+        padding-left: 20px;
+    }
 
-        .blog-post p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    .blog-post h2 {
+        color: #ff00e8;
+        font-size: 28px;
+    }
 
-        .blog-post .blog-date {
-            font-size: 14px;
-            color: #aaaaaa;
-            margin-bottom: 10px;
-        }
+    .blog-post p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
 
-        .blog-image {
-            width: 100%;
-            height: auto;
-            margin: 15px 0;
-            border-radius: 10px;
-        }
+    .blog-date {
+        font-size: 14px;
+        color: #aaaaaa;
+        margin-bottom: 10px;
+    }
+
+        .blog-image-container {
+        flex: 1;
+        max-width: 40%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .blog-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
 
         /* Dropdown menu styles */
         .dropdown-btn {
@@ -129,6 +135,22 @@
         .dropdown-content a:hover {
             background-color: #ff00e8;
         }
+
+        @media (max-width: 768px) {
+        .blog-post {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .blog-image-container {
+            max-width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .blog-content {
+            padding-left: 0;
+        }
+    }
     </style>
 </head>
 <body>
@@ -151,28 +173,18 @@
             <h1>Wolno's Blog</h1>
 
             <!-- Blog Post 1 -->
+            <a href="Events/Expofur2025/Expofur2025.html">
             <div class="blog-post" id="post1">
-                <h2>🎨 My Latest Art Commission - March 2025</h2>
-                <p class="blog-date">March 20, 2025</p>
-                <img src="IMG/sample_art.jpg" alt="Art Sample" class="blog-image">
-                <p>This month I finished an awesome commission for a fellow furry artist! It features a cyberpunk-themed wolf with neon accents. I'm really proud of the shading and lighting effects I used. Check it out in my gallery!</p>
+                <div class="blog-image-container" id="image-container1">
+                    <img src="Events\Expofur2025\Expofur2025.png" alt="Art Sample" class="blog-image">
+                </div>
+                <div class="blog-content">
+                    <h2>ExpoFur 2025!</h2>
+                    <p class="blog-date">March 9, 2025</p>
+                    <p>I had a table at the ExpoFur con in 2025!</p>
+                </div>
             </div>
-
-            <!-- Blog Post 2 -->
-            <div class="blog-post" id="post2">
-                <h2>💻 New Coding Project - Interactive Comic Viewer</h2>
-                <p class="blog-date">March 10, 2025</p>
-                <img src="IMG/sample_code.jpg" alt="Code Sample" class="blog-image">
-                <p>I’ve started working on an interactive viewer for my comic "Inu-sual Feelings"! It’s going to allow you to flip through chapters, interact with characters, and even listen to the soundtrack while reading. Stay tuned for updates!</p>
-            </div>
-
-            <!-- Blog Post 3 -->
-            <div class="blog-post" id="post3">
-                <h2>🦊 Life as a Furry Artist</h2>
-                <p class="blog-date">March 5, 2025</p>
-                <img src="IMG/sample_furry.jpg" alt="Furry Life" class="blog-image">
-                <p>Being a furry artist has its ups and downs, but it's a journey I wouldn't trade for anything! In this post, I share some insights on commissions, building a community, and balancing creativity with self-care.</p>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -180,9 +192,7 @@
     <div class="side-column">
         <button class="dropdown-btn" onclick="toggleDropdown()">🔽 Blog Posts</button>
         <div class="dropdown-content" id="dropdownMenu">
-            <a href="#post1">🎨 My Latest Art Commission</a>
-            <a href="#post2">💻 New Coding Project</a>
-            <a href="#post3">🦊 Life as a Furry Artist</a>
+            <a href="Events/Expofur2025/Expofur2025.html">ExpoFur 2025!</a>
         </div>
     </div>
 </div>
@@ -200,6 +210,17 @@
         const menu = document.getElementById("dropdownMenu");
         menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".blog-post").forEach(post => {
+            const imgContainer = post.querySelector(".blog-image-container");
+            const img = imgContainer ? imgContainer.querySelector("img") : null;
+            
+            if (!img || !img.src.trim()) {
+                imgContainer.remove();
+            }
+        });
+    });
 </script>
 
 <script src="IndexScript.js"></script>

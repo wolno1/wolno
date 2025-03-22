@@ -27,6 +27,122 @@
     <meta name="twitter:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
     <meta name="twitter:image" content="http://awsartzzz.com/IMG/icon.jpg">
 
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* Left column: Blog Posts */
+        .main-column {
+            flex: 3;
+            padding: 20px;
+        }
+
+        /* Right column: Quick Access */
+        .side-column {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 2px solid #ff00e8;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 0, 232, 0.5);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .blog-container {
+            padding: 20px;
+        }
+
+        .blog-post {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid #ff00e8;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(255, 0, 232, 0.6);
+        }
+
+        .blog-content {
+            flex: 2;
+            padding-left: 20px;
+        }
+
+        .blog-post h2 {
+            color: #ff00e8;
+            font-size: 28px;
+        }
+
+        .blog-post p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .blog-date {
+            font-size: 14px;
+            color: #aaaaaa;
+            margin-bottom: 10px;
+        }
+
+        .blog-image-container {
+            flex: 1;
+            max-width: 40%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .blog-image {
+            max-width: 50%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Twitter Container */
+        .twitter-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 0, 232, 0.5);
+            padding: 20px;
+        }
+
+        /* New container for both blog and twitter */
+        .columns-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .columns-container {
+                flex-direction: column;
+            }
+
+            .blog-post {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .blog-image-container {
+                max-width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .blog-content {
+                padding-left: 0;
+            }
+
+            .twitter-container {
+                margin-top: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -63,9 +179,32 @@
     </div>
 </div>
 
-<div class="twitter-container">
-    <a class="twitter-timeline" data-lang="en" data-width="600" data-height="600" data-dnt="true" data-theme="dark" href="https://twitter.com/AwsArtzzz?ref_src=twsrc%5Etfw">Tweets by AwsArtzzz</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- New columns container -->
+<div class="columns-container">
+    <!-- Blog Post Section -->
+    <div class="custom-style blog-container">
+        <h1>Latest Blog!!</h1>
+
+        <!-- Blog Post 1 -->
+        <a href="Events/Expofur2025/Expofur2025.html">
+            <div class="blog-post" id="post1">
+                <div class="blog-image-container" id="image-container1">
+                    <img src="Events\Expofur2025\Expofur2025.png" alt="Art Sample" class="blog-image">
+                </div>
+                <div class="blog-content">
+                    <h2>ExpoFur 2025!</h2>
+                    <p class="blog-date">March 9, 2025</p>
+                    <p>I had a table at the ExpoFur con in 2025!</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Twitter Section -->
+    <div class="twitter-container">
+        <a class="twitter-timeline" data-lang="en" data-width="600" data-height="600" data-dnt="true" data-theme="dark" href="https://twitter.com/AwsArtzzz?ref_src=twsrc%5Etfw">Tweets by AwsArtzzz</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 </div>
 
 <script>

@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function createNavLinks() {
-    const links = ["Home", "About me", "Portfolio", "Characters", "Comics", "Events", "FAQs"];
-    const hrefs = ["../../index.html", "../../About.html", "../../Portfolio.html", "../../Characters.html", "../../Comics.html", "../../Events.html", "../../FAQs.html"];
+    const links = ["Home", "About me", "Portfolio", "Characters", "Comics", "Blog", "Events", "FAQs"];
+    const hrefs = ["../../index.html", "../../About.html", "../../Portfolio.html", "../../Characters.html", "../../Comics.html", "../../Blog.html", "../../Events.html", "../../FAQs.html"];
     const navLinksElement = document.getElementById('nav-links');
 
     links.forEach((link, i) => {
@@ -141,6 +141,7 @@ function generateMenuItems() {
         { href: "../../Portfolio.html", text: "Portfolio" },
         { href: "../../Characters.html", text: "Characters" },
         { href: "../../Comic.html", text: "Comics" },
+        { href: "../../Blog.html", text: "Blog" },
         { href: "../../Events.html", text: "Events" },
         { href: "../../FAQs.html", text: "FAQs" }
     ];
