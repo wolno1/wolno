@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function generateMenuItems() {
     var menuItems = [
-        { href: "Index.html", text: "Home" },
+        { href: "index.html", text: "Home" },
         { href: "About.html", text: "About me" },
         { href: "Portfolio.html", text: "Portfolio" },
         { href: "Characters.html", text: "Characters" },
