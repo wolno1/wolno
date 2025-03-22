@@ -17,16 +17,25 @@ body {
 }
 @font-face {
     font-family: 'Comic Sans MS';
-    src: url('Fonts/CSP.TTF'); /* Replace with the actual path to your Comic Sans MS font file */
+    src: url('Fonts/CSP.woff2') format('woff2'),
+         url('Fonts/CSP.woff') format('woff'),
+         url('Fonts/CSP.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
+/* Fuente japonesa HGRPP1 */
 @font-face {
     font-family: 'HGRPP1';
-    src: url('Fonts/HGRPP1.TTF'); /* Replace with the actual path to your Japanese font file */
+    src: url('Fonts/HGRPP1.woff2') format('woff2'), /* Formato más moderno y ligero */
+         url('Fonts/HGRPP1.woff') format('woff'),   /* Formato compatible con la mayoría */
+         url('Fonts/HGRPP1.TTF') format('truetype'); /* Último recurso si los demás no funcionan */
     unicode-range: U+3000-303F, /* CJK symbols and punctuation */
                    U+3040-309F, /* Hiragana */
                    U+30A0-30FF, /* Katakana */
                    U+4E00-9FFF; /* CJK Unified Ideographs */
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* Ensure Japanese text uses the HGRPP1 font */
@@ -221,9 +230,14 @@ body {
     font-family: 'Pixel mana', sans-serif;
 }
 
+/* Fuente Pixel mana */
 @font-face {
     font-family: 'Pixel mana';
-    src: url('Fonts/dpcomic.regular.ttf'); /* Reemplaza 'ruta/a/tu/font/ComicSansMS.ttf' con la ruta real a tu archivo de fuente */
+    src: url('Fonts/dpcomic.regular.woff2') format('woff2'),
+         url('Fonts/dpcomic.regular.woff') format('woff'),
+         url('Fonts/dpcomic.regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .inusual {
