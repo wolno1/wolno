@@ -140,7 +140,7 @@ function generateMenuItems() {
         { href: "../../About.html", text: "About me" },
         { href: "../../Portfolio.html", text: "Portfolio" },
         { href: "../../Characters.html", text: "Characters" },
-        { href: "../../Comic.html", text: "Comics" },
+        { href: "../../Comics.html", text: "Comics" },
         { href: "../../Blog.html", text: "Blog" },
         { href: "../../Events.html", text: "Events" },
         { href: "../../FAQs.html", text: "FAQs" }
