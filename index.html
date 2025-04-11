@@ -112,6 +112,12 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+
+            
+            h1 {
+            font-size: 1.8rem;
+        }
+
             .columns-container {
                 flex-direction: column;
             }
@@ -128,11 +134,47 @@
 
             .blog-content {
                 padding-left: 0;
+                font-size: 0.9rem;
             }
 
             .twitter-container {
                 margin-top: 20px;
+                width: 100% !important;
             }
+            .blog-content h2 {
+            font-size: 1.3rem;
+        }
+
+        
+
+        @media (max-width: 480px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .blog-content h2 {
+            font-size: 1.2rem;
+        }
+
+        .blog-content p {
+            font-size: 0.8rem;
+        }
+
+        .blog-image {
+            max-width: 200px;
+        }
+
+        #slider-container {
+            height: 200px; /* Adjust the height for smaller screens */
+            overflow: hidden; /* Ensure no overflow */
+        }
+
+        .slider .slide img {
+            height: 100%; /* Ensure images fit within the container */
+            width: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Crop images to fit the container */
+        }
+    }
         }
     </style>
 </head>

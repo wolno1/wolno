@@ -95,6 +95,47 @@
             transform: translate(-50%, -50%);
             text-align: center;
         }
+
+            /* Responsive Design */
+    @media (max-width: 768px) {
+        .gallery .image-container {
+            width: calc(100% - 10px); /* Full width for smaller screens */
+        }
+
+        .collapsible {
+            font-size: 16px;
+            padding: 15px;
+        }
+
+        .modal-content img {
+            max-height: 70vh;
+        }
+
+        .modal-content .prev, .modal-content .next {
+            font-size: 20px;
+            padding: 8px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .collapsible {
+            font-size: 14px;
+            padding: 12px;
+        }
+
+        .gallery .image-container .text {
+            font-size: 14px;
+        }
+
+        .modal-content img {
+            max-height: 60vh;
+        }
+
+        .modal-content .prev, .modal-content .next {
+            font-size: 18px;
+            padding: 6px;
+        }
+    }
     </style>
 </head>
 
