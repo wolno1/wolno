@@ -506,3 +506,29 @@ a.active {
     }
 }
 
+@media (max-width: 768px) {
+    .patreon-link, .kofi-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px; /* Adjust padding for smaller buttons */
+        width: 50px; /* Set a fixed width for the buttons */
+        height: 50px; /* Set a fixed height for the buttons */
+        border-radius: 50%; /* Make the buttons circular */
+        font-size: 0; /* Hide the text */
+    }
+
+    .patreon-link {
+        background-color: #f96854; /* Keep the Patreon background color */
+    }
+
+    .kofi-link {
+        background-color: #29abe0; /* Keep the Ko-fi background color */
+    }
+
+    .patreon-logo, .kofi-logo {
+        display: block; /* Show the logos */
+        width: 24px; /* Adjust logo size */
+        height: 24px;
+    }
+}

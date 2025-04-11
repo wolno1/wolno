@@ -152,43 +152,60 @@ window.onload = function() {
 };
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Add Patreon button
+document.addEventListener('DOMContentLoaded', function () {
+    // Create Patreon button
     var patreonContainer = document.createElement('div');
-    patreonContainer.className = 'patreon-container';
+    patreonContainer.className = 'custom-patreon-button';
     patreonContainer.style.position = 'fixed';
-    patreonContainer.style.bottom = '140px'; // Positioned above the Ko-fi button
-    patreonContainer.style.left = '20px'; // Positioned on the left side
+    patreonContainer.style.bottom = '140px'; // Position above the Ko-fi button
+    patreonContainer.style.left = '20px'; // Align to the left side
     patreonContainer.style.zIndex = '999'; // Ensure it appears above other elements
+    patreonContainer.style.width = '50px'; // Fixed width for the icon
+    patreonContainer.style.height = '50px'; // Fixed height for the icon
 
     patreonContainer.innerHTML = `
-        <div style="line-height: 0;">
-            <iframe src="https://www.patreon.com/platform/iframe?widget=become-patron-button&amp;redirectURI=https%3A%2F%2Fawsartzzz.com&amp;creatorID=55232597" 
-                scrolling="no" 
-                allowtransparency="true" 
-                frameborder="0" 
-                class="patreon-widget" 
-                title="Patreon Widget" 
-                style="width: 176px; height: 36px; border: none;">
-            </iframe>
-        </div>
+        <a href="https://www.patreon.com/c/wolno/membership" target="_blank" style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f96854;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        " onmouseover="this.style.transform='scale(1.1)';" 
+           onmouseout="this.style.transform='scale(1)';">
+            <img src="SVG/Patreon.svg" alt="Patreon" style="width: 24px; height: 24px;">
+        </a>
     `;
     document.body.appendChild(patreonContainer);
 
-    // Add Ko-fi button
-    var kofiScript = document.createElement('script');
-    kofiScript.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
-    kofiScript.async = true;
-    document.body.appendChild(kofiScript);
+    // Create Ko-fi button
+    var kofiContainer = document.createElement('div');
+    kofiContainer.className = 'custom-kofi-button';
+    kofiContainer.style.position = 'fixed';
+    kofiContainer.style.bottom = '80px'; // Position below the Patreon button
+    kofiContainer.style.left = '20px'; // Align to the left side
+    kofiContainer.style.zIndex = '999'; // Ensure it appears above other elements
+    kofiContainer.style.width = '50px'; // Fixed width for the icon
+    kofiContainer.style.height = '50px'; // Fixed height for the icon
 
-    kofiScript.onload = function() {
-        kofiWidgetOverlay.draw('wolno', {
-            'type': 'floating-chat',
-            'floating-chat.donateButton.text': 'Support art!',
-            'floating-chat.donateButton.background-color': '#794bc4',
-            'floating-chat.donateButton.text-color': '#fff',
-            'floating-chat.position.bottom': '80px', // Adjusted to move it lower
-            'floating-chat.position.left': '20px' // Positioned on the left side
-        });
-    };
+    kofiContainer.innerHTML = `
+        <a href="https://ko-fi.com/wolno/tiers" target="_blank" style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #29abe0;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        " onmouseover="this.style.transform='scale(1.1)';" 
+           onmouseout="this.style.transform='scale(1)';">
+            <img src="SVG/Kofi.svg" alt="Ko-fi" style="width: 24px; height: 24px;">
+        </a>
+    `;
+    document.body.appendChild(kofiContainer);
 });
