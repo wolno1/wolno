@@ -150,20 +150,41 @@ function generateMenuItems() {
 window.onload = function() {
     generateMenuItems();
 };
-
 document.addEventListener('DOMContentLoaded', function() {
-    var script = document.createElement('script');
-    script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
-    script.async = true;
-    document.body.appendChild(script);
-  
-    script.onload = function() {
-      kofiWidgetOverlay.draw('wolno', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Support art!',
-        'floating-chat.donateButton.background-color': '#794bc4',
-        'floating-chat.donateButton.text-color': '#fff'
-      });
+    // Add Patreon button
+    var patreonContainer = document.createElement('div');
+    patreonContainer.className = 'patreon-container';
+    patreonContainer.style.position = 'fixed';
+    patreonContainer.style.bottom = '140px'; // Positioned above the Ko-fi button
+    patreonContainer.style.left = '20px'; // Positioned on the left side
+    patreonContainer.style.zIndex = '999'; // Ensure it appears above other elements
+
+    patreonContainer.innerHTML = `
+        <a href="https://www.patreon.com/bePatron?u=55232597" data-patreon-widget-type="become-patron-button">
+            Become a member!
+        </a>
+    `;
+    document.body.appendChild(patreonContainer);
+
+    var patreonScript = document.createElement('script');
+    patreonScript.src = 'https://c6.patreon.com/becomePatronButton.bundle.js';
+    patreonScript.async = true;
+    document.body.appendChild(patreonScript);
+
+    // Add Ko-fi button
+    var kofiScript = document.createElement('script');
+    kofiScript.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
+    kofiScript.async = true;
+    document.body.appendChild(kofiScript);
+
+    kofiScript.onload = function() {
+        kofiWidgetOverlay.draw('wolno', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Support art!',
+            'floating-chat.donateButton.background-color': '#794bc4',
+            'floating-chat.donateButton.text-color': '#fff',
+            'floating-chat.position.bottom': '80px', // Adjusted to move it lower
+            'floating-chat.position.left': '20px' // Positioned on the left side
+        });
     };
-  });
-  
+});
