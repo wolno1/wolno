@@ -150,6 +150,8 @@ function generateMenuItems() {
 window.onload = function() {
     generateMenuItems();
 };
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Add Patreon button
     var patreonContainer = document.createElement('div');
@@ -160,16 +162,18 @@ document.addEventListener('DOMContentLoaded', function() {
     patreonContainer.style.zIndex = '999'; // Ensure it appears above other elements
 
     patreonContainer.innerHTML = `
-        <a href="https://www.patreon.com/bePatron?u=55232597" data-patreon-widget-type="become-patron-button">
-            Become a member!
-        </a>
+        <div style="line-height: 0;">
+            <iframe src="https://www.patreon.com/platform/iframe?widget=become-patron-button&amp;redirectURI=https%3A%2F%2Fawsartzzz.com&amp;creatorID=55232597" 
+                scrolling="no" 
+                allowtransparency="true" 
+                frameborder="0" 
+                class="patreon-widget" 
+                title="Patreon Widget" 
+                style="width: 176px; height: 36px; border: none;">
+            </iframe>
+        </div>
     `;
     document.body.appendChild(patreonContainer);
-
-    var patreonScript = document.createElement('script');
-    patreonScript.src = 'https://c6.patreon.com/becomePatronButton.bundle.js';
-    patreonScript.async = true;
-    document.body.appendChild(patreonScript);
 
     // Add Ko-fi button
     var kofiScript = document.createElement('script');

@@ -230,9 +230,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var patreonContainer = document.createElement('div');
     patreonContainer.className = 'patreon-container';
     patreonContainer.style.position = 'fixed';
-    patreonContainer.style.bottom = '140px'; // Positioned above the Ko-fi button
-    patreonContainer.style.left = '20px'; // Positioned on the left side
-    patreonContainer.style.zIndex = '999'; // Ensure it appears above other elements
+    patreonContainer.style.bottom = '140px';
+    patreonContainer.style.left = '20px';
+    patreonContainer.style.zIndex = '999';
 
     patreonContainer.innerHTML = `
         <a href="https://www.patreon.com/bePatron?u=55232597" data-patreon-widget-type="become-patron-button">
