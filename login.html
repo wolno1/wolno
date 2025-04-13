@@ -110,7 +110,7 @@ position: absolute;
             if (user) {
                 // User is signed in, redirect to Index.html
                 console.log("User authenticated:", user.uid);
-                window.location.href = "Index.html";
+                window.location.href = "index.html";
             }
         });
     
@@ -129,7 +129,7 @@ position: absolute;
                 alert("Succesful login!");
     
                 // Redirigir al usuario a la página principal
-                window.location.href = "Index.html";
+                window.location.href = "index.html";
             } catch (error) {
                 console.error("Log-in error:", error.message);
                 if (error.code === "auth/user-not-found") {

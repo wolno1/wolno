@@ -574,7 +574,46 @@
 
 <script>
 // Comments system functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // Incluir palabras prohibidas directamente en el código
+    let bannedWords = [
+        "nigga",
+        "nigger",
+        "beaner",
+        "jigaboo",
+        "faggot",
+        "fag",
+        "retard",
+        "retarded",
+        "retards",
+        "nigga",
+        "tranny",
+        "cunny",
+        "loli",
+        "lolis",
+        "cum",
+        "cumming",
+        "nya"
+    ]
+    
+    // Función para verificar si un texto contiene palabras prohibidas
+    function containsBannedWords(text) {
+        console.log("Verificando texto contra palabras prohibidas:", text);
+        if (!bannedWords || bannedWords.length === 0) {
+            console.log("No hay palabras prohibidas cargadas");
+            return false;
+        }
+        
+        for (const word of bannedWords) {
+            if (text.toLowerCase().includes(word.toLowerCase())) {
+                console.log(`Palabra prohibida encontrada: ${word}`);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    // Continuar con el resto del código...
     import("https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js").then((firebaseFirestore) => {
         import("https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js").then((firebaseAuth) => {
             const { getFirestore, collection, addDoc, getDocs, getDoc, doc, query, where, orderBy, deleteDoc, serverTimestamp } = firebaseFirestore;
@@ -630,32 +669,40 @@ currentUserName.textContent = userData.nombreUsuario || 'User';
             
             // Post a new comment
             async function postComment(text, replyTo = "") {
-                if (!currentUser || !text.trim()) return;
-                
-                try {
-                    const commentData = {
-                        comentario: text.trim(),
-                        fecha: serverTimestamp(),
-                        pagina: "Inu",
-                        respuesta: replyTo,
-                        userId: currentUser.uid
-                    };
-                    
-                    await addDoc(collection(db, "comentario"), commentData);
-                    
-                    // Clear the input field
-                    if (!replyTo) {
-                        commentText.value = '';
-                    }
-                    
-                    // Reload comments to show the new one
-                    loadComments();
-                    
-                } catch (error) {
-                    console.error("Error posting comment:", error);
-                    alert("Failed to post comment. Please try again.");
-                }
-            }
+    if (!currentUser || !text.trim()) return;
+    
+    // Verificar palabras prohibidas
+    if (containsBannedWords(text.trim())) {
+        alert('Tu comentario contiene palabras prohibidas. Por favor, revísalo.');
+        return false; // Indica que el comentario no se publicó
+    }
+    
+    try {
+        const commentData = {
+            comentario: text.trim(),
+            fecha: serverTimestamp(),
+            pagina: "Inu",
+            respuesta: replyTo,
+            userId: currentUser.uid
+        };
+        
+        await addDoc(collection(db, "comentario"), commentData);
+        
+        // Clear the input field
+        if (!replyTo) {
+            commentText.value = '';
+        }
+        
+        // Reload comments to show the new one
+        loadComments();
+        return true; // Indica que el comentario se publicó correctamente
+        
+    } catch (error) {
+        console.error("Error posting comment:", error);
+        alert("Failed to post comment. Please try again.");
+        return false;
+    }
+}
             
             // Delete a comment
             async function deleteComment(commentId) {
@@ -916,30 +963,39 @@ currentUserName.textContent = userData.nombreUsuario || 'User';
                     const replyTextarea = commentEl.querySelector('.reply-textarea');
                     
                                         // Update this part in the sendReplyBtn event listener
-                    sendReplyBtn.addEventListener('click', function() {
-                        const parentId = this.getAttribute('data-parent');
-                        const replyText = replyTextarea.value.trim();
-                        
-                        if (replyText) {
-                            postComment(replyText, parentId).then(() => {
-                                replyTextarea.value = '';
-                                commentEl.querySelector('.reply-form').style.display = 'none';
-                                
-                                // Update reply count or refresh replies
-                                const toggleButton = commentEl.querySelector('.replies-toggle');
-                                if (toggleButton) {
-                                    const currentCount = parseInt(toggleButton.getAttribute('data-count') || '0');
-                                    const newCount = currentCount + 1;
-                                    toggleButton.setAttribute('data-count', newCount);
-                                    
-                                    // Update button text if it's not expanded
-                                    if (toggleButton.getAttribute('data-expanded') === 'false') {
-                                        toggleButton.textContent = `Show ${newCount} ${newCount === 1 ? 'answer' : 'answers'}`;
-                                    }
-                                }
-                            });
-                        }
-                    });
+                                        sendReplyBtn.addEventListener('click', function() {
+    const parentId = this.getAttribute('data-parent');
+    const replyText = replyTextarea.value.trim();
+    
+    // No enviar si está vacío
+    if (!replyText) return;
+    
+    // Verificar palabras prohibidas antes de enviar la respuesta
+    if (containsBannedWords(replyText)) {
+        alert('Tu respuesta contiene palabras prohibidas. Por favor, revísala.');
+        return;
+    }
+    
+    postComment(replyText, parentId).then((success) => {
+        if (success) {
+            replyTextarea.value = '';
+            commentEl.querySelector('.reply-form').style.display = 'none';
+            
+            // Update reply count or refresh replies
+            const toggleButton = commentEl.querySelector('.replies-toggle');
+            if (toggleButton) {
+                const currentCount = parseInt(toggleButton.getAttribute('data-count') || '0');
+                const newCount = currentCount + 1;
+                toggleButton.setAttribute('data-count', newCount);
+                
+                // Update button text if it's not expanded
+                if (toggleButton.getAttribute('data-expanded') === 'false') {
+                    toggleButton.textContent = `Show ${newCount} ${newCount === 1 ? 'answer' : 'answers'}`;
+                }
+            }
+        }
+    });
+});
                 }
                 
                 // Delete button
@@ -952,14 +1008,15 @@ currentUserName.textContent = userData.nombreUsuario || 'User';
             }
             
             // Event listener for posting a comment
-            if (postCommentBtn) {
-                postCommentBtn.addEventListener('click', () => {
-                    const text = commentText.value;
-                    if (text.trim()) {
-                        postComment(text);
-                    }
-                });
-            }
+if (postCommentBtn) {
+    postCommentBtn.addEventListener('click', () => {
+        const text = commentText.value;
+        if (text.trim()) {
+            // La función postComment ya verifica las palabras prohibidas
+            postComment(text);
+        }
+    });
+}
         });
     });
 });

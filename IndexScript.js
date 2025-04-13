@@ -114,7 +114,7 @@ function createNavLinks() {
                 } else {
                     // If the user is not logged in, add a "Log-in" button
                     const loginButton = document.createElement('a');
-                    loginButton.href = "Login.html"; // Redirect to your login page
+                    loginButton.href = "login.html"; // Redirect to your login page
                     loginButton.className = "align-right login-btn";
                     loginButton.textContent = "Log-in";
                     loginButton.style.fontWeight = "bold";
@@ -292,7 +292,7 @@ function generateMenuItems() {
                 } else {
                     // Add Login button
                     const loginButton = document.createElement("a");
-                    loginButton.href = "Login.html";
+                    loginButton.href = "login.html";
                     loginButton.className = "sidebar-button";
                     loginButton.textContent = "Login";
                     loginButton.style.color = "#ff00e8"; // Set color to #ff00e8
