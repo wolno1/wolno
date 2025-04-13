@@ -43,18 +43,101 @@ function createNavLinks() {
     const hrefs = ["index.html", "About.html", "Portfolio.html", "Characters.html", "Comics.html", "Blog.html", "Events.html", "FAQs.html"];
     const navLinksElement = document.getElementById('nav-links');
 
+    // Import Firebase modules (this assumes Firebase is already initialized elsewhere)
+    import("https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js").then((firebaseAuth) => {
+        import("https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js").then((firebaseFirestore) => {
+            const { getAuth, onAuthStateChanged, signOut } = firebaseAuth;
+            const { getFirestore, doc, getDoc } = firebaseFirestore;
+
+            // Get Firebase instances
+            const auth = getAuth();
+            const db = getFirestore();
+
+            // Check if user is logged in
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    try {
+                        // Get user data from Firestore
+                        const userDoc = await getDoc(doc(db, "user", user.uid));
+
+                                                                                                if (userDoc.exists()) {
+                                                    const userData = userDoc.data();
+                                                    const nombreUsuario = userData.nombreUsuario;
+                                                    const fotoPerfil = userData.foto; // Obtener la foto de perfil
+                                                
+                                                    // Add profile link with username and profile picture
+                                                    const profileLink = document.createElement('a');
+                                                    profileLink.href = "Profile.html";
+                                                    profileLink.className = "topnav-button"; // Usar la clase CSS para mantener consistencia
+                                                    profileLink.style.display = "flex";
+                                                    profileLink.style.alignItems = "center";
+                                                    profileLink.style.padding = "0 10px"; // Ajustar el padding para que coincida con los demás botones
+                                                
+                                                    // Create profile picture element
+                                                    const profileImage = document.createElement('img');
+                                                    profileImage.src = fotoPerfil;
+                                                    profileImage.alt = "Profile Picture";
+                                                    profileImage.className = "profile-image"; // Usar una clase CSS para el estilo de la imagen
+                                                
+                                                    // Add profile picture and username to the link
+                                                    profileLink.appendChild(profileImage);
+                                                    profileLink.appendChild(document.createTextNode(nombreUsuario));
+                                                
+                                                    // Append the profile link to the navigation
+                                                    navLinksElement.appendChild(profileLink);
+                                                
+                                                    // Add logout button
+                                                    const logoutButton = document.createElement('a');
+                                                    logoutButton.href = "#";
+                                                    logoutButton.className = "topnav-button logout-btn";
+                                                    logoutButton.textContent = "Logout";
+                                                    logoutButton.style.color = "#ff00e8";
+                                                    logoutButton.style.marginLeft = "10px"; // Espaciado entre el botón de perfil y el de logout
+                                                
+                                                    // Add event listener for logout
+                                                    logoutButton.addEventListener('click', (e) => {
+                                                        e.preventDefault();
+                                                        signOut(auth).then(() => {
+                                                            // Successful logout
+                                                            window.location.href = "index.html"; // Redirect to home page
+                                                        }).catch((error) => {
+                                                            console.error("Error signing out:", error);
+                                                        });
+                                                    });
+                                                
+                                                    // Append the logout button to the navigation
+                                                    navLinksElement.appendChild(logoutButton);
+                                                }
+                    } catch (error) {
+                        console.error("Error fetching user data:", error);
+                    }
+                } else {
+                    // If the user is not logged in, add a "Log-in" button
+                    const loginButton = document.createElement('a');
+                    loginButton.href = "Login.html"; // Redirect to your login page
+                    loginButton.className = "align-right login-btn";
+                    loginButton.textContent = "Log-in";
+                    loginButton.style.fontWeight = "bold";
+                    loginButton.style.color = "#ff00e8";
+                    loginButton.style.cursor = "pointer";
+
+                    navLinksElement.appendChild(loginButton);
+                }
+            });
+        });
+    });
+
+    // Create the standard navigation links
     links.forEach((link, i) => {
         const isActive = window.location.href.includes(hrefs[i]);
         navLinksElement.innerHTML += `
-            <a class="align-right${isActive ? '  active' : ''}" href="${hrefs[i]}">${link}</a>
+            <a class="align-right${isActive ? ' active' : ''}" href="${hrefs[i]}">${link}</a>
         `;
     });
 }
-
-
-createNavLinks();
 //slider
 document.addEventListener('DOMContentLoaded', function() {
+    createNavLinks();
     const slider = document.querySelector('.slider');
     const slides = document.querySelectorAll('.slide');
 
@@ -132,24 +215,98 @@ function generateMenuItems() {
     var closeButton = document.createElement("button");
     closeButton.innerHTML = "&times;"; // Símbolo de cruz
     closeButton.className = "closebtn";
-    closeButton.onclick = function() {
+    closeButton.onclick = function () {
         closeNav();
     };
     menu.appendChild(closeButton);
 
     // Generar los elementos del menú
-    menuItems.forEach(function(item) {
+    menuItems.forEach(function (item) {
         var link = document.createElement("a");
         link.href = item.href;
         link.textContent = item.text;
         menu.appendChild(link);
     });
+
+    // Import Firebase modules
+    import("https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js").then((firebaseAuth) => {
+        import("https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js").then((firebaseFirestore) => {
+            const { getAuth, onAuthStateChanged, signOut } = firebaseAuth;
+            const { getFirestore, doc, getDoc } = firebaseFirestore;
+
+            const auth = getAuth();
+            const db = getFirestore();
+
+            // Check user authentication state
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    try {
+                        // Fetch user data from Firestore
+                        const userDoc = await getDoc(doc(db, "user", user.uid));
+                        if (userDoc.exists()) {
+                            const userData = userDoc.data();
+                            const nombreUsuario = userData.nombreUsuario;
+                            const fotoPerfil = `${userData.foto}`; 
+
+                            // Add Profile button
+                            const profileLink = document.createElement("a");
+                            profileLink.href = "Profile.html";
+                            profileLink.className = "sidebar-button";
+                            profileLink.style.display = "flex";
+                            profileLink.style.alignItems = "center";
+                            profileLink.style.justifyContent = "center"; // Center horizontally
+                            profileLink.style.flexDirection = "column"; // Stack image and text vertically
+                            profileLink.style.textAlign = "center"; // Center text
+
+                            const profileImage = document.createElement("img");
+                            profileImage.src = fotoPerfil;
+                            profileImage.alt = "Profile Picture";
+                            profileImage.style.width = "50px";
+                            profileImage.style.height = "50px";
+                            profileImage.style.borderRadius = "50%";
+                            profileImage.style.marginBottom = "5px"; // Add spacing below the image
+
+                            profileLink.appendChild(profileImage);
+                            profileLink.appendChild(document.createTextNode(nombreUsuario));
+                            menu.appendChild(profileLink);
+
+                            // Add Logout button
+                            const logoutButton = document.createElement("a");
+                            logoutButton.href = "#";
+                            logoutButton.className = "sidebar-button";
+                            logoutButton.textContent = "Logout";
+                            logoutButton.style.color = "#ff00e8"; // Set color to #ff00e8
+                            logoutButton.onclick = (e) => {
+                                e.preventDefault();
+                                signOut(auth).then(() => {
+                                    window.location.href = "index.html";
+                                }).catch((error) => {
+                                    console.error("Error signing out:", error);
+                                });
+                            };
+                            menu.appendChild(logoutButton);
+                        }
+                    } catch (error) {
+                        console.error("Error fetching user data:", error);
+                    }
+                } else {
+                    // Add Login button
+                    const loginButton = document.createElement("a");
+                    loginButton.href = "Login.html";
+                    loginButton.className = "sidebar-button";
+                    loginButton.textContent = "Login";
+                    loginButton.style.color = "#ff00e8"; // Set color to #ff00e8
+                    menu.appendChild(loginButton);
+                }
+            });
+        });
+    });
 }
 
-
-window.onload = function() {
+window.onload = function () {
     generateMenuItems();
 };
+
 
 
 document.addEventListener('DOMContentLoaded', function () {

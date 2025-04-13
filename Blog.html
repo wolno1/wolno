@@ -154,6 +154,26 @@
     </style>
 </head>
 <body>
+    <script type ="module">
+        // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+      
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCCrqVgcHX27jwdGO_CWDilexxN-4q7Q9Q",
+        authDomain: "wolno-ee25d.firebaseapp.com",
+        databaseURL: "https://wolno-ee25d-default-rtdb.firebaseio.com",
+        projectId: "wolno-ee25d",
+        storageBucket: "wolno-ee25d.appspot.com",
+        messagingSenderId: "394350721353",
+        appId: "1:394350721353:web:210ca6a661671a6ba0c298",
+        measurementId: "G-X8BW7ZFY6S"
+      };
+      
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      window.firebaseApp = app; // Make it available globally
+    </script>
 
 <div id="mySidenav" class="sidenav"></div>
 

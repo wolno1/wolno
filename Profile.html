@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="IndexCSS.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="IMG\icon.jpg">
+
+    <!-- JS libraries -->
+    <script src="https://kit.fontawesome.com/aba8b8b914.js" crossorigin="anonymous"></script>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Wolno Page!">
+    <meta property="og:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
+    <meta property="og:image" content="http://awsartzzz.com/IMG/icon.jpg">
+    <meta property="og:url" content="http://awsartzzz.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wolno Page!">
+    <meta name="twitter:description" content="Welcome to my webpage! I'm a professional furry artist and a programmer">
+    <meta name="twitter:image" content="http://awsartzzz.com/IMG/icon.jpg">
+
+    <style>
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff00e8;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 232, 0.6);
+        }
+
+        .profile-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ff00e8;
+            margin-bottom: 15px;
+        }
+
+        .profile-container h2 {
+            margin-bottom: 10px;
+            color: #ff00e8;
+        }
+
+        .profile-container p {
+            margin: 5px 0;
+        }
+
+        .btn {
+            background-color: #ff00e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            background-color: #d400c1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 10% auto;
+            padding: 20px;
+            border: 2px solid #ff00e8;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            color: white;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .modal-content input:focus {
+            outline: none;
+            border: 2px solid #ff00e8;
+        }
+
+        .close {
+            color: #ff00e8;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #d400c1;
+        }
+    </style>
+</head>
+<body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCCrqVgcHX27jwdGO_CWDilexxN-4q7Q9Q",
+        authDomain: "wolno-ee25d.firebaseapp.com",
+        databaseURL: "https://wolno-ee25d-default-rtdb.firebaseio.com",
+        projectId: "wolno-ee25d",
+        storageBucket: "wolno-ee25d.appspot.com",
+        messagingSenderId: "394350721353",
+        appId: "1:394350721353:web:210ca6a661671a6ba0c298",
+        measurementId: "G-X8BW7ZFY6S"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let selectedProfilePicture = null;
+
+    // Load user data
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            try {
+                // Fetch user data from Firestore
+                const userDocRef = doc(db, "user", user.uid);
+                const userDoc = await getDoc(userDocRef);
+
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+
+                    // Update the profile page with user data
+                    document.getElementById("profilePicture").src = userData.foto;
+                    document.getElementById("username").textContent = userData.nombreUsuario;
+                    document.getElementById("email").textContent = user.email;
+                } else {
+                    console.error("User document does not exist.");
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        } else {
+            console.error("No user is logged in.");
+        }
+    });
+
+        // Change profile picture
+    async function updateProfilePicture() {
+        const user = auth.currentUser;
+        if (user && selectedProfilePicture) {
+            try {
+                const userDocRef = doc(db, "user", user.uid);
+                await updateDoc(userDocRef, { foto: selectedProfilePicture });
+                
+                // Update the profile picture in the DOM
+                document.getElementById("profilePicture").src = selectedProfilePicture;
+                
+                alert("Profile picture updated successfully!");
+                closeModal("imageModal");
+                
+                // Refresh the page to ensure all components are updated
+                window.location.reload();
+            } catch (error) {
+                console.error("Error updating profile picture:", error);
+                alert("Failed to update profile picture.");
+            }
+        }
+    }
+
+    // Load profile images into the modal
+    function loadProfileImages() {
+        const pictureGrid = document.getElementById("pictureGrid");
+        const profilePictures = [
+            "Portraits/Wolno.png",
+            "Portraits/Roxanne.png",
+            "Portraits/Laika.png",
+            "Portraits/Inu.png",
+            "Portraits/Chloe.png",
+            "Portraits/Skye.png"
+        ];
+    
+        pictureGrid.innerHTML = ""; // Clear existing images
+        profilePictures.forEach((pic) => {
+            const img = document.createElement("img");
+            img.src = pic;
+            img.alt = "Profile option";
+            img.style.width = "100px";
+            img.style.height = "100px";
+            img.style.objectFit = "cover";
+            img.style.borderRadius = "50%";
+            img.style.margin = "10px";
+            img.style.cursor = "pointer";
+            img.style.border = "2px solid transparent";
+            
+            img.onclick = () => {
+                // First, remove selected class from all images
+                pictureGrid.querySelectorAll('img').forEach(i => {
+                    i.style.border = "2px solid transparent";
+                });
+                
+                // Mark this image as selected
+                img.style.border = "2px solid #ff00e8";
+                selectedProfilePicture = pic;
+            };
+            
+            pictureGrid.appendChild(img);
+        });
+    }
+    
+    // Open the modal and load images
+    function openModal(modalId) {
+        if (modalId === "imageModal") {
+            loadProfileImages();
+            selectedProfilePicture = null; // Reset selection
+        }
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // Change password
+    async function changePassword(event) {
+        event.preventDefault();
+        const currentPassword = document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+
+        const user = auth.currentUser;
+        if (!user) {
+            alert("No user is logged in.");
+            return;
+        }
+
+        try {
+            const credential = EmailAuthProvider.credential(user.email, currentPassword);
+            await reauthenticateWithCredential(user, credential);
+            await updatePassword(user, newPassword);
+            alert("Password updated successfully!");
+            closeModal("passwordModal");
+        } catch (error) {
+            console.error("Error updating password:", error);
+            alert("Failed to update password. Please check your current password.");
+        }
+    }
+
+    // Set up event listeners when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // Change Image button
+        document.getElementById("changeImageBtn").addEventListener('click', () => {
+            openModal('imageModal');
+        });
+
+        // Change Password button
+        document.getElementById("changePasswordBtn").addEventListener('click', () => {
+            openModal('passwordModal');
+        });
+
+        // Close buttons
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', (e) => {
+                const modal = e.target.closest('.modal');
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Confirm image selection button
+        document.getElementById("confirmImageBtn").addEventListener('click', () => {
+            if (selectedProfilePicture) {
+                updateProfilePicture();
+            } else {
+                alert("Please select a profile picture first.");
+            }
+        });
+
+        // Password form submission
+        document.getElementById("passwordForm").addEventListener('submit', (e) => {
+            changePassword(e);
+        });
+    });
+</script>
+<div id="mySidenav" class="sidenav"></div>
+
+<div class="sidebar-toggle">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
+
+<div class="topnav">
+    <img src="IMG\LOGO.png" alt="Logo" class="topnav">
+    <div id="nav-links"></div>
+</div>
+<div class="profile-container">
+    <img id="profilePicture" src="IMG/default.png" alt="Profile Picture">
+    <h2 id="username">Username</h2>
+    <p id="email">Email</p>
+    <button class="btn" id="changeImageBtn">Change Image</button>
+    <button class="btn" id="changePasswordBtn">Change Password</button>
+</div>
+
+<!-- Modal for changing profile picture -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Select a Profile Picture</h3>
+        <div class="grid-container" id="pictureGrid">
+            <!-- Images will be loaded here dynamically -->
+        </div>
+        <button class="btn" id="confirmImageBtn" style="margin-top: 20px;">Confirm Selection</button>
+    </div>
+</div>
+
+<!-- Modal for changing password -->
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Change Password</h3>
+        <form id="passwordForm">
+            <input type="password" id="currentPassword" placeholder="Current Password" required>
+            <input type="password" id="newPassword" placeholder="New Password" required>
+            <button type="submit" class="btn">Update Password</button>
+        </form>
+    </div>
+</div>
+<script src="IndexScript.js"></script>
+</body>
+</html>

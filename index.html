@@ -179,6 +179,26 @@
     </style>
 </head>
 <body>
+<script type ="module">
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+  
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCrqVgcHX27jwdGO_CWDilexxN-4q7Q9Q",
+    authDomain: "wolno-ee25d.firebaseapp.com",
+    databaseURL: "https://wolno-ee25d-default-rtdb.firebaseio.com",
+    projectId: "wolno-ee25d",
+    storageBucket: "wolno-ee25d.appspot.com",
+    messagingSenderId: "394350721353",
+    appId: "1:394350721353:web:210ca6a661671a6ba0c298",
+    measurementId: "G-X8BW7ZFY6S"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  window.firebaseApp = app; // Make it available globally
+</script>
 
 <div id="mySidenav" class="sidenav"></div>
 
@@ -191,9 +211,46 @@
     <div id="nav-links"></div>
 </div>
 
-<h1 style="color: white; padding-top: 25px;">Welcome to my webpage!</h1>
+<h1 id="defaultWelcomeMessage" style="color: white; padding-top: 25px;">Welcome to my webpage!</h1>
+<h1 id="personalizedWelcomeMessage" style="color: white; padding-top: 25px; display: none;"></h1>
 
-<!-- contenido -->
+<script type="module">
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const auth = getAuth();
+    const db = getFirestore();
+
+    onAuthStateChanged(auth, async (user) => {
+        const defaultWelcomeMessage = document.getElementById("defaultWelcomeMessage");
+        const personalizedWelcomeMessage = document.getElementById("personalizedWelcomeMessage");
+
+        if (user) {
+            // Fetch nombreUsuario from Firestore
+            const userDocRef = doc(db, "user", user.uid);
+            try {
+                const userDoc = await getDoc(userDocRef);
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    const nombreUsuario = userData.nombreUsuario;
+                    personalizedWelcomeMessage.textContent = `Welcome back, ${nombreUsuario}!`;
+                } else {
+                    personalizedWelcomeMessage.textContent = "Welcome, User!";
+                }
+            } catch (error) {
+                console.error("Error fetching nombreUsuario:", error);
+                personalizedWelcomeMessage.textContent = "Welcome, User!";
+            }
+            // Hide the default message and show the personalized message
+            defaultWelcomeMessage.style.display = "none";
+            personalizedWelcomeMessage.style.display = "block";
+        } else {
+            // Show the default message and hide the personalized message
+            defaultWelcomeMessage.style.display = "block";
+            personalizedWelcomeMessage.style.display = "none";
+        }
+    });
+</script>
 
 <!-- Basic structure of slider -->
 <div id="slider-container">
