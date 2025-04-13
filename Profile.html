@@ -74,28 +74,156 @@
         }
 
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease;
+    }
 
-        .modal-content {
-            background-color: #222;
-            margin: 10% auto;
-            padding: 20px;
-            border: 2px solid #ff00e8;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 400px;
-            text-align: center;
-            color: white;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .modal-content {
+        background-color: #151515;
+        margin: 30px auto;
+        padding: 30px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 800px;
+        box-shadow: 0 0 25px rgba(255, 0, 232, 0.6);
+        position: relative;
+        animation: slideIn 0.4s ease;
+    }
+
+    @keyframes slideIn {
+        from { transform: translateY(-30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 1px solid #ff00e8;
+        padding-bottom: 15px;
+        position: relative;
+    }
+
+    .modal-title {
+        color: #ff00e8;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .close {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        color: #ff00e8;
+        font-size: 32px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .close:hover {
+        color: #fff;
+        transform: rotate(90deg);
+    }
+
+    /* Character categories */
+    .character-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .character-tab {
+        padding: 8px 16px;
+        background-color: #333;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid #444;
+    }
+
+    .character-tab:hover {
+        background-color: #444;
+    }
+
+    .character-tab.active {
+        background-color: #ff00e8;
+        border-color: #ff00e8;
+    }
+
+    /* Grid container with improved styling */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+        justify-content: center;
+        padding: 20px 10px;
+    }
+
+    .portrait-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease;
+    }
+
+    .portrait-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .portrait-img-container {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .portrait-img-container:hover {
+        border-color: rgba(255, 0, 232, 0.5);
+        box-shadow: 0 5px 15px rgba(255, 0, 232, 0.4);
+    }
+
+    .portrait-img-container.selected {
+        border-color: #ff00e8;
+        box-shadow: 0 0 20px rgba(255, 0, 232, 0.8);
+    }
+
+    .portrait-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .portrait-img-container:hover img {
+        transform: scale(1.1);
+    }
+
+    .portrait-name {
+        margin-top: 8px;
+        color: #ccc;
+        font-size: 14px;
+        text-align: center;
+    }
 
         .modal-content input {
             width: 100%;
@@ -199,56 +327,93 @@
     }
 
     // Load profile images into the modal
-    function loadProfileImages() {
-        const pictureGrid = document.getElementById("pictureGrid");
-        const profilePictures = [
-            "Portraits/Wolno.png",
-            "Portraits/Roxanne.png",
-            "Portraits/Laika.png",
-            "Portraits/Inu.png",
-            "Portraits/Chloe.png",
-            "Portraits/Skye.png"
-        ];
+    const characterProfiles = [
+        { path: "Portraits/Wolno.png", character: "wolno", name: "Wolno" },
+        { path: "Portraits/Roxanne.png", character: "roxanne", name: "Roxanne" },
+        { path: "Portraits/Roxanne2.png", character: "roxanne", name: "Roxanne Alt" },
+        { path: "Portraits/Roxanne3.png", character: "roxanne", name: "Roxanne Casual" },
+        { path: "Portraits/Laika.png", character: "laika", name: "Laika" },
+        { path: "Portraits/Laika2.png", character: "laika", name: "Laika Alt" },
+        { path: "Portraits/Laika3.png", character: "laika", name: "Laika Casual" },
+        { path: "Portraits/Inu.png", character: "inu", name: "Inu" },
+        { path: "Portraits/Inu2.png", character: "inu", name: "Inu Alt" },
+        { path: "Portraits/Inu3.png", character: "inu", name: "Inu Casual" },
+        { path: "Portraits/Chloe.png", character: "chloe", name: "Chloe" },
+        { path: "Portraits/Chloe2.png", character: "chloe", name: "Chloe Alt" },
+        { path: "Portraits/Skye.png", character: "skye", name: "Skye" },
+        { path: "Portraits/Abigail.png", character: "abigail", name: "Abigail" },
+        { path: "Portraits/Abigail2.png", character: "abigail", name: "Abigail Alt" },
+        { path: "Portraits/Abigail3.png", character: "abigail", name: "Abigail Casual" },
+        { path: "Portraits/Abigail4.png", character: "abigail", name: "Abigail Special" },
+    ];
     
+    // Enhanced loadProfileImages function
+    function loadProfileImages(character = 'all') {
+        const pictureGrid = document.getElementById("pictureGrid");
         pictureGrid.innerHTML = ""; // Clear existing images
-        profilePictures.forEach((pic) => {
-            const img = document.createElement("img");
-            img.src = pic;
-            img.alt = "Profile option";
-            img.style.width = "100px";
-            img.style.height = "100px";
-            img.style.objectFit = "cover";
-            img.style.borderRadius = "50%";
-            img.style.margin = "10px";
-            img.style.cursor = "pointer";
-            img.style.border = "2px solid transparent";
-            
-            img.onclick = () => {
-                // First, remove selected class from all images
-                pictureGrid.querySelectorAll('img').forEach(i => {
-                    i.style.border = "2px solid transparent";
-                });
+        
+        characterProfiles.forEach(pic => {
+            if (character === 'all' || pic.character === character) {
+                const portraitItem = document.createElement("div");
+                portraitItem.className = "portrait-item";
                 
-                // Mark this image as selected
-                img.style.border = "2px solid #ff00e8";
-                selectedProfilePicture = pic;
-            };
-            
-            pictureGrid.appendChild(img);
+                const imgContainer = document.createElement("div");
+                imgContainer.className = "portrait-img-container";
+                if (selectedProfilePicture === pic.path) {
+                    imgContainer.classList.add("selected");
+                }
+                
+                const img = document.createElement("img");
+                img.src = pic.path;
+                img.alt = pic.name;
+                
+                imgContainer.appendChild(img);
+                portraitItem.appendChild(imgContainer);
+                
+                const nameLabel = document.createElement("div");
+                nameLabel.className = "portrait-name";
+                nameLabel.textContent = pic.name;
+                portraitItem.appendChild(nameLabel);
+                
+                imgContainer.onclick = function() {
+                    // Remove selection from all images
+                    document.querySelectorAll(".portrait-img-container.selected").forEach(el => {
+                        el.classList.remove("selected");
+                    });
+                    
+                    // Add selection to this image
+                    imgContainer.classList.add("selected");
+                    selectedProfilePicture = pic.path;
+                };
+                
+                pictureGrid.appendChild(portraitItem);
+            }
         });
     }
     
     // Open the modal and load images
     function openModal(modalId) {
         if (modalId === "imageModal") {
-            loadProfileImages();
+            loadProfileImages('all');
+            
+            // Set up character tabs if they aren't already
+            document.querySelectorAll('.character-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.character-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    loadProfileImages(this.dataset.character);
+                });
+            });
+            
             selectedProfilePicture = null; // Reset selection
         }
         document.getElementById(modalId).style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent scrolling behind modal
     }
 
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = "none";
+        document.body.style.overflow = "auto"; // Restore scrolling
     }
 
     // Change password
@@ -296,6 +461,33 @@
                 }
             });
         });
+        
+        // Register these functions to be accessible
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    
+    // Set up event listeners when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // Event listeners for open/close modal functions already exist in your code,
+        // this is just to make sure the character tabs work
+        
+        // Add click events for character tabs
+        document.querySelectorAll('.character-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.character-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                loadProfileImages(this.dataset.character);
+            });
+        });
+        
+        // Close modal on clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = "auto";
+            }
+        });
+    });
 
         // Confirm image selection button
         document.getElementById("confirmImageBtn").addEventListener('click', () => {
@@ -333,12 +525,29 @@
 <!-- Modal for changing profile picture -->
 <div id="imageModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3>Select a Profile Picture</h3>
-        <div class="grid-container" id="pictureGrid">
-            <!-- Images will be loaded here dynamically -->
+        <div class="modal-header">
+            <h3 class="modal-title">Choose Your Avatar</h3>
+            <span class="close">&times;</span>
         </div>
-        <button class="btn" id="confirmImageBtn" style="margin-top: 20px;">Confirm Selection</button>
+        
+        <div class="character-tabs">
+            <div class="character-tab active" data-character="all">All</div>
+            <div class="character-tab" data-character="wolno">Wolno</div>
+            <div class="character-tab" data-character="roxanne">Roxanne</div>
+            <div class="character-tab" data-character="laika">Laika</div>
+            <div class="character-tab" data-character="inu">Inu</div>
+            <div class="character-tab" data-character="chloe">Chloe</div>
+            <div class="character-tab" data-character="skye">Skye</div>
+            <div class="character-tab" data-character="abigail">Abigail</div>
+        </div>
+        
+        <div id="pictureGrid" class="grid-container">
+            <!-- Images will be loaded here -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn" id="confirmImageBtn">Confirm Selection</button>
+        </div>
     </div>
 </div>
 

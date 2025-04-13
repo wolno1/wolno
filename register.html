@@ -83,7 +83,6 @@
             text-decoration: underline;
         }
 
-        /* Estilos para el modal */
         .modal {
         display: none;
         position: fixed;
@@ -92,21 +91,204 @@
         top: 0;
         width: 100%;
         height: 100%;
-        overflow-y: auto; /* Permite desplazamiento si el contenido es demasiado largo */
-        background-color: rgba(0, 0, 0, 0.8);
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     .modal-content {
-        background-color: #222;
-        margin: 0 auto; /* Centra horizontalmente */
-        padding: 20px;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 500px;
-        box-shadow: 0 0 15px rgba(255, 0, 232, 0.6);
+        background-color: #151515;
+        margin: 30px auto;
+        padding: 30px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 800px;
+        box-shadow: 0 0 25px rgba(255, 0, 232, 0.6);
         position: relative;
-        top: 10%; /* Fija el modal cerca de la parte superior */
-        transform: translateY(0); /* Evita que se mueva hacia arriba */
+        animation: slideIn 0.4s ease;
+    }
+
+    @keyframes slideIn {
+        from { transform: translateY(-30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 1px solid #ff00e8;
+        padding-bottom: 15px;
+        position: relative;
+    }
+
+    .modal-title {
+        color: #ff00e8;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .close {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        color: #ff00e8;
+        font-size: 32px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    /* Character categories */
+    .character-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .character-tab {
+        padding: 8px 16px;
+        background-color: #333;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid #444;
+    }
+
+    .character-tab:hover {
+        background-color: #444;
+    }
+
+    .character-tab.active {
+        background-color: #ff00e8;
+        border-color: #ff00e8;
+    }
+
+    /* Grid container with improved styling */
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    justify-content: center;
+    padding: 20px 10px;
+}
+
+/* Remove this conflicting style that's making images 100px instead of 120px */
+.grid-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .portrait-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease;
+    }
+
+    .portrait-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .portrait-img-container {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .portrait-img-container:hover {
+        border-color: rgba(255, 0, 232, 0.5);
+        box-shadow: 0 5px 15px rgba(255, 0, 232, 0.4);
+    }
+
+    .portrait-img-container.selected {
+        border-color: #ff00e8;
+        box-shadow: 0 0 20px rgba(255, 0, 232, 0.8);
+    }
+
+    .portrait-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .portrait-img-container:hover img {
+        transform: scale(1.1);
+    }
+
+    .portrait-name {
+        margin-top: 8px;
+        color: #ccc;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Character category sections */
+    .character-section {
+        display: none;
+    }
+
+    .character-section.active {
+        display: block;
+    }
+
+    /* Selected profile preview enhancement */
+    .profile-preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .profile-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ff00e8;
+}
+
+    .profile-preview img:hover {
+        transform: scale(1.05);
+    }
+
+    .profile-preview button {
+        margin-top: 15px;
+        background-color: #ff00e8;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .profile-preview button:hover {
+        background-color: #d400c1;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 0, 232, 0.4);
+    }
+
+    .close:hover {
+        color: #fff;
+        transform: rotate(90deg);
     }
 
     .modal-content h3 {
@@ -197,28 +379,46 @@
 </head>
 
 <body>
-                                <script type="module">
-                    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-                    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-                    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-                
-                    const firebaseConfig = {
-                        apiKey: "AIzaSyCCrqVgcHX27jwdGO_CWDilexxN-4q7Q9Q",
-                        authDomain: "wolno-ee25d.firebaseapp.com",
-                        databaseURL: "https://wolno-ee25d-default-rtdb.firebaseio.com",
-                        projectId: "wolno-ee25d",
-                        storageBucket: "wolno-ee25d.appspot.com",
-                        messagingSenderId: "394350721353",
-                        appId: "1:394350721353:web:210ca6a661671a6ba0c298",
-                        measurementId: "G-X8BW7ZFY6S"
-                    };
-                
-                    // Inicializar Firebase
-                    const app = initializeApp(firebaseConfig);
-                    const auth = getAuth(app);
-                    const db = getFirestore(app);
-                
-                    let selectedProfilePicture = null;
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCCrqVgcHX27jwdGO_CWDilexxN-4q7Q9Q",
+        authDomain: "wolno-ee25d.firebaseapp.com",
+        databaseURL: "https://wolno-ee25d-default-rtdb.firebaseio.com",
+        projectId: "wolno-ee25d",
+        storageBucket: "wolno-ee25d.appspot.com",
+        messagingSenderId: "394350721353",
+        appId: "1:394350721353:web:210ca6a661671a6ba0c298",
+        measurementId: "G-X8BW7ZFY6S"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Check if user is already logged in, redirect if true
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, redirect to index.html
+            console.log("User already logged in. Redirecting to index.html...");
+            window.location.href = "index.html";
+        } else {
+            // User is not logged in, show registration page
+            console.log("No user logged in. Showing registration page.");
+            document.querySelector(".login-container").style.display = "block";
+        }
+    });
+
+    // Hide the registration container initially until we check auth state
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".login-container").style.display = "none";
+    });
+
+    let selectedProfilePicture = null;
                 
                     // Manejar el registro
                     document.getElementById("registerForm").addEventListener("submit", async (e) => {
@@ -266,27 +466,74 @@
                     const closeBtn = document.querySelector(".close");
                 
                     const profilePictures = [
-                        "Portraits/Wolno.png",
-                        "Portraits/Roxanne.png",
-                        "Portraits/Laika.png",
-                        "Portraits/Inu.png",
-                        "Portraits/Chloe.png",
-                        "Portraits/Skye.png"
-                    ];
+        { path: "Portraits/Wolno.png", character: "wolno"},
+        { path: "Portraits/Roxanne.png", character: "roxanne"},
+        { path: "Portraits/Roxanne2.png", character: "roxanne"},
+        { path: "Portraits/Roxanne3.png", character: "roxanne"},
+        { path: "Portraits/Laika.png", character: "laika"},
+        { path: "Portraits/Laika2.png", character: "laika"},
+        { path: "Portraits/Laika3.png", character: "laika"},
+        { path: "Portraits/Inu.png", character: "inu"},
+        { path: "Portraits/Inu2.png", character: "inu"},
+        { path: "Portraits/Inu3.png", character: "inu"},
+        { path: "Portraits/Chloe.png", character: "chloe"},
+        { path: "Portraits/Chloe2.png", character: "chloe"},
+        { path: "Portraits/Skye.png", character: "skye"},
+        { path: "Portraits/Abigail.png", character: "abigail"},
+        { path: "Portraits/Abigail2.png", character: "abigail"},
+        { path: "Portraits/Abigail3.png", character: "abigail"},
+        { path: "Portraits/Abigail4.png", character: "abigail"},
+    ];
                 
-                    function loadProfileImages() {
-                        pictureGrid.innerHTML = "";
-                        profilePictures.forEach(pic => {
-                            const img = document.createElement("img");
-                            img.src = pic;
-                            img.alt = "Profile option";
-                            img.onclick = function () {
-                                selectProfilePicture(pic);
-                                closeModal();
-                            };
-                            pictureGrid.appendChild(img);
-                        });
-                    }
+        function loadProfileImages(character = 'all') {
+        const pictureGrid = document.getElementById("pictureGrid");
+        pictureGrid.innerHTML = "";
+        
+        profilePictures.forEach(pic => {
+            if (character === 'all' || pic.character === character) {
+                const portraitItem = document.createElement("div");
+                portraitItem.className = "portrait-item";
+                
+                const imgContainer = document.createElement("div");
+                imgContainer.className = "portrait-img-container";
+                if (selectedProfilePicture === pic.path) {
+                    imgContainer.classList.add("selected");
+                }
+                
+                const img = document.createElement("img");
+                img.src = pic.path;
+                img.alt = pic.name;
+                
+                imgContainer.appendChild(img);
+                portraitItem.appendChild(imgContainer);
+                
+                const nameLabel = document.createElement("div");
+                nameLabel.className = "portrait-name";
+                nameLabel.textContent = pic.name;
+                portraitItem.appendChild(nameLabel);
+                
+                imgContainer.onclick = function() {
+                    document.querySelectorAll(".portrait-img-container.selected").forEach(el => {
+                        el.classList.remove("selected");
+                    });
+                    imgContainer.classList.add("selected");
+                    selectProfilePicture(pic.path);
+                    closeModal(); // Add this line to close the modal after selecting an image
+                };
+                
+                pictureGrid.appendChild(portraitItem);
+            }
+        });
+    }
+    // Set up character tabs
+    document.querySelectorAll('.character-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.character-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            loadProfileImages(this.dataset.character);
+        });
+    });
+
                 
                     function selectProfilePicture(picPath) {
                         selectedProfilePicture = picPath;
@@ -301,13 +548,16 @@
                     }
                 
                     function openModal() {
-                        modal.style.display = "block";
-                        loadProfileImages();
-                    }
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent scrolling behind modal
+        loadProfileImages('all');
+    }
                 
-                    function closeModal() {
-                        modal.style.display = "none";
-                    }
+    // Update the closeModal function
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Restore scrolling
+    }
                 
                     document.getElementById("selectProfilePicBtn").addEventListener("click", openModal);
                     closeBtn.addEventListener("click", closeModal);
@@ -330,10 +580,24 @@
                 <!-- Modal para selección de foto de perfil -->
                 <div id="profilePictureModal" class="modal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h3 style="color: #ff00e8; text-align: center;">Select a Profile Picture</h3>
-                        <div class="grid-container" id="pictureGrid">
-                            <!-- Las imágenes se cargarán aquí -->
+                        <div class="modal-header">
+                            <h3 class="modal-title">Choose Your Avatar</h3>
+                            <span class="close">&times;</span>
+                        </div>
+                        
+                        <div class="character-tabs">
+                            <div class="character-tab active" data-character="all">All</div>
+                            <div class="character-tab" data-character="wolno">Wolno</div>
+                            <div class="character-tab" data-character="roxanne">Roxanne</div>
+                            <div class="character-tab" data-character="laika">Laika</div>
+                            <div class="character-tab" data-character="inu">Inu</div>
+                            <div class="character-tab" data-character="chloe">Chloe</div>
+                            <div class="character-tab" data-character="skye">Skye</div>
+                            <div class="character-tab" data-character="abigail">Abigail</div>
+                        </div>
+                        
+                        <div id="pictureGrid" class="grid-container">
+                            <!-- Images will be loaded here -->
                         </div>
                     </div>
                 </div>
