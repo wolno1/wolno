@@ -156,62 +156,133 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Replace the event listener section with this updated version
 document.addEventListener('DOMContentLoaded', function() {
     const chapterSelect = document.getElementById('chapterSelect');
     const readingModeSelect = document.getElementById('readingModeSelect');
     const comicViewer = document.getElementById('comicViewer');
-
+    
+    // Get parameters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const chapterParam = urlParams.get('chapter');
+    const modeParam = urlParams.get('mode');
+    
+    // Set initial values from URL parameters if present
+    if (chapterParam && chapterToPageMap[chapterParam]) {
+        chapterSelect.value = chapterParam;
+    }
+    
+    if (modeParam) {
+        readingModeSelect.value = modeParam;
+    }
+    
+    // Set the current comment page based on reading mode
+    function updateCurrentCommentPage() {
+        if (readingModeSelect.value === 'allPages') {
+            // If "All Pages" is selected, use the general MT page
+        } else {
+            // Otherwise use the chapter-specific page (MT1, MT2, etc)
+            currentCommentPage = chapterToPageMap[chapterSelect.value];
+        }
+        console.log("Comment page set to:", currentCommentPage);
+    }
+    
+    // Function to display comics based on selected mode
+        // Function to display comics based on selected mode
     function displayComic() {
         const selectedChapter = chapterSelect.value;
         const readingMode = readingModeSelect.value;
         
-        // Update the URL hash
-        window.location.hash = `/${selectedChapter}`; // Cambiamos "#" por "/"
-    
-        comicViewer.innerHTML = ''; // Limpiamos el visor de cómics
+        comicViewer.innerHTML = ''; // Clear the comic viewer
     
         if (readingMode === 'onePage') {
-            if (comics[selectedChapter].length > 1) {
+            // Show only the selected chapter
+            if (comics[selectedChapter] && comics[selectedChapter].length > 0) {
                 comics[selectedChapter].forEach(page => {
                     const img = document.createElement('img');
                     img.src = page;
+                    img.alt = `Page from ${selectedChapter}`;
+                    // Remove inline styles to allow CSS to take effect
                     comicViewer.appendChild(img);
+                    
+                    // Add zoom functionality
+                    img.addEventListener('click', function() {
+                        this.classList.toggle('zoomed');
+                    });
                 });
-            } else {
-                const img = document.createElement('img');
-                img.src = comics[selectedChapter][0]; // Mostrar la primera página por defecto
-                comicViewer.appendChild(img);
             }
             chapterSelect.disabled = false;
         } else if (readingMode === 'allPages') {
-            Object.values(comics).forEach(chapterPages => {
-                chapterPages.forEach(page => {
-                    const img = document.createElement('img');
-                    img.src = page;
-                    comicViewer.appendChild(img);
-                });
+            // Show all chapters in sequence
+            console.log("Displaying all chapters");
+            
+            // Get all chapter keys in order
+            const chapterKeys = Object.keys(comics).sort();
+            
+            // Display all pages from all chapters in order
+            chapterKeys.forEach(chapter => {
+                // Add chapter title
+                const chapterTitle = document.createElement('h2');
+                chapterTitle.className = 'chapter-title';
+                chapterTitle.textContent = document.querySelector(`#chapterSelect option[value="${chapter}"]`).textContent;
+                chapterTitle.style.textAlign = 'center';
+                chapterTitle.style.margin = '30px 0 20px 0';
+                comicViewer.appendChild(chapterTitle);
+                
+                // Add chapter pages
+                if (comics[chapter] && comics[chapter].length > 0) {
+                    comics[chapter].forEach(page => {
+                        const img = document.createElement('img');
+                        img.src = page;
+                        img.alt = `Page from ${chapter}`;
+                        // Remove inline styles to allow CSS to take effect
+                        comicViewer.appendChild(img);
+                        
+                        // Add zoom functionality
+                        img.addEventListener('click', function() {
+                            this.classList.toggle('zoomed');
+                        });
+                    });
+                }
             });
+            
             chapterSelect.disabled = true;
         }
     }
     
-    function initializeChapterFromHash() {
-        const hash = window.location.hash.substring(1); // Eliminamos "#" del hash
-        const selectedChapter = hash.replace('/', ''); // Reemplazamos "/" por ""
+    // Set initial comment page and display comic
+    updateCurrentCommentPage();
+    displayComic();
+    
+    // Update when chapter changes
+    chapterSelect.addEventListener('change', function() {
+        const selectedChapter = this.value;
         
-        if (comics.hasOwnProperty(selectedChapter)) {
-            chapterSelect.value = selectedChapter;
-        }
-        displayComic();
-    }
+        // Create new URL with the selected chapter and current mode
+        const url = new URL(window.location.href);
+        url.searchParams.set('chapter', selectedChapter);
+        url.searchParams.set('mode', readingModeSelect.value);
+        
+        // Reload the page with the new parameters
+        window.location.href = url.toString();
+    });
     
-    chapterSelect.addEventListener('change', displayComic);
-    readingModeSelect.addEventListener('change', displayComic);
-    
-    // Inicializamos el visor de cómics basado en la URL hash al cargar la página
-    initializeChapterFromHash();    
+    // Update when reading mode changes
+    readingModeSelect.addEventListener('change', function() {
+        const selectedMode = this.value;
+        
+        // Create new URL with the current chapter and selected mode
+        const url = new URL(window.location.href);
+        url.searchParams.set('chapter', chapterSelect.value);
+        url.searchParams.set('mode', selectedMode);
+        
+        // Reload the page with the new parameters
+        window.location.href = url.toString();
+    });
 });
 
+// Make loadComments accessible globally
+window.loadComments = loadComments;
 function toggleAccordion(button) {
     const content = button.nextElementSibling;
     content.classList.toggle('active');
