@@ -334,9 +334,854 @@
     </div>
 </div>
 
-<div class="w3-container w3-blue custom-style">
-    <h3>If u wanna add a comment, DM me on <a href="https://discord.com/users/588900243031064595">Discord</a> pls, I don't have a DB yet so I can't make it automatic</h3>
+<div class="w3-container w3-blue custom-style" id="comments-section">
+    <h3>Comments</h3>
+    
+    <!-- Login/Register prompt (shown when user is not logged in) -->
+    <div id="login-prompt" style="display: none; text-align: center; margin: 20px 0;">
+        <p><a href="../login.html" class="comment-link">Login</a> or <a href="../register.html" class="comment-link">Sign up</a> to comment</p>
+    </div>
+    
+    <!-- Comment form (shown when user is logged in) -->
+    <div id="comment-form" style="display: none; margin: 20px 0;">
+        <div class="comment-input-container">
+            <div class="comment-user-info">
+                <img id="current-user-photo" src="" alt="Your profile" class="comment-avatar">
+                <span id="current-user-name" class="comment-username"></span>
+            </div>
+            <textarea id="comment-text" placeholder="Write a comment..." class="comment-textarea"></textarea>
+            <button id="post-comment-btn" class="comment-button">Send</button>
+        </div>
+    </div>
+    
+    <!-- Comments display area -->
+    <div id="comments-container">
+        <!-- Comments will be loaded here -->
+        <div id="comments-loading" style="text-align: center; padding: 20px;">Loading comments...</div>
+        <div id="no-comments-message" style="text-align: center; padding: 20px; display: none;">No comments yet. Be the first to comment!</div>
+    </div>
 </div>
+
+<style>
+    /* Comment section styles */
+    #comments-section {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .comment-link {
+        color: #ff00e8;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .comment-link:hover {
+        text-decoration: underline;
+    }
+    
+    .comment-input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .comment-user-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .comment-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ff00e8;
+    }
+    
+    .comment-username {
+        font-weight: bold;
+        color: white;
+    }
+    
+    .comment-textarea {
+        width: 100%;
+        min-height: 80px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+        font-family: inherit;
+        resize: vertical;
+    }
+    
+    .comment-textarea:focus {
+        outline: none;
+        border-color: #ff00e8;
+    }
+    
+    .comment-button {
+        align-self: flex-end;
+        background-color: #ff00e8;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    
+    .comment-button:hover {
+        background-color: #d400c1;
+    }
+    
+    /* Comment display styles */
+    .comment-item {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .comment-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .comment-content {
+        margin-bottom: 10px;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    
+    .comment-date {
+        font-size: 0.8em;
+        color: #aaa;
+    }
+    
+    .comment-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .comment-action-button {
+        background-color: transparent;
+        border: none;
+        color: #aaa;
+        cursor: pointer;
+        font-size: 0.9em;
+        padding: 5px;
+        transition: color 0.2s;
+    }
+    
+    .comment-action-button:hover {
+        color: #ff00e8;
+    }
+    
+    .comment-delete-button {
+        color: #ff5555;
+    }
+    
+    .comment-delete-button:hover {
+        color: #ff0000;
+    }
+    
+    .reply-form {
+        margin-top: 10px;
+        margin-left: 50px;
+        display: none;
+    }
+    
+    .replies-container {
+        margin-left: 50px;
+        margin-top: 15px;
+    }
+    
+    .reply-item {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<script>
+// Comments system functionality
+document.addEventListener('DOMContentLoaded', async function() {
+    // Incluir palabras prohibidas directamente en el código
+    let bannedWords = [
+        "nigga",
+        "nigger",
+        "beaner",
+        "jigaboo",
+        "faggot",
+        "fag",
+        "retard",
+        "retarded",
+        "retards",
+        "nigga",
+        "tranny",
+        "cunny",
+        "loli",
+        "lolis",
+        "cum",
+        "cumming",
+        "nya"
+    ]
+    
+    // Función para verificar si un texto contiene palabras prohibidas
+    function containsBannedWords(text) {
+        console.log("Verificando texto contra palabras prohibidas:", text);
+        if (!bannedWords || bannedWords.length === 0) {
+            console.log("No hay palabras prohibidas cargadas");
+            return false;
+        }
+        
+        for (const word of bannedWords) {
+            if (text.toLowerCase().includes(word.toLowerCase())) {
+                console.log(`Palabra prohibida encontrada: ${word}`);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    // Continuar con el resto del código...
+    import("https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js").then((firebaseFirestore) => {
+        import("https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js").then((firebaseAuth) => {
+            const { getFirestore, collection, addDoc, getDocs, getDoc, doc, query, where, orderBy, deleteDoc, serverTimestamp } = firebaseFirestore;
+            const { getAuth, onAuthStateChanged } = firebaseAuth;
+            
+            // Get reference to existing Firebase app instead of creating a new one
+            const app = window.firebaseApp;
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+
+            
+            const loginPrompt = document.getElementById('login-prompt');
+            const commentForm = document.getElementById('comment-form');
+            const commentsContainer = document.getElementById('comments-container');
+            const commentText = document.getElementById('comment-text');
+            const postCommentBtn = document.getElementById('post-comment-btn');
+            const currentUserPhoto = document.getElementById('current-user-photo');
+            const currentUserName = document.getElementById('current-user-name');
+            const commentsLoading = document.getElementById('comments-loading');
+            const noCommentsMessage = document.getElementById('no-comments-message');
+
+            let currentUser = null;
+            
+            // Check authentication state
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    // User is signed in
+                    currentUser = user;
+                    loginPrompt.style.display = 'none';
+                    commentForm.style.display = 'block';
+                    
+                    // Get user details for comment form
+                    try {
+                        const userDoc = await getDoc(doc(db, "user", user.uid));
+                        if (userDoc.exists()) {
+                            const userData = userDoc.data();
+currentUserPhoto.src = userData.foto ? `../${userData.foto}` : '../IMG/default.png';
+currentUserName.textContent = userData.nombreUsuario || 'User';
+                        }
+                    } catch (error) {
+                        console.error("Error fetching user data:", error);
+                    }
+                } else {
+                    // No user is signed in
+                    currentUser = null;
+                    loginPrompt.style.display = 'block';
+                    commentForm.style.display = 'none';
+                }
+                
+                // Load comments regardless of login state
+                loadComments();
+            });
+            
+            // Post a new comment
+            async function postComment(text, replyTo = "") {
+    if (!currentUser || !text.trim()) return;
+    
+    // Verificar palabras prohibidas
+    if (containsBannedWords(text.trim())) {
+        alert('Tu comentario contiene palabras prohibidas. Por favor, revísalo.');
+        return false; // Indica que el comentario no se publicó
+    }
+    
+    try {
+        const commentData = {
+            comentario: text.trim(),
+            fecha: serverTimestamp(),
+            pagina: "Roxanne",
+            respuesta: replyTo,
+            userId: currentUser.uid
+        };
+        
+        await addDoc(collection(db, "comentario"), commentData);
+        
+        // Clear the input field
+        if (!replyTo) {
+            commentText.value = '';
+        }
+        
+        // Reload comments to show the new one
+        loadComments();
+        return true; // Indica que el comentario se publicó correctamente
+        
+    } catch (error) {
+        console.error("Error posting comment:", error);
+        alert("Failed to post comment. Please try again.");
+        return false;
+    }
+}
+            
+            // Delete a comment
+            async function deleteComment(commentId) {
+                if (!currentUser) return;
+                
+                if (confirm("Are you sure you want to delete this comment?")) {
+                    try {
+                        await deleteDoc(doc(db, "comentario", commentId));
+                        loadComments(); // Reload comments after deletion
+                    } catch (error) {
+                        console.error("Error deleting comment:", error);
+                        alert("Failed to delete comment. Please try again.");
+                    }
+                }
+            }
+            
+            // Format date for display
+            function formatDate(timestamp) {
+    if (!timestamp) return "Just now";
+    
+    try {
+        // Handle both server timestamps and client timestamps
+        const date = typeof timestamp.toDate === 'function' ? timestamp.toDate() : new Date(timestamp);
+        
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays === 0) {
+            // Today - show hours and minutes
+            return `Today at ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+        } else if (diffDays === 1) {
+            return "Yesterday";
+        } else if (diffDays < 7) {
+            return `${diffDays} days ago`;
+        } else {
+            // Format as date
+            return date.toLocaleDateString();
+        }
+    } catch (error) {
+        console.error("Error formatting date:", error);
+        return "Unknown date";
+    }
+}
+            
+                        // Replace the loadComments function with this improved version
+            async function loadComments() {
+                try {
+                    // Clear previous comments
+                    Array.from(commentsContainer.children).forEach(child => {
+                        if (child !== commentsLoading && child !== noCommentsMessage) {
+                            commentsContainer.removeChild(child);
+                        }
+                    });
+                    
+                    commentsLoading.style.display = 'block';
+                    noCommentsMessage.style.display = 'none';
+                    
+                    console.log("Starting query for comments");
+                    const q = query(
+                        collection(db, "comentario"),
+                        where("pagina", "==", "Roxanne"),
+                        where("respuesta", "==", ""),
+                        orderBy("fecha", "desc"),
+                    );
+            
+                    const querySnapshot = await getDocs(q);
+                    console.log("Query completed. Comments found:", querySnapshot.size);
+                    
+                    // If no comments found, show message and return
+                    if (querySnapshot.empty) {
+                        commentsLoading.style.display = 'none';
+                        noCommentsMessage.style.display = 'block';
+                        return;
+                    }
+                    
+                    // Process each comment
+                    let commentCount = 0;
+                    for (const commentDoc of querySnapshot.docs) {
+                        const commentId = commentDoc.id;
+                        const commentData = commentDoc.data();
+                        
+                        console.log(`Processing comment ${commentCount + 1}/${querySnapshot.size}:`, commentId);
+                        
+                        try {
+                            // Get user information
+                            const userDoc = await getDoc(doc(db, "user", commentData.userId));
+                            console.log("User document exists:", userDoc.exists());
+                            
+                            const userData = userDoc.exists() 
+                                ? userDoc.data() 
+                                : { nombreUsuario: "Unknown User", foto: "../IMG/default.png" };
+                            
+                            // Create and append comment element
+                            const commentEl = createCommentElement(commentId, commentData, userData);
+                            console.log("Comment element created:", commentEl);
+                            commentsContainer.appendChild(commentEl);
+                            console.log("Comment element appended to container");
+                            
+                            // Load replies for this comment
+                            await loadReplies(commentId, commentEl);
+                            commentCount++;
+                        } catch (commentError) {
+                            console.error("Error processing comment:", commentError);
+                            continue;
+                        }
+                    }
+                    
+                    console.log(`Successfully displayed ${commentCount} comments`);
+                    commentsLoading.style.display = 'none';
+                } catch (error) {
+                    console.error("Error loading comments:", error);
+                    commentsLoading.style.display = 'none';
+                    noCommentsMessage.style.display = 'block';
+                }
+            }
+            
+            // Load replies for a comment
+                        // Load replies for a comment
+                        // Update the loadReplies function to make replies collapsible
+            async function loadReplies(parentId, parentElement) {
+                try {
+                    const repliesQuery = query(
+                        collection(db, "comentario"),
+                        where("pagina", "==", "Roxanne"),
+                        where("respuesta", "==", parentId),
+                        orderBy("fecha", "desc")
+                    );
+                    
+                    const repliesSnapshot = await getDocs(repliesQuery);
+                    
+                    if (repliesSnapshot.empty) return;
+                    
+                    const replyCount = repliesSnapshot.size;
+                    
+                    // Create or get the replies container
+                    let repliesContainer = parentElement.querySelector('.replies-container');
+                    if (!repliesContainer) {
+                        repliesContainer = document.createElement('div');
+                        repliesContainer.className = 'replies-container';
+                        repliesContainer.style.display = 'none'; // Hide by default
+                        parentElement.appendChild(repliesContainer);
+                    }
+                    
+                    // Create or update the toggle button
+                    let toggleButton = parentElement.querySelector('.replies-toggle');
+                    if (!toggleButton) {
+                        toggleButton = document.createElement('button');
+                        toggleButton.className = 'replies-toggle';
+                        parentElement.insertBefore(toggleButton, repliesContainer);
+                    }
+                    
+                    // Update toggle button text and state
+                    toggleButton.textContent = `Show ${replyCount} ${replyCount === 1 ? 'answer' : 'answers'}`;
+                    toggleButton.setAttribute('data-count', replyCount);
+                    toggleButton.setAttribute('data-expanded', 'false');
+                    
+                    // Add click event to toggle button
+                    toggleButton.onclick = function() {
+                        const isExpanded = this.getAttribute('data-expanded') === 'true';
+                        const count = this.getAttribute('data-count');
+                        
+                        if (isExpanded) {
+                            repliesContainer.style.display = 'none';
+                            this.textContent = `Show ${count} ${count === '1' ? 'answer' : 'answers'}`;
+                            this.setAttribute('data-expanded', 'false');
+                        } else {
+                            repliesContainer.style.display = 'block';
+                            this.textContent = `Hide answers`;
+                            this.setAttribute('data-expanded', 'true');
+                        }
+                    };
+                    
+                    // Process and display each reply
+                    for (const replyDoc of repliesSnapshot.docs) {
+                        try {
+                            const replyId = replyDoc.id;
+                            const replyData = replyDoc.data();
+                            
+                            // Skip if reply element already exists
+                            if (repliesContainer.querySelector(`[data-reply-id="${replyId}"]`)) {
+                                continue;
+                            }
+                            
+                            // Get user information for reply
+                            const userDoc = await getDoc(doc(db, "user", replyData.userId));
+                            const userData = userDoc.exists() ? userDoc.data() : { nombreUsuario: "Unknown User", foto: "../IMG/default.png" };
+                            
+                            // Create reply element
+                            const replyEl = document.createElement('div');
+                            replyEl.className = 'reply-item';
+                            replyEl.setAttribute('data-reply-id', replyId);
+                            replyEl.innerHTML = `
+                                <div class="comment-header">
+                                    <img src="${userData.foto ? `../${userData.foto}` : '../IMG/default.png'}" alt="${userData.nombreUsuario}" class="comment-avatar">
+                                    <span class="comment-username">${userData.nombreUsuario}</span>
+                                    <span class="comment-date">${formatDate(replyData.fecha)}</span>
+                                </div>
+                                <div class="comment-content">${replyData.comentario}</div>
+                                <div class="comment-actions">
+                                    ${currentUser && currentUser.uid === replyData.userId ? 
+                                    `<button class="comment-action-button comment-delete-button" data-id="${replyId}">Delete</button>` : ''}
+                                </div>
+                            `;
+                            
+                            // Add delete functionality for replies
+                            if (currentUser && currentUser.uid === replyData.userId) {
+                                const deleteBtn = replyEl.querySelector('.comment-delete-button');
+                                deleteBtn.addEventListener('click', () => deleteComment(replyId));
+                            }
+                            
+                            repliesContainer.appendChild(replyEl);
+                        } catch (replyError) {
+                            console.error("Error processing reply:", replyError);
+                            continue;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error loading replies:", error);
+                }
+            }
+            
+                        // Fix the createCommentElement function - remove async
+            function createCommentElement(id, data, userData) {
+                const commentEl = document.createElement('div');
+                commentEl.className = 'comment-item';
+                commentEl.innerHTML = `
+                    <div class="comment-header">
+                        <img src="${userData.foto ? `../${userData.foto}` : '../IMG/default.png'}" alt="${userData.nombreUsuario}" class="comment-avatar">
+                        <span class="comment-username">${userData.nombreUsuario}</span>
+                        <span class="comment-date">${formatDate(data.fecha)}</span>
+                    </div>
+                    <div class="comment-content">${data.comentario}</div>
+                    <div class="comment-actions">
+                        ${currentUser ? `<button class="comment-action-button reply-button" data-id="${id}">Reply</button>` : ''}
+                        ${currentUser && currentUser.uid === data.userId ? 
+                        `<button class="comment-action-button comment-delete-button" data-id="${id}">Delete</button>` : ''}
+                    </div>
+                    <div class="reply-form" data-for="${id}">
+                        <div class="comment-input-container">
+                            <textarea class="comment-textarea reply-textarea" placeholder="Write a reply..."></textarea>
+                            <button class="comment-button send-reply-button" data-parent="${id}">Send</button>
+                        </div>
+                    </div>
+                `;
+                
+                // Add event listeners
+                if (currentUser) {
+                    // Reply button
+                    const replyBtn = commentEl.querySelector('.reply-button');
+                    replyBtn.addEventListener('click', function() {
+                        const replyForm = commentEl.querySelector('.reply-form');
+                        replyForm.style.display = replyForm.style.display === 'block' ? 'none' : 'block';
+                    });
+                    
+                    // Send reply button
+                    const sendReplyBtn = commentEl.querySelector('.send-reply-button');
+                    const replyTextarea = commentEl.querySelector('.reply-textarea');
+                    
+                                        // Update this part in the sendReplyBtn event listener
+                                        sendReplyBtn.addEventListener('click', function() {
+    const parentId = this.getAttribute('data-parent');
+    const replyText = replyTextarea.value.trim();
+    
+    // No enviar si está vacío
+    if (!replyText) return;
+    
+    // Verificar palabras prohibidas antes de enviar la respuesta
+    if (containsBannedWords(replyText)) {
+        alert('Tu respuesta contiene palabras prohibidas. Por favor, revísala.');
+        return;
+    }
+    
+    postComment(replyText, parentId).then((success) => {
+        if (success) {
+            replyTextarea.value = '';
+            commentEl.querySelector('.reply-form').style.display = 'none';
+            
+            // Update reply count or refresh replies
+            const toggleButton = commentEl.querySelector('.replies-toggle');
+            if (toggleButton) {
+                const currentCount = parseInt(toggleButton.getAttribute('data-count') || '0');
+                const newCount = currentCount + 1;
+                toggleButton.setAttribute('data-count', newCount);
+                
+                // Update button text if it's not expanded
+                if (toggleButton.getAttribute('data-expanded') === 'false') {
+                    toggleButton.textContent = `Show ${newCount} ${newCount === 1 ? 'answer' : 'answers'}`;
+                }
+            }
+        }
+    });
+});
+                }
+                
+                // Delete button
+                if (currentUser && currentUser.uid === data.userId) {
+                    const deleteBtn = commentEl.querySelector('.comment-delete-button');
+                    deleteBtn.addEventListener('click', () => deleteComment(id));
+                }
+                
+                return commentEl;
+            }
+            
+            // Event listener for posting a comment
+if (postCommentBtn) {
+    postCommentBtn.addEventListener('click', () => {
+        const text = commentText.value;
+        if (text.trim()) {
+            // La función postComment ya verifica las palabras prohibidas
+            postComment(text);
+        }
+    });
+}
+        });
+    });
+});
+
+// Script para el selector de emojis personalizados
+document.addEventListener('DOMContentLoaded', function() {
+    // Lista de ejemplo de emojis (normalmente se cargaría desde el servidor)
+    const emojiList = [
+        '1.webp',
+        '2.webp',
+        '3.gif',
+        '4.webp',
+        '5.webp',
+        '6.webp',
+        '7.webp',
+        '8.webp',
+        '9.webp',
+        '10.webp',
+        '11.webp',
+        '12.webp',
+        '13.webp',
+        '14.webp',
+        '15.webp',
+        '16.webp',
+        '17.webp',
+        '18.webp',
+        '19.webp',
+        '20.webp',
+        '21.gif',
+        '22.webp',
+        '23.webp',
+        '24.webp',
+        '25.webp',
+        '26.webp',
+        '27.gif',
+        '28.webp',
+
+    ];
+    
+    // Función para crear el panel selector de emojis
+    function createEmojiPicker() {
+        const picker = document.createElement('div');
+        picker.className = 'emoji-picker';
+        picker.style.display = 'none';
+        
+        // Cargar emojis
+        emojiList.forEach(emoji => {
+            const item = document.createElement('div');
+            item.className = 'emoji-item';
+            
+            const img = document.createElement('img');
+            img.src = `../IMG/Emoji/${emoji}`;
+            img.alt = emoji.split('.')[0];
+            img.dataset.emoji = emoji;
+            
+            item.appendChild(img);
+            picker.appendChild(item);
+        });
+        
+        document.body.appendChild(picker);
+        return picker;
+    }
+    
+    // Mantener el panel de emojis como variable global
+    let globalEmojiPicker = null;
+    let currentTextarea = null;
+    
+    // Función para insertar un emoji en el textarea
+    function insertEmoji(textarea, emoji) {
+        const emojiTag = `<img src="../IMG/Emoji/${emoji}" class="custom-emoji" alt="${emoji.split('.')[0]}">`;
+        
+        // Guardar posición del cursor
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        
+        // Insertar el emoji en la posición del cursor
+        const textBefore = textarea.value.substring(0, start);
+        const textAfter = textarea.value.substring(end);
+        textarea.value = textBefore + emojiTag + textAfter;
+        
+        // Mover el cursor después del emoji insertado
+        textarea.selectionStart = textarea.selectionEnd = start + emojiTag.length;
+        textarea.focus();
+    }
+    
+    // Función para añadir botón de emoji a un textarea
+    function addEmojiButton(textarea) {
+        // Crear un contenedor para los controles
+        let controlsContainer;
+        
+        if (textarea.id === 'comment-text') {
+            // Para el comentario principal
+            controlsContainer = document.createElement('div');
+            controlsContainer.className = 'comment-controls';
+            textarea.parentNode.insertBefore(controlsContainer, textarea.nextSibling);
+        } else {
+            // Para respuestas
+            controlsContainer = textarea.closest('.reply-form').querySelector('.comment-actions');
+            if (!controlsContainer) {
+                controlsContainer = document.createElement('div');
+                controlsContainer.className = 'comment-controls';
+                textarea.parentNode.insertBefore(controlsContainer, textarea.nextSibling);
+            }
+        }
+        
+        // Crear el botón de emoji
+        const emojiButton = document.createElement('button');
+        emojiButton.type = 'button';
+        emojiButton.className = 'emoji-button';
+        emojiButton.innerHTML = '<i class="fas fa-smile"></i>';
+        emojiButton.title = 'Add emoji';
+        
+        // Si existe un botón de enviar, insertar antes de él
+        const sendButton = controlsContainer.querySelector('.comment-button');
+        if (sendButton) {
+            controlsContainer.insertBefore(emojiButton, sendButton);
+        } else {
+            controlsContainer.appendChild(emojiButton);
+        }
+        
+        // Evento para mostrar/ocultar el selector
+        emojiButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Crear el selector si no existe
+            if (!globalEmojiPicker) {
+                globalEmojiPicker = createEmojiPicker();
+                
+                // Evento para seleccionar un emoji
+                globalEmojiPicker.addEventListener('click', function(event) {
+                    const target = event.target.closest('img');
+                    if (!target) return;
+                    
+                    if (currentTextarea && target.dataset.emoji) {
+                        insertEmoji(currentTextarea, target.dataset.emoji);
+                    }
+                    
+                    globalEmojiPicker.style.display = 'none';
+                });
+                
+                // Cerrar al hacer clic fuera
+                document.addEventListener('click', function(event) {
+                    if (globalEmojiPicker && 
+                        event.target !== globalEmojiPicker && 
+                        !event.target.closest('.emoji-picker') && 
+                        !event.target.closest('.emoji-button')) {
+                        globalEmojiPicker.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (globalEmojiPicker.style.display === 'none' || 
+                currentTextarea !== textarea) {
+                
+                currentTextarea = textarea;
+                
+                // Posicionar el selector debajo del botón
+                const rect = emojiButton.getBoundingClientRect();
+                globalEmojiPicker.style.top = (rect.bottom + window.scrollY) + 'px';
+                globalEmojiPicker.style.left = (rect.left + window.scrollX - 150) + 'px';
+                globalEmojiPicker.style.display = 'grid';
+            } else {
+                globalEmojiPicker.style.display = 'none';
+            }
+        });
+    }
+    
+    // Añadir botón de emoji al textarea principal
+    const mainTextarea = document.getElementById('comment-text');
+    if (mainTextarea) {
+        addEmojiButton(mainTextarea);
+    }
+    
+    // Modificar la función createCommentElement para añadir el botón de emoji a las respuestas
+    const originalCreateComment = window.createCommentElement;
+    if (typeof originalCreateComment === 'function') {
+        window.createCommentElement = function(id, data, userData) {
+            const element = originalCreateComment(id, data, userData);
+            
+            // Añadir botón de emoji al textarea de respuesta una vez que el usuario haga clic en "Reply"
+            const replyButton = element.querySelector('.reply-button');
+            if (replyButton) {
+                const originalOnClick = replyButton.onclick;
+                replyButton.onclick = function() {
+                    if (originalOnClick) originalOnClick.call(this);
+                    
+                    setTimeout(() => {
+                        const replyTextarea = element.querySelector('.reply-textarea');
+                        if (replyTextarea && !replyTextarea.parentNode.querySelector('.emoji-button')) {
+                            addEmojiButton(replyTextarea);
+                        }
+                    }, 0);
+                };
+            }
+            
+            return element;
+        };
+    }
+    
+    // Observer para detectar nuevos textareas añadidos dinámicamente
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1) { // ELEMENT_NODE
+                        // Buscar nuevos textareas de respuesta
+                        const newTextareas = node.querySelectorAll('.reply-textarea');
+                        newTextareas.forEach(function(textarea) {
+                            if (!textarea.parentNode.querySelector('.emoji-button')) {
+                                addEmojiButton(textarea);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.getElementById('comments-container'), {
+        childList: true,
+        subtree: true
+    });
+});
+</script>
 
     <!-- Scripts and Styles -->
     <script src="Wiki.js"></script>

@@ -1020,6 +1020,226 @@ if (postCommentBtn) {
         });
     });
 });
+
+// Script para el selector de emojis personalizados
+document.addEventListener('DOMContentLoaded', function() {
+    // Lista de ejemplo de emojis (normalmente se cargaría desde el servidor)
+    const emojiList = [
+        '1.webp',
+        '2.webp',
+        '3.gif',
+        '4.webp',
+        '5.webp',
+        '6.webp',
+        '7.webp',
+        '8.webp',
+        '9.webp',
+        '10.webp',
+        '11.webp',
+        '12.webp',
+        '13.webp',
+        '14.webp',
+        '15.webp',
+        '16.webp',
+        '17.webp',
+        '18.webp',
+        '19.webp',
+        '20.webp',
+        '21.gif',
+        '22.webp',
+        '23.webp',
+        '24.webp',
+        '25.webp',
+        '26.webp',
+        '27.gif',
+        '28.webp',
+
+    ];
+    
+    // Función para crear el panel selector de emojis
+    function createEmojiPicker() {
+        const picker = document.createElement('div');
+        picker.className = 'emoji-picker';
+        picker.style.display = 'none';
+        
+        // Cargar emojis
+        emojiList.forEach(emoji => {
+            const item = document.createElement('div');
+            item.className = 'emoji-item';
+            
+            const img = document.createElement('img');
+            img.src = `../IMG/Emoji/${emoji}`;
+            img.alt = emoji.split('.')[0];
+            img.dataset.emoji = emoji;
+            
+            item.appendChild(img);
+            picker.appendChild(item);
+        });
+        
+        document.body.appendChild(picker);
+        return picker;
+    }
+    
+    // Mantener el panel de emojis como variable global
+    let globalEmojiPicker = null;
+    let currentTextarea = null;
+    
+    // Función para insertar un emoji en el textarea
+    function insertEmoji(textarea, emoji) {
+        const emojiTag = `<img src="../IMG/Emoji/${emoji}" class="custom-emoji" alt="${emoji.split('.')[0]}">`;
+        
+        // Guardar posición del cursor
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        
+        // Insertar el emoji en la posición del cursor
+        const textBefore = textarea.value.substring(0, start);
+        const textAfter = textarea.value.substring(end);
+        textarea.value = textBefore + emojiTag + textAfter;
+        
+        // Mover el cursor después del emoji insertado
+        textarea.selectionStart = textarea.selectionEnd = start + emojiTag.length;
+        textarea.focus();
+    }
+    
+    // Función para añadir botón de emoji a un textarea
+    function addEmojiButton(textarea) {
+        // Crear un contenedor para los controles
+        let controlsContainer;
+        
+        if (textarea.id === 'comment-text') {
+            // Para el comentario principal
+            controlsContainer = document.createElement('div');
+            controlsContainer.className = 'comment-controls';
+            textarea.parentNode.insertBefore(controlsContainer, textarea.nextSibling);
+        } else {
+            // Para respuestas
+            controlsContainer = textarea.closest('.reply-form').querySelector('.comment-actions');
+            if (!controlsContainer) {
+                controlsContainer = document.createElement('div');
+                controlsContainer.className = 'comment-controls';
+                textarea.parentNode.insertBefore(controlsContainer, textarea.nextSibling);
+            }
+        }
+        
+        // Crear el botón de emoji
+        const emojiButton = document.createElement('button');
+        emojiButton.type = 'button';
+        emojiButton.className = 'emoji-button';
+        emojiButton.innerHTML = '<i class="fas fa-smile"></i>';
+        emojiButton.title = 'Add emoji';
+        
+        // Si existe un botón de enviar, insertar antes de él
+        const sendButton = controlsContainer.querySelector('.comment-button');
+        if (sendButton) {
+            controlsContainer.insertBefore(emojiButton, sendButton);
+        } else {
+            controlsContainer.appendChild(emojiButton);
+        }
+        
+        // Evento para mostrar/ocultar el selector
+        emojiButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Crear el selector si no existe
+            if (!globalEmojiPicker) {
+                globalEmojiPicker = createEmojiPicker();
+                
+                // Evento para seleccionar un emoji
+                globalEmojiPicker.addEventListener('click', function(event) {
+                    const target = event.target.closest('img');
+                    if (!target) return;
+                    
+                    if (currentTextarea && target.dataset.emoji) {
+                        insertEmoji(currentTextarea, target.dataset.emoji);
+                    }
+                    
+                    globalEmojiPicker.style.display = 'none';
+                });
+                
+                // Cerrar al hacer clic fuera
+                document.addEventListener('click', function(event) {
+                    if (globalEmojiPicker && 
+                        event.target !== globalEmojiPicker && 
+                        !event.target.closest('.emoji-picker') && 
+                        !event.target.closest('.emoji-button')) {
+                        globalEmojiPicker.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (globalEmojiPicker.style.display === 'none' || 
+                currentTextarea !== textarea) {
+                
+                currentTextarea = textarea;
+                
+                // Posicionar el selector debajo del botón
+                const rect = emojiButton.getBoundingClientRect();
+                globalEmojiPicker.style.top = (rect.bottom + window.scrollY) + 'px';
+                globalEmojiPicker.style.left = (rect.left + window.scrollX - 150) + 'px';
+                globalEmojiPicker.style.display = 'grid';
+            } else {
+                globalEmojiPicker.style.display = 'none';
+            }
+        });
+    }
+    
+    // Añadir botón de emoji al textarea principal
+    const mainTextarea = document.getElementById('comment-text');
+    if (mainTextarea) {
+        addEmojiButton(mainTextarea);
+    }
+    
+    // Modificar la función createCommentElement para añadir el botón de emoji a las respuestas
+    const originalCreateComment = window.createCommentElement;
+    if (typeof originalCreateComment === 'function') {
+        window.createCommentElement = function(id, data, userData) {
+            const element = originalCreateComment(id, data, userData);
+            
+            // Añadir botón de emoji al textarea de respuesta una vez que el usuario haga clic en "Reply"
+            const replyButton = element.querySelector('.reply-button');
+            if (replyButton) {
+                const originalOnClick = replyButton.onclick;
+                replyButton.onclick = function() {
+                    if (originalOnClick) originalOnClick.call(this);
+                    
+                    setTimeout(() => {
+                        const replyTextarea = element.querySelector('.reply-textarea');
+                        if (replyTextarea && !replyTextarea.parentNode.querySelector('.emoji-button')) {
+                            addEmojiButton(replyTextarea);
+                        }
+                    }, 0);
+                };
+            }
+            
+            return element;
+        };
+    }
+    
+    // Observer para detectar nuevos textareas añadidos dinámicamente
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1) { // ELEMENT_NODE
+                        // Buscar nuevos textareas de respuesta
+                        const newTextareas = node.querySelectorAll('.reply-textarea');
+                        newTextareas.forEach(function(textarea) {
+                            if (!textarea.parentNode.querySelector('.emoji-button')) {
+                                addEmojiButton(textarea);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.getElementById('comments-container'), {
+        childList: true,
+        subtree: true
+    });
+});
 </script>
 
     <!-- Scripts and Styles -->
