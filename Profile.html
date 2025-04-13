@@ -271,6 +271,7 @@
     };
 
     // Initialize Firebase
+    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
@@ -299,7 +300,9 @@
                 console.error("Error fetching user data:", error);
             }
         } else {
-            console.error("No user is logged in.");
+            // No user is logged in, redirect to login page
+            console.log("No user is logged in. Redirecting to login page...");
+            window.location.href = "login.html";
         }
     });
 
@@ -328,23 +331,23 @@
 
     // Load profile images into the modal
     const characterProfiles = [
-        { path: "Portraits/Wolno.png", character: "wolno", name: "Wolno" },
-        { path: "Portraits/Roxanne.png", character: "roxanne", name: "Roxanne" },
-        { path: "Portraits/Roxanne2.png", character: "roxanne", name: "Roxanne Alt" },
-        { path: "Portraits/Roxanne3.png", character: "roxanne", name: "Roxanne Casual" },
-        { path: "Portraits/Laika.png", character: "laika", name: "Laika" },
-        { path: "Portraits/Laika2.png", character: "laika", name: "Laika Alt" },
-        { path: "Portraits/Laika3.png", character: "laika", name: "Laika Casual" },
-        { path: "Portraits/Inu.png", character: "inu", name: "Inu" },
-        { path: "Portraits/Inu2.png", character: "inu", name: "Inu Alt" },
-        { path: "Portraits/Inu3.png", character: "inu", name: "Inu Casual" },
-        { path: "Portraits/Chloe.png", character: "chloe", name: "Chloe" },
-        { path: "Portraits/Chloe2.png", character: "chloe", name: "Chloe Alt" },
-        { path: "Portraits/Skye.png", character: "skye", name: "Skye" },
-        { path: "Portraits/Abigail.png", character: "abigail", name: "Abigail" },
-        { path: "Portraits/Abigail2.png", character: "abigail", name: "Abigail Alt" },
-        { path: "Portraits/Abigail3.png", character: "abigail", name: "Abigail Casual" },
-        { path: "Portraits/Abigail4.png", character: "abigail", name: "Abigail Special" },
+        { path: "Portraits/Wolno.png", character: "wolno"},
+        { path: "Portraits/Roxanne.png", character: "roxanne"},
+        { path: "Portraits/Roxanne2.png", character: "roxanne"},
+        { path: "Portraits/Roxanne3.png", character: "roxanne"},
+        { path: "Portraits/Laika.png", character: "laika"},
+        { path: "Portraits/Laika2.png", character: "laika"},
+        { path: "Portraits/Laika3.png", character: "laika"},
+        { path: "Portraits/Inu.png", character: "inu"},
+        { path: "Portraits/Inu2.png", character: "inu"},
+        { path: "Portraits/Inu3.png", character: "inu"},
+        { path: "Portraits/Chloe.png", character: "chloe"},
+        { path: "Portraits/Chloe2.png", character: "chloe"},
+        { path: "Portraits/Skye.png", character: "skye"},
+        { path: "Portraits/Abigail.png", character: "abigail"},
+        { path: "Portraits/Abigail2.png", character: "abigail"},
+        { path: "Portraits/Abigail3.png", character: "abigail"},
+        { path: "Portraits/Abigail4.png", character: "abigail"},
     ];
     
     // Enhanced loadProfileImages function
