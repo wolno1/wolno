@@ -400,16 +400,66 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
+    // Replace the onAuthStateChanged section with this code:
     // Check if user is already logged in, redirect if true
+    let isRegistering = false; // Flag to track registration process
+    
     onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // User is signed in, redirect to index.html
+        if (user && !isRegistering) {
+            // Only redirect if we're not in the middle of registration
             console.log("User already logged in. Redirecting to index.html...");
             window.location.href = "index.html";
-        } else {
+        } else if (!user) {
             // User is not logged in, show registration page
             console.log("No user logged in. Showing registration page.");
             document.querySelector(".login-container").style.display = "block";
+        }
+        // If user exists but isRegistering is true, do nothing (let the registration complete)
+    });
+    
+    // Update your registration handler:
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+    
+        if (!selectedProfilePicture) {
+            alert("Please select a profile picture.");
+            return;
+        }
+    
+        try {
+            isRegistering = true; // Set flag to prevent redirect
+            
+            // Crear usuario con correo y contraseña
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+    
+            console.log("Usuario creado:", user.uid);
+    
+            // Guardar datos adicionales en Firestore
+            const userDocRef = doc(db, "user", user.uid);
+            await setDoc(userDocRef, {
+                userId: user.uid,
+                nombreUsuario: username,
+                email: email,
+                creado: serverTimestamp(),
+                baneado: false,
+                foto: selectedProfilePicture,
+                motivoBaneo: ""
+            });
+    
+            console.log("Firestore document created successfully");
+            alert("Usuario registrado exitosamente");
+            
+            // Reset flag and redirect
+            isRegistering = false;
+            window.location.href = "index.html";
+        } catch (error) {
+            isRegistering = false; // Reset the flag if there's an error
+            console.error("Error al registrar usuario:", error.message);
+            alert("Error al registrar usuario: " + error.message);
         }
     });
 
