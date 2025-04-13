@@ -400,7 +400,7 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // Replace the onAuthStateChanged section with this code:
+        // Replace the onAuthStateChanged section with this code:
     // Check if user is already logged in, redirect if true
     let isRegistering = false; // Flag to track registration process
     
@@ -417,7 +417,7 @@
         // If user exists but isRegistering is true, do nothing (let the registration complete)
     });
     
-    // Update your registration handler:
+    // KEEP ONLY THIS ONE REGISTRATION HANDLER - REMOVE THE DUPLICATE
     document.getElementById("registerForm").addEventListener("submit", async (e) => {
         e.preventDefault();
         const email = document.getElementById("email").value;
@@ -469,46 +469,7 @@
     });
 
     let selectedProfilePicture = null;
-                
-                    // Manejar el registro
-                    document.getElementById("registerForm").addEventListener("submit", async (e) => {
-                        e.preventDefault();
-                        const email = document.getElementById("email").value;
-                        const username = document.getElementById("username").value;
-                        const password = document.getElementById("password").value;
-                
-                        if (!selectedProfilePicture) {
-                            alert("Please select a profile picture.");
-                            return;
-                        }
-                
-                        try {
-                            // Crear usuario con correo y contraseña
-                            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                            const user = userCredential.user;
-                
-                            console.log("Usuario creado:", user.uid);
-                
-                            // Guardar datos adicionales en Firestore
-                            const userDocRef = doc(db, "user", user.uid);
-                            await setDoc(userDocRef, {
-                                userId: user.uid,
-                                nombreUsuario: username,
-                                email: email,
-                                creado: serverTimestamp(),
-                                baneado: false,
-                                foto: selectedProfilePicture,
-                                motivoBaneo: ""
-                            });
-                
-                            alert("Usuario registrado exitosamente");
-                            // Redirigir a Index.html
-                            window.location.href = "index.html";
-                        } catch (error) {
-                            console.error("Error al registrar usuario:", error.message);
-                            alert("Error al registrar usuario: " + error.message);
-                        }
-                    });
+            
                 
                     // Modal de selección de foto de perfil
                     const modal = document.getElementById("profilePictureModal");
