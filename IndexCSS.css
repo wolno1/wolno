@@ -1120,3 +1120,12 @@ a.active {
     background-color: rgba(255, 0, 232, 0.1);
     transform: scale(1.1);
 }
+
+.wolno-user {
+    color: #ff00e8;
+}
+
+.wolno-user {
+    color: #ff00e8 !important;
+    font-weight: bold !important; /* opcional para hacerlo más destacado */
+}
