@@ -450,12 +450,6 @@
                 foto: selectedProfilePicture,
                 motivoBaneo: ""
             });
-
-            if (userData.nombreUsuario === "Wolno") {
-    document.getElementById("username").innerHTML = `<span style="color: #ff00e8;">${userData.nombreUsuario}</span>`;
-} else {
-    document.getElementById("username").textContent = userData.nombreUsuario;
-}
     
             console.log("Firestore document created successfully");
             alert("Usuario registrado exitosamente");

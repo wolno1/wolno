@@ -1,21 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Esta función se ejecuta al cargar cualquier página
+    // Apply special styling to Wolno username in comments
     function applyWolnoStyle() {
-        // Selecciona todos los elementos que podrían contener nombres de usuario
-        const userElements = document.querySelectorAll('h2, p, span, div');
+        // Only target elements with the comment-username class
+        const usernameElements = document.querySelectorAll('.comment-username');
         
-        userElements.forEach(element => {
-            // Si el texto exacto es "Wolno" o contiene exactamente "Wolno" como nombre
-            if (element.textContent === "Wolno" || 
-                element.textContent.match(/\bwolno\b/)) {
+        usernameElements.forEach(element => {
+            // Case insensitive check for "Wolno"
+            if (element.textContent.toLowerCase().includes('wolno')) {
                 element.classList.add('wolno-user');
             }
         });
     }
     
-    // Aplica los estilos al cargar la página
+    // Initial application
     applyWolnoStyle();
     
-    // También podemos ejecutarlo periódicamente para elementos cargados dinámicamente
-    setInterval(applyWolnoStyle, 2000);
+    // Also observe for dynamically added comments
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.addedNodes.length) {
+                // Check if new comments were added and apply styling
+                applyWolnoStyle();
+            }
+        });
+    });
+    
+    // Start observing the comments container if it exists
+    const commentsContainer = document.getElementById('comments-container');
+    if (commentsContainer) {
+        observer.observe(commentsContainer, {
+            childList: true,
+            subtree: true
+        });
+    }
 });
