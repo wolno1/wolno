@@ -254,6 +254,53 @@
     </style>
     
     <script>
+        // Fix for empty sidenav issue
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a short moment to ensure all scripts have loaded
+        setTimeout(() => {
+            // Check if sidenav is empty
+            const sidenav = document.getElementById('mySidenav');
+            if (sidenav && sidenav.childElementCount <= 1) {
+                console.log("Sidenav appears empty, initializing it manually");
+                
+                // Reference the generateMenuItems function from Comics.js
+                if (typeof generateMenuItems === 'function') {
+                    generateMenuItems();
+                } else {
+                    console.error("generateMenuItems function not found");
+                    
+                    // Fallback implementation if function is not available
+                    const menuItems = [
+                        { href: "../index.html", text: "Home" },
+                        { href: "../About.html", text: "About me" },
+                        { href: "../Portfolio.html", text: "Portfolio" },
+                        { href: "../Characters.html", text: "Characters" },
+                        { href: "../Comics.html", text: "Comics" },
+                        { href: "../Blog.html", text: "Blog" },
+                        { href: "../Events.html", text: "Events" },
+                        { href: "../FAQs.html", text: "FAQs" }
+                    ];
+                    
+                    // Add close button
+                    const closeButton = document.createElement("button");
+                    closeButton.innerHTML = "&times;";
+                    closeButton.className = "closebtn";
+                    closeButton.onclick = function() {
+                        document.getElementById("mySidenav").style.width = "0";
+                    };
+                    sidenav.appendChild(closeButton);
+                    
+                    // Add menu links
+                    menuItems.forEach(item => {
+                        const link = document.createElement("a");
+                        link.href = item.href;
+                        link.textContent = item.text;
+                        sidenav.appendChild(link);
+                    });
+                }
+            }
+        }, 300);
+    });
     // Comments system functionality
     document.addEventListener('DOMContentLoaded', async function() {
         // Incluir palabras prohibidas directamente en el código
@@ -921,13 +968,9 @@
             subtree: true
         });
     });
-    </script>
-    
-    <script src="..\globalStyles.js"></script>
-    <script src="Comics.js"></script>
-    <script>
-        // Definir los capítulos y sus páginas
-        const comics = {
+
+            // Definir los capítulos y sus páginas
+            const comics = {
         chapter1: [
             'inusual_feelings/chapter1/cover.png',
             'inusual_feelings/chapter1/1.png',
@@ -1012,6 +1055,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Make loadComments accessible globally
 window.loadComments = loadComments;
     </script>
-    </script>
+    
+    <script src="..\globalStyles.js"></script>
+    <script src="Comics.js"></script>
 </body>
 </html>
